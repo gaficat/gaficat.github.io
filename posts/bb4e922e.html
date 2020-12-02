@@ -1,0 +1,600 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" type="image/png" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="分享各种电子设计DIY、物联网DIY、读书笔记、生活想法、流行钢琴、工作中遇到的问题（docker使用技巧、网络安全、python、网络协议）、博客建站技巧等等内容">
+  <meta name="author" content="scarleast">
+  <meta name="keywords" content="物联网">
+  <title>甲醛熏得人头痛？我做了一个TVOC传感器 - 加菲猫的创客工坊</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_2145872_unckbjh4m8.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.gaficat.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"4966387dd3693d431161872876fb1011","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1278912843,"leancloud":{"app_id":"lY82cvb8vqSOls13F6jndxq3-gzGzoHsz","app_key":"uu7fyOEvPWmCOxtxNL6rlsGV","server_url":"https://ly82cvb8.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="加菲猫的创客工坊" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>加菲猫的创客工坊</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/aboutme/">
+                <i class="iconfont icon-user-fill"></i>
+                关于我
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+                rss
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="甲醛熏得人头痛？我做了一个TVOC传感器">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-11-26 23:50" pubdate>
+        2019年11月26日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      17
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">甲醛熏得人头痛？我做了一个TVOC传感器</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年9月16日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="先来两张完成的图镇楼"><a href="#先来两张完成的图镇楼" class="headerlink" title="先来两张完成的图镇楼"></a>先来两张完成的图镇楼</h1><p>斜着来一张</p>
+<p><img src="https://cdn.sspai.com/2019/08/21/6a0f6d2790cb7bfd617e67b6d947488d.jpeg" srcset="/img/loading.gif" alt="斜照"></p>
+<p>正面再来一张</p>
+<p><img src="https://cdn.sspai.com/2019/08/21/501741da7c379a4b703bd5468dbb677f.jpeg" srcset="/img/loading.gif" alt="正面照"></p>
+<h1 id="起源"><a href="#起源" class="headerlink" title="起源"></a>起源</h1><p>我是一名面向google的码农，曾经想改变世界，后来发现为了生存，在城市里打拼，世界没改变，只博得一个租来的鸽子笼。后来有一天，被北方雾霾的恐惧支配之后，我买了一台空气净化器，虽说可以看得到PM2.5，但除了PM2.5，空气中其他的污染物什么情况，我并不清楚。什么某某品牌车主车内苯超标得病；某某租房平台，租给租客的房子甲醛超标，导致其得病的消息非常多。</p>
+<p>想想，我也有家人，有的刚提新车，有的刚装修新房，有的公司搬刚装修的新址，大家知道空气中我们吸入的是一些什么东西吗？于是我在淘宝搜了一下TVOC传感器，结果如下：</p>
+<p><img src="https://cdn.sspai.com/2019/08/21/b16b887ed41f3a88e65630f7917ffa66.png" srcset="/img/loading.gif" alt="某宝TVOC传感器"></p>
+<p>发现稍微好点的，大都300元左右左右，并且这种检测模式吧，我也不可能上班天天哪个这玩意儿按呀？我便有了一个念头。</p>
+<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><p>我希望自己做一个检测仪出来，它能满足一下条件：</p>
+<ul>
+<li>能够直观反映空气中苯、甲醛等有害物质的含量，保证结果具备可参考的价值。</li>
+<li>体积足够的小巧，不能说有多高的颜值，起码不像淘宝上搜到的，都是一大坨吧，摆放在桌上起码得不占地方吧。</li>
+<li>即插即用。放办公桌，放家里，放车上，总之插上电，稍作等待，即可看到实时传感器芯片测得的读数。工作之余、开车休息之余瞟一眼，就知道当前空气的状况。</li>
+<li>价格足够低，保证能把成本压缩在几十元的范围内。</li>
+</ul>
+<h1 id="为什么是TVOC"><a href="#为什么是TVOC" class="headerlink" title="为什么是TVOC"></a>为什么是TVOC</h1><p>维基百科： <strong><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh/%E6%8C%A5%E5%8F%91%E6%80%A7%E6%9C%89%E6%9C%BA%E7%89%A9">挥发性有机物</a>（英语：Volatile Organic Compounds，<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%A6%96%E5%AD%97%E6%AF%8D%E7%B8%AE%E7%95%A5%E5%AD%97">首字母缩略字</a>：VOCs），有时也用TVOC来表示( 英语：Total Volatile Organic Compound )。</strong></p>
+<p>实际上，TVOC，就指的是空气中所有挥发性有机物的总量，那什么是挥发性有机物呢？常见的笨、甲醛等，都属于挥发性有机物。我不可能想起来苯，就去买个苯的检测仪，想起来甲醛，就去买个甲醛的检测仪，当然，不差钱另说。<strong>所以用TVOC检测仪，一次性检测一下空气中所有挥发性有机物的含量，也许是对于普通人而言，性价比最高，推断当前空气的质量的方式了。</strong>如果TVOC值过高，则说明空气确实有一定的问题，就需要找专业的检测机构做相关的检测了。那么TVOC的标准是多少呢？见下表：</p>
+<p><img src="https://cdn.sspai.com/2019/08/21/6672cc6481ecc8facb866359926afe48.png" srcset="/img/loading.gif" alt="各国TVOC标准"></p>
+<p><strong>甲醛之类的有害物质怎么去除</strong></p>
+<p>想到去甲醛，首先想到的肯定是活性炭，空气净化器。实际上不同于PM2.5，可以使用带HEPA滤网的空气净化器吸附。甲醛这类有害物质挥发性极强，非常可悲的是，活性炭以及带活性炭的空气净化器，确实可以<strong>吸附（是吸附、不是去除）</strong>空气中的甲醛，但吸附一段时间后，气温一高，活性炭中的甲醛又挥发出去了。</p>
+<p>面对甲醛这类有害物质，个人建议，最好的方式就是开窗通风，养一些绿植吧，当然，不差钱可以考虑新风系统。对啦，经常监测室内的有害物质含量，以防生活在毒气室里。</p>
+<h1 id="芯片选型"><a href="#芯片选型" class="headerlink" title="芯片选型"></a><strong>芯片选型</strong></h1><h2 id="传感器芯片"><a href="#传感器芯片" class="headerlink" title="传感器芯片"></a><strong>传感器芯片</strong></h2><p>由于限定了我想做的这款传感器的价格，总成本在100元之内，翻遍了淘宝，最终确定了一款芯片，<a target="_blank" rel="noopener" href="https://ams.com/ccs811">ccs811</a>。这款芯片由<a target="_blank" rel="noopener" href="https://ams.com/zh/about-ams">ams</a>公司出品，虽然不是崇洋媚外，但传感器这种东西还是需要积累的，这样一家老牌的传感器解决方案厂商的芯片，质量应该可是可靠的。</p>
+<h2 id="主控芯片"><a href="#主控芯片" class="headerlink" title="主控芯片"></a><strong>主控芯片</strong></h2><p>这一点就没啥好说的，直接上STM32，F103用的最熟，C8T6用过，便宜，所以最终选择了STM32F103C8T6。</p>
+<h1 id="成本"><a href="#成本" class="headerlink" title="成本"></a><strong>成本</strong></h1><p>因为电阻、电容之类的很难计算每个板子的成本，加上快递之类的，这里只是给出一个大致的价格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs table">分类 |价格(元) <br>CCS811 |50 <br>STM32F103C8T6 |8 <br>OLED显示屏 |13 <br>电阻、LED、电容、usb接口等 |10 <br>PCB打样 |6 <br>亚克力外壳 |2 <br>队友手焊贴片请奶茶（23333） |10 <br>总价 |99 <br></code></pre></div></td></tr></table></figure>
+
+<h1 id="暂时发现的问题"><a href="#暂时发现的问题" class="headerlink" title="暂时发现的问题"></a><strong>暂时发现的问题</strong></h1><ol>
+<li>这款传感器TVOC是测量出来的，但eCO2都是计算出来的，不会非常精准，结果仅供参考。另外，人一吹气，变动较大，变动大的时候，停止呼吸？</li>
+<li>传感器未带风扇，由于空气有流通性，所以想快速检测的时候，张牙舞爪，致命shake一波？</li>
+<li>MCU检测到传感器掉线或者异常，会重新初始化传感器，无大碍，但确实这款传感器不是很好用。</li>
+<li>传感器需要预热，通常实际测试，10-20分钟左右（预热时间还是比较长），读数才会稳定。</li>
+<li>没钱做SMT，队友手焊贴片，难受啊，马飞。</li>
+</ol>
+<h1 id="最后还想说两句"><a href="#最后还想说两句" class="headerlink" title="最后还想说两句"></a><strong>最后还想说两句</strong></h1><p>新车、新房、新家具，作为普通人的我们，很难要求环境改变改变一些什么，能做的也只能是了解我们身处的环境，然后尽可能避免受到更严重的伤害吧。笔者的父母说，以前不知道，夏天新装的房子，还让笔者关着门窗在家里午休，也不知道受了多少伤害。现在笔者长大了，起码不会再让自己的家人，吸着有害的空气，还浑然不知吧！</p>
+<p>很庆幸自己大学的专业和结识的小伙伴，允许自己在有一些小想法之后去实现它。自己做的这款TVOC传感器，说复杂不复杂，说简单不简单，本着他好我也好的原则开源出来，但是很难一行一行说代码如何实现的（说不定日后开一个专栏，跟我一起面向搜索引擎做电子设计？），感兴趣的小伙伴可以尝试自己也做一个出来。</p>
+<p>目前准备把主控芯片32换成ESP8366，可以用APP查看历史趋势，敬请期待吧。</p>
+<p><strong>项目地址：<a target="_blank" rel="noopener" href="https://github.com/scarleast/airQ-TVOC-sensor">https://github.com/scarleast/airQ-TVOC-sensor</a></strong></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1/">电子设计</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1/%E5%85%B6%E4%BB%96/">其他</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1/">电子设计</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本作品采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/8ad7360b.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">加菲猫的乐理学习笔记（三）——乐音体系，音列，音级</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/3c8b96ad.html">
+                        <span class="hidden-mobile">加菲猫的乐理学习笔记（二）——什么是音？</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" rel="nofollow noopener"> <span> 本站由<img border="0" src="/img/upyun_logo6.png" srcset="/img/loading.gif"  width="80" height="25"/>提供对象存储服务 </span>  </a> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        陕ICP备18017214号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+    <!-- cnzz Analytics Icon -->
+    <span id="cnzz_stat_icon_1278912843" style="display: none"></span>
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+
+  
+    <script>
+      (function (window, document) {
+        var typing = Fluid.plugins.typing;
+        var title = document.getElementById('subtitle').title;
+        typing(title)
+      })(window, document);
+    </script>
+  
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4966387dd3693d431161872876fb1011";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- cnzz Analytics -->
+    <script defer src="//s4.cnzz.com/z_stat.php?id=1278912843&show=pic"
+            type="text/javascript"></script>
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

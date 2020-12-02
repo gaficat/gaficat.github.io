@@ -1,0 +1,604 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" type="image/png" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="分享各种电子设计DIY、物联网DIY、读书笔记、生活想法、流行钢琴、工作中遇到的问题（docker使用技巧、网络安全、python、网络协议）、博客建站技巧等等内容">
+  <meta name="author" content="scarleast">
+  <meta name="keywords" content="物联网">
+  <title>《飞升与落地》读书笔记 - 加菲猫的创客工坊</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_2145872_unckbjh4m8.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.gaficat.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"4966387dd3693d431161872876fb1011","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1278912843,"leancloud":{"app_id":"lY82cvb8vqSOls13F6jndxq3-gzGzoHsz","app_key":"uu7fyOEvPWmCOxtxNL6rlsGV","server_url":"https://ly82cvb8.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="加菲猫的创客工坊" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>加菲猫的创客工坊</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/aboutme/">
+                <i class="iconfont icon-user-fill"></i>
+                关于我
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+                rss
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="《飞升与落地》读书笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-11-23 22:45" pubdate>
+        2019年11月23日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      13
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">《飞升与落地》读书笔记</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年9月16日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p>这篇文章来自《读者半月刊2018年冬季卷合订本》，位置<code># 3352</code>，通过芭蕾和建筑两个例子，讲解了中西方文明的差异，感觉作者写的确实挺好的，轮不上我插嘴啊，直接摘抄很多东西吧，当作是一种涨知识。</p>
+<h1 id="芭蕾的由来"><a href="#芭蕾的由来" class="headerlink" title="芭蕾的由来"></a>芭蕾的由来</h1><blockquote>
+<p>芭蕾大概是17世纪从法国的宫廷传出来的，为了表现宫廷的优雅利益，他们徐联储一种踮起脚尖走路的碎步，后来就慢慢发展出芭蕾这样的艺术形式。我们会发现，芭蕾对身体的要求最重要的一部分是在脚，特别是爱足踝。</p>
+</blockquote>
+<blockquote>
+<p>人的小腿与脚掌是一个垂直的关系，可是芭蕾的开发经验是违反人体自然状态的，它要求整只脚立起来，做这个动作非常难。尤其是西方芭蕾舞里面的女舞者，穿起舞鞋直立以后，整个人几乎就是一条直线，脚掌与地面几乎完全垂直，她跟地板的接触点只有脚尖。</p>
+</blockquote>
+<h1 id="芭蕾美在哪里"><a href="#芭蕾美在哪里" class="headerlink" title="芭蕾美在哪里"></a>芭蕾美在哪里</h1><blockquote>
+<p>我们知道，脚掌踏在大地上，我们叫踏实；可是如果把脚尖踮起来，意思就是说，我希望追求一个往上飞扬的东西。</p>
+</blockquote>
+<blockquote>
+<p>学芭蕾的女孩走路都是八字脚，他们的身体很瘦，脊椎基本上是往上提的，这是每天进行基本功训练的结果。不同文化发展处不同的身体美学。</p>
+</blockquote>
+<blockquote>
+<p>我们欣赏芭蕾的时候，觉得舞者身体最美的是往上飞起来的力量。往上飞的时候，舞者的足踝非常美，姿态有点像鸟的飞翔，所以芭蕾舞剧《天鹅湖》很有名，里面的动作基本是在模仿鸟的飞翔。</p>
+</blockquote>
+<h1 id="中西方舞蹈的区别"><a href="#中西方舞蹈的区别" class="headerlink" title="中西方舞蹈的区别"></a>中西方舞蹈的区别</h1><blockquote>
+<p>在那些有名的芭蕾舞剧里，常常有一个动作——扮演王子的男舞者把扮演公主的女舞者托举起来，两个人的身体变成一条往上的弧线，是一种升起来的感觉。</p>
+</blockquote>
+<blockquote>
+<p>而在中国的舞台上，你很少看到一个男舞者把女舞者举起来。我不能想象《白蛇传》里的许仙把白娘子举到天上去，因为我们的文化中没有这部分。在东方的文化里，我们不太追求身体的垂直线，而是追求身体移动的美。比如中国传统剧场里的“跑圆场”。这种移动的形式跟西方往上飞翔的美形成了两种非常不同的感动力量。</p>
+</blockquote>
+<p>我对舞蹈没有什么研究，但是中西方文化的差异体现在舞蹈上，这里讲的是舞蹈<strong>表现形式的差异</strong>，确实挺有意思，第一次读到。</p>
+<blockquote>
+<p>芭蕾的基本功，常常在做提气，让气息往上升，然后将整个身体往上拉。</p>
+</blockquote>
+<blockquote>
+<p>可是在传统的中国剧场，演员练功的时候常常是扎马步，往下沉，沉住气。</p>
+</blockquote>
+<p>这里将的是<strong>练习方式的差异</strong>，我觉得这里可以加一个例子，就是太极拳，虽然现在太极拳争议挺大的，比如雷雷被徐晓东KO，但是这种源自中国的健身运动，也是讲究重心向下沉的。</p>
+<h1 id="中西方建筑的差异"><a href="#中西方建筑的差异" class="headerlink" title="中西方建筑的差异"></a>中西方建筑的差异</h1><blockquote>
+<p>西方代表性建筑——大教堂，都强调垂直线，是往上飞起来的。</p>
+</blockquote>
+<blockquote>
+<p>北京的紫禁城，最美的线条基本上是水平线，比如屋顶的水平线。</p>
+</blockquote>
+<p>这里也算是长知识了，西方建筑强调垂直线，中式建筑强调水平线。东方人的身体也讲究稳稳地踏在地平线上，讲究稳重、稳定。</p>
+<h1 id="中西方音乐的差异"><a href="#中西方音乐的差异" class="headerlink" title="中西方音乐的差异"></a>中西方音乐的差异</h1><blockquote>
+<p>中国的音乐更加讲究旋律的变化，而西方更加讲究节奏的律动。</p>
+</blockquote>
+<p>我不太记得是在哪里看过的视频了，好像是game攻壳边一鸣他们讲一些音乐相关的东西提到的，确实，我们听中国的音乐或者现代中国风的音乐，像梁祝、菊花台之类的，旋律是相当优美的。而从西方过来的，像funk很有律动，想rap相当的有节奏，都是有代表性的东西。</p>
+<h1 id="尾巴"><a href="#尾巴" class="headerlink" title="尾巴"></a>尾巴</h1><p>中西方文化的差异体现在很多地方，我记得自己最早关注中西方文化差异，是看曾仕强教授讲《易经》，大概是初中？还是高中？那个时候一开始以为《易经》就是算命的江湖骗子惯用的手法，我那个时候是相当崇洋媚外的，觉得国外的月亮哪哪都圆，后来听了曾仕强教授的讲解，才对《易经》、中国古人的智慧、中国文化的精妙有了一定的认识，才开始关注文化的差异，要对自己的文化有自信。</p>
+<p>其实文化没有优劣，我们一直讲的文化自信我觉得便是如此。那些蕴含在卦象中的宇宙规律，需要有博学的人给你指点和讲解才能够明白，明白了这些，才懂得前人的智慧是多么的巧妙。一方水土养一方人，我觉得文化的差异，究其根本，是与其生活的环境密不可分的。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本作品采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/56b04d6f.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">谈谈我对学钢琴的看法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/62a44034.html">
+                        <span class="hidden-mobile">关于本站</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" rel="nofollow noopener"> <span> 本站由<img border="0" src="/img/upyun_logo6.png" srcset="/img/loading.gif"  width="80" height="25"/>提供对象存储服务 </span>  </a> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        陕ICP备18017214号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+    <!-- cnzz Analytics Icon -->
+    <span id="cnzz_stat_icon_1278912843" style="display: none"></span>
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+
+  
+    <script>
+      (function (window, document) {
+        var typing = Fluid.plugins.typing;
+        var title = document.getElementById('subtitle').title;
+        typing(title)
+      })(window, document);
+    </script>
+  
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4966387dd3693d431161872876fb1011";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- cnzz Analytics -->
+    <script defer src="//s4.cnzz.com/z_stat.php?id=1278912843&show=pic"
+            type="text/javascript"></script>
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

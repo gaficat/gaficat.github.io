@@ -1,0 +1,602 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" type="image/png" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="分享各种电子设计DIY、物联网DIY、读书笔记、生活想法、流行钢琴、工作中遇到的问题（docker使用技巧、网络安全、python、网络协议）、博客建站技巧等等内容">
+  <meta name="author" content="scarleast">
+  <meta name="keywords" content="物联网">
+  <title>迷惘的26岁 - 加菲猫的创客工坊</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_2145872_unckbjh4m8.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.gaficat.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"4966387dd3693d431161872876fb1011","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1278912843,"leancloud":{"app_id":"lY82cvb8vqSOls13F6jndxq3-gzGzoHsz","app_key":"uu7fyOEvPWmCOxtxNL6rlsGV","server_url":"https://ly82cvb8.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="加菲猫的创客工坊" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>加菲猫的创客工坊</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/aboutme/">
+                <i class="iconfont icon-user-fill"></i>
+                关于我
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+                rss
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="迷惘的26岁">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-02-16 20:41" pubdate>
+        2020年2月16日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      33
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">迷惘的26岁</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年9月16日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="做到知行合一真的挺难的"><a href="#做到知行合一真的挺难的" class="headerlink" title="做到知行合一真的挺难的"></a>做到知行合一真的挺难的</h1><p>上周看VZOO，老杨说特斯拉股票的时候提到：<strong>想做到知行合一真的挺难的</strong>，我深表认同。老杨看好特斯拉股票后来因为美股的操作难度，没有购买而后悔。我自己也做了一些数字货币的储备，因为短期小幅的涨跌没有坚持自己的看法，做出一些没有必要的交易。当然了，也有自己的职业规划，但面对当前的舒适圈，并没有动力进行。</p>
+<img src="https://pic.gaficat.com/%E7%94%9F%E6%B4%BB%E6%83%B3%E6%B3%95/VZOO%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80.png" srcset="/img/loading.gif" alt="知行合一真的挺难的" style="zoom: 25%;" />
+
+
+
+<h2 id="大多数人对自己的未来没有规划，把自己的命运交给国家"><a href="#大多数人对自己的未来没有规划，把自己的命运交给国家" class="headerlink" title="大多数人对自己的未来没有规划，把自己的命运交给国家"></a>大多数人对自己的未来没有规划，把自己的命运交给国家</h2><p><strong>信息爆炸的时代，对未来没有规划和想法，不保持学习到老的状态，很容易被社会淘汰</strong>。其实我们很多人是对未来没有规划和想法的，可能你有一份稳定的公务员或者国企工作，觉得国家不会不管我。但是之前看读者，有这样一段描述：</p>
+<blockquote>
+<p>国二厂的全称是县国营第二碾米厂，响当当的大厂，进厂就发两套工作服、一双翻毛皮大头皮鞋。逢年过节，整箱整箱的国光苹果、整条整条的大青鱼放在仓库里，等职工搬回家。在我爷爷看来，那些做生意、跑单帮的，不过是暂时钻了政策的空子，国家早晚会回过头来收拾这帮投机倒把的。我爷爷坚信，个体户再有钱，不过是一时风光，国营大厂才是千秋万代的。</p>
+<p>读者. 读者 半月刊 2018年冬季卷合订本（2018.19-24期） (Chinese Edition) (Kindle 位置 219-223). Kindle 版本. </p>
+</blockquote>
+<p>谁想得到几十年后，那些国二厂，国三厂，早就不见了踪影，那你看现在的铁饭碗，像不像当初所谓国几厂？很难预测未来30年，甚至是10年会发生什么改变，也许是一条政策，就导致无数人没了经济来源。</p>
+<h2 id="有想法的人实践起来相当困难"><a href="#有想法的人实践起来相当困难" class="headerlink" title="有想法的人实践起来相当困难"></a>有想法的人实践起来相当困难</h2><p>事实上，现在步入社会的90后，有相当一部分，很有危机意识，对未来有规划、有想法。<strong>但跳出当下或是高收入，或是铁饭碗的舒适圈，对规划想法付诸实践，很难，知行合一真的很难。</strong>我其实就是属于这一部分人，我有一份在当地收入还不错的工作，压力不大，不用加班，有大把的时间做自己喜欢的事。但真让你为将来的规划做一些努力时，总很难静下心或者是迈出那一步。觉得当下的状态真是挺好了，生怕做出的抉择不对，将来的生活可能还不如现在。</p>
+<h2 id="知行合一这件事，社会比学校难多了"><a href="#知行合一这件事，社会比学校难多了" class="headerlink" title="知行合一这件事，社会比学校难多了"></a>知行合一这件事，社会比学校难多了</h2><p>作为一些学生，你知道你能做的，是好好学习，然后或是提升学历，或是尽早为找到一份工作努力。上学那会儿，可能觉得很难，有太多的诱惑了，游戏或是其他的，但是起码你目标是明确的，并且父母，老师、所有人也是支持你那么做的。</p>
+<p>进入社会了，你未来怎么样，只能靠自己规划，没有人管你了。所以，在学校，你有明确的目标，去做就行了，并且有人教你怎么做。而进入社会了，你要先想明白自己的目标是什么，然后结合一切资源，想明白怎么做。最后还要在家庭、父母等等各个方面做权衡，能不能放手做，放手做有什么困难。</p>
+<p><strong>生活怎么这么难。</strong></p>
+<h1 id="已经不是她第一次问我：“你的规划是什么”了"><a href="#已经不是她第一次问我：“你的规划是什么”了" class="headerlink" title="已经不是她第一次问我：“你的规划是什么”了"></a>已经不是她第一次问我：“你的规划是什么”了</h1><p>这篇文章为什么叫迷惘的26岁呢？因为我确实挺迷惘的，自己本身迷惘，加上父母也在给自己压力。但是真正有些击溃我的，是女票反复的询问：“你的规划是什么？我要你给我信心！”以及当前工作给我的不安全感。那么，我的规划是什么？</p>
+<p>我是一名物联网工程（偏向于无线传感器网络）的本科生，却入了网络安全的行业。在一个清、北、中科院硕士博士的团队里打杂。在做的工作实际上，就是外行人看着高大上，内行看着觉得挺简单的工作。我觉得，自己工作了一年半了，除了自己负责的项目，代码量越做越大，能产出一到两篇专利，再没有其他提升了，我看不到自己的未来，晋升或是其他的渠道。我也不是码农，做前端、后端或是安卓、JAVA的，也许码农换个公司一样能继续工作，但我的工作方向太细了，也许辞了当下的这份工作，再去找一份类似的工作，相当艰难。你也许会说，考公务员呗？确实，但公务员现在的起点也很高，大部分也都是硕士起步，我只是本科，要脱产直接去考研吗？考研没考上呢？考完又考公务员，也没考上呢？即使考上，三年的时间成本负担的起吗？所以，我的规划能是什么呢？</p>
+<p>我不知道其他广大男同胞，在女票问你有什么打算的时候是怎么回答的。但是一向对自己未来有想法的我，确实被逼的有些迷惘。我计划着做着当前的工作，尝试弄一些副业，姐夫开的有公司，问过智能家居方面我有没有创业的想法，我也确实做出了一些DEMO，但是你发现真正产品化挺难的。我也想提升自己从小练的钢琴技能，去教琴，但觉得自己本身水平不是非常高，不是科班出身。教琴，也必然会被问及，你是哪里毕业的呀？肯定无言应对。</p>
+<p>我有很长时间没有更新博客了，一方面因为病毒的影响，被困在老家，加上水土不服或是其他的原因，拉了半个月肚子，没有心思做其他事。另一方面，之前稳定更新的学乐理，遇到了瓶颈，我觉得单纯学乐理没有太多用。而折腾NAS，折腾坚果云的webdav等等，都坑巨多。</p>
+<h1 id="已经不知道因为规划是什么而失眠多少次了"><a href="#已经不知道因为规划是什么而失眠多少次了" class="headerlink" title="已经不知道因为规划是什么而失眠多少次了"></a>已经不知道因为规划是什么而失眠多少次了</h1><p>我不知道自己压力为什么这么大，其他人是不是生活的开心。我是一个五线小城市出来的孩子，享受着恶劣的教育条件。我考上了当地最好的高中，但最好的高中也只有百分之三十的一本上线率。我后来大学时到重庆的某所中学教小朋友做机器人，我了解到，他们的一本上线率高达百分之九十。真的是五线小城市的学生们，智力有问题，努力程度不够，造成了这么大的差距吗？我看未必。不是为自己鸣不平，我从五线城市出来，到一个省会，能有一份收入尚可的工作，我看到我已经超越了太多五线城市的同学了。我的这份工作，哪怕是在自己大学（号称小211），和硕士比，也是中上水平的。按理来说，我应该过的相当心安理得，相当无忧无虑，但真不知道自己的焦虑是从哪里不断冒出来的。</p>
+<p>2020我对于自己的未来，规划究竟如何？</p>
+<h2 id="本职工作"><a href="#本职工作" class="headerlink" title="本职工作"></a>本职工作</h2><p>就这一两个月吧，把自己的想法整理成专利，起码让自己有一些竞争力。本来想着多在部门微信公众号之类的发一些文章，但是，一些原因，能出头的工作给了别人了，挺伤的吧。我现在觉得，本本职工作，把自己该做的干了就行了，剩下的经历，多做一些提升自己竞争力的事。</p>
+<h2 id="智能家居"><a href="#智能家居" class="headerlink" title="智能家居"></a>智能家居</h2><p>对于智能家居，我始终是不死心的。我在去年年底，了解到了易微联、涂鸦智能两家2B的供应商，结合自己和原来小伙伴的硬件设计能力，我们能做出自己的产品原型。我希望自己在今年，好好整理一下相关的文档，说明几个问题：</p>
+<ul>
+<li>市场：<ul>
+<li>产品形态：我希望实现易微联官方类似的通断器，在不影响正常墙开使用的前提下，能让灯联网。小米的产品，是需要全屋替换开关的，这就涉及几个问题了，一方面，开关的样式可能和家里装修的风格不一样。另一方面，小米好像只有单开和双开的开关。我希望的产品形态，不影响正常的墙开，给墙开后面接一个东西就行了。</li>
+<li>成本。和当今如日中天的小米比，我们的成本能拉到多低。能给我们本身做产品的公司，带来百分之多少的纯利润。</li>
+</ul>
+</li>
+<li>商业模式。我个人还是认为，装修，智能家居这样的产品，还是应该走VIVO、OPPO卖手机的思路，线下发家。不同于手机一件产品，智能家居这种东西，是一套产品，具体客户的体验、购买、施工，线下是最好的。如果姐夫拉动当地的装修公司，一起推进我们这个事，我觉得，是搞得起来的。</li>
+</ul>
+<p>整理文档的目的，是拉动姐夫投入到这个生意里面来，帮助我实现我的愿望，但是病毒的影响，今年的实体经济，并不是很乐观。</p>
+<h2 id="钢琴"><a href="#钢琴" class="headerlink" title="钢琴"></a>钢琴</h2><p>我从小学就开始学钢琴了，虽然中间有中断，但是发现，所有学琴的小孩子，都是在死磕考级。我不清楚，奖章为什么这么热衷于让孩子考级。不知道真的是考级对孩子能有阶段性的成就感，还是为了满足家长炫耀的虚荣心。考级是走的古典钢琴的路线，钢琴这种乐器本身是孤独的，不像其他乐器小巧，走到哪里都能吹拉弹唱，具有很好的社交属性。古典钢琴就是小孩子一个人在琴房，练着巴赫、肖邦，一遍一遍的重复，那种枯燥，只有练过的人知道。这样本身孤独的乐器，加上孤独的古典，真的让人崩溃。我以为是自己的社交圈子小，后来在大学琴房，认识了其他的小伙伴，发现一个拿过各种奖，可称得上演奏级的学弟，也很孤独。他跟我说，你不用觉得孤独，没人听得懂你，流行是好听啊，大家都喜欢。但是小众的，古典你自己喜欢就行了，没有必要管其他人。我对此不认同，我认为学乐器，本身就是让人有一个爱好，在有压力的时候，能有一个释放的渠道。这个释放的渠道，可以帮助你认识更多人，如果你能在party上弹一首周杰伦、五月天、林俊杰的串烧，如果你能在家庭聚会上，给叔叔婶婶弹一首月亮代表我的心。而不是沉浸在自己的世界里，别人看着，这个真厉害，技术真好，弹得真快，仅此而已。</p>
+<ul>
+<li>乐理：还是听宋大叔的课吧，看李重光的书，听相关的网课，只是教你怎么考试，对理解音乐，没有太大的帮助。看完一遍宋大叔的课，对整体的键盘和声学有了一定的了解后，做一些笔记和整理，这大概需要3个月到半年的时间吧。</li>
+<li>练习：结合乐理的理论知识，进行实践，自己去配和弦，自己做一些即兴的伴奏发挥。</li>
+<li>学历：我是有拿一个艺术学历的想法的，但在职硕士似乎音乐学院很少，远程的授课，针对的是专升本。这一块还没有想好怎么做。</li>
+<li>教学：和妈妈说的朋友联系一下吧，去他的琴行，做做陪练，看看当前琴行教琴的课程。了解一下大众对于流行钢琴的接受程度。了解接受程度很重要，这意味着生源，意味着我希望教流行钢琴，即兴伴奏的想法，是否可行。</li>
+</ul>
+<p>我觉得，钢琴这块，乐理和练习是今年的主旋律，加油吧，即兴伴奏，也是2019年的目标，结果一点进展都没有，今年希望在年底的时候，能信手拈来，坐在琴边，左手和弦一弹，右手就能即兴一些旋律出来。</p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>我是个平凡人，我只是个能力一般的平凡人。阶级的跨越相当难，我已经实现从五线小城市到省会城市的跨越了，相当辛酸。焦虑要有，他是你前进的动力，但物极必反，做到问心无愧就好了。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%94%9F%E6%B4%BB/">生活</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本作品采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/7bb972e7.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">python计算日期相差几年几月几日</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/892a143e.html">
+                        <span class="hidden-mobile">2019的昨天、今天、明天</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" rel="nofollow noopener"> <span> 本站由<img border="0" src="/img/upyun_logo6.png" srcset="/img/loading.gif"  width="80" height="25"/>提供对象存储服务 </span>  </a> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        陕ICP备18017214号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+    <!-- cnzz Analytics Icon -->
+    <span id="cnzz_stat_icon_1278912843" style="display: none"></span>
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+
+  
+    <script>
+      (function (window, document) {
+        var typing = Fluid.plugins.typing;
+        var title = document.getElementById('subtitle').title;
+        typing(title)
+      })(window, document);
+    </script>
+  
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4966387dd3693d431161872876fb1011";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- cnzz Analytics -->
+    <script defer src="//s4.cnzz.com/z_stat.php?id=1278912843&show=pic"
+            type="text/javascript"></script>
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

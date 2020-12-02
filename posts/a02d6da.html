@@ -1,0 +1,604 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" type="image/png" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="分享各种电子设计DIY、物联网DIY、读书笔记、生活想法、流行钢琴、工作中遇到的问题（docker使用技巧、网络安全、python、网络协议）、博客建站技巧等等内容">
+  <meta name="author" content="scarleast">
+  <meta name="keywords" content="物联网">
+  <title>幺舅是怎么追到舅妈的 - 加菲猫的创客工坊</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_2145872_unckbjh4m8.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.gaficat.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"4966387dd3693d431161872876fb1011","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1278912843,"leancloud":{"app_id":"lY82cvb8vqSOls13F6jndxq3-gzGzoHsz","app_key":"uu7fyOEvPWmCOxtxNL6rlsGV","server_url":"https://ly82cvb8.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="加菲猫的创客工坊" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>加菲猫的创客工坊</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/aboutme/">
+                <i class="iconfont icon-user-fill"></i>
+                关于我
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+                rss
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="幺舅是怎么追到舅妈的">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-05-03 01:50" pubdate>
+        2020年5月3日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      27
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">幺舅是怎么追到舅妈的</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年9月16日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p>因为和女票分手了，所以五一回家休整两天。结果聊着聊着，麻麻就跟我聊幺舅追舅妈的故事了，我觉得实在是有趣，就记录下来吧。</p>
+<h1 id="幺舅？何许人？"><a href="#幺舅？何许人？" class="headerlink" title="幺舅？何许人？"></a>幺舅？何许人？</h1><p>我有一个幺舅，是家里最小的，排行老五，人很高，身材很壮。喜欢打篮球、钓鱼的缘故，全身黝黑。平时话不是很多，主要是因为家里的其他舅舅和姨妈太能说了，身为老五的他，就整天被数落。怎么还没有对象，怎么还不成家，怎么有升职的机会自己没抓住。嗯，这里应该插一句嘴，我应该也和幺舅一样，被说的太多了，所以话也很少。</p>
+<p>我印象里，过年特别喜欢回妈妈家过年，很大一部分因素，是因为幺舅。</p>
+<blockquote>
+<p>幺舅很舍得给我们买礼物。小时候看四驱兄弟，特别想要一辆四驱车，我至今记得，自己平时攒钱，一毛一毛的攒，攒了多久自己都忘记了。当时攒够了四块六，实在等不及了，就跑去小卖部，掏出一把毛票子，跟老板说，我只有四块六，能卖给我那个5块钱的四驱车吗？老板满脸不在乎的表情，“行行行”，数也不数，便把钱拨到柜子里，把四驱车递给我。我记得那是我第一辆四驱车，魔鬼司令。后来呢，春节回去，幺舅带我去街上买东西，看我望着街边玩具店里的四驱车，没说什么，直接就给我买了一个。我记得好像是30块钱。那辆车是跳跃者的外壳，我记得惊喜的拆开包装，看到有雪花纹的马达，满心惊喜。事实证明，车这玩意儿吧，越贵肯定越好呀！5块的四驱车，我还能跟在后面屁颠屁颠的跑，冲啊！魔鬼司令！哎哟，就这么中二。30的四驱车，我就只能看着它在地上跟老鼠一样乱窜，一脸无奈，太快了！</p>
+</blockquote>
+<blockquote>
+<p>幺舅似乎很喜欢跟我们小孩子玩。我还记得幺舅偷偷带我去玩街机，我那时候小，只记得里面有一个BOSS，是机器人，跳起来，半蹲，手臂摆一个poss。后来回家了，我也跟在幺舅后面，学机器人的动作，幺舅看到我在学，也跟我一起笔画，看我们两个谁更像，然后笑的咯咯咯的。</p>
+</blockquote>
+<blockquote>
+<p>幺舅很爱我们这帮小崽子们。我有一个表姐，有一次在学校被小混混调戏了。幺舅本身很壮，叫了一帮兄弟去学校堵小混混，在那之后，再没有人敢惹表姐。</p>
+</blockquote>
+<blockquote>
+<p>幺舅至今都没考过驾照，不过喜欢骑摩托，我记得我上小学那会，他花了一万多块买了一辆摩托，那个时候爸爸的夏利车应该才几万块钱。所以幺舅成了整个县城最靓的仔，我特别喜欢坐在摩托后面，跟幺舅去兜风，虽然是真的抖，屁股是真滴麻，但是，真的拉风，可嘚瑟了。</p>
+</blockquote>
+<img src="https://pic.gaficat.com/default/嘚瑟的表情.jpg" srcset="/img/loading.gif" alt="嘚瑟的表情" style="zoom:33%;" />
+
+<h1 id="闷骚的人骚起来，这还了得"><a href="#闷骚的人骚起来，这还了得" class="headerlink" title="闷骚的人骚起来，这还了得"></a>闷骚的人骚起来，这还了得</h1><p>我本身也是一个话少的人，我觉得我跟幺舅挺像的，所以家里人应该都挺为我们这种性格的人担心的，怕找不到女票。但是，我的舅妈，比我幺舅<strong>小了十几岁</strong>，而且，从认识到结婚，只有<strong>短短的两个月时间</strong>。所以，相信你也好奇，这老牛是咋吃上嫩草了的？</p>
+<h2 id="缘分呐"><a href="#缘分呐" class="headerlink" title="缘分呐"></a>缘分呐</h2><p>有一天，我大舅在街上走着，看着街上有一家店，怎么店里比平时多了一个姑娘。那时候的小县城，人员流动很少，乡里乡亲的基本都认识，大舅就去打听，这姑娘哪来的呀？长得挺漂亮的，有没对象啊？能不能给幺舅介绍介绍？于是这一打听才知道，人家是从深圳回来的，休假回来玩两天。没错，这段姻缘就这么开始了。</p>
+<h2 id="首战告负"><a href="#首战告负" class="headerlink" title="首战告负"></a>首战告负</h2><p>后来呢，当天就托熟人介绍，一起让幺舅和舅妈见一面，认识认识。舅妈后来跟我们说：“那时候，根本没看上你们幺舅，长得又黑，眼睛近视又没带眼镜，又是一个眯眯眼，哎，可真是。”</p>
+<p>可是幺舅喜欢啊，这小了十几岁，这么年轻的小姑娘，当然喜欢啊！钻石王老五这么多年了！咋办呀，要电话呀！结果，虽然第一顿饭没舅妈没看上幺舅。但是，幺舅有朋友啊！</p>
+<blockquote>
+<p>“下午吃饭的那个男的，问你要电话，给吗？”</p>
+<p>“那个人，长得又黑，眼睛又小，不行还是算了吧？”</p>
+</blockquote>
+<p>有些时候，身边有个能说会道，拉的下脸的朋友还是好啊，幺舅托的朋友，就开始软磨硬泡，你说这又不是给了电话就成了是不是？认识一下嘛，多个朋友多条路，巴拉巴拉。</p>
+<p>总之啊，就还是把舅妈的电话要到手了。</p>
+<h2 id="啥？我车票被取消了？"><a href="#啥？我车票被取消了？" class="headerlink" title="啥？我车票被取消了？"></a>啥？我车票被取消了？</h2><p>假期很快就过去了，舅妈准备回深圳工作了。谁也想不到，为了和舅妈多见几次，幺舅偷偷把舅妈回深圳的票退了。</p>
+<p>由于县城交通闭塞，没有通火车，所以舅妈得先坐四个小时的汽车，到另一个县，才能倒火车去深圳。幺舅早早就打听好了，就提前安排朋友，来回开了8个小时车，偷偷把舅妈的车票退了。这舅妈知道了，也无奈啊，人家就想多和你待两天啊，没办法啊，那就再待两天吧。</p>
+<p>后来呀，不会开车的幺舅，不可能骑摩托送舅妈去另一个县倒火车吧，就又借了朋友的车，把舅妈送上火车，这才算初次终了。</p>
+<h2 id="煲得了电话粥才有爱啊"><a href="#煲得了电话粥才有爱啊" class="headerlink" title="煲得了电话粥才有爱啊"></a>煲得了电话粥才有爱啊</h2><p>舅妈回深圳了，幺舅就跟没魂了一样。咋办呀？聊天呗！那段时间，幺舅就天天上班挂着QQ，跟舅妈聊天。QQ不回，就短信继续聊。短信不尽兴，就煲电话粥。其实你很难想象，一个平时那么话说的男生，遇到了自己心仪的姑娘，能有那么多的话。幺舅那一个月，给舅妈打了<strong>3000块钱</strong>的电话。</p>
+<p>我自己其实也深有体会，和有的姑娘，一晚上有的没的，能聊好多。和有的姑娘吧，每一秒钟都是煎熬，关键是，女生们还喜欢你跟她们聊，即使没话说，还逼着你打电话，这谁顶得住。所以呀，煲得了电话粥才是真爱呢。毕竟两口子在一起几十年，恋爱的时候都觉得没话说，那之后的几十年还怎么过？</p>
+<h2 id="丈母娘总是一种可怕的生物"><a href="#丈母娘总是一种可怕的生物" class="headerlink" title="丈母娘总是一种可怕的生物"></a>丈母娘总是一种可怕的生物</h2><p>也许是被幺舅的真心感动了，后来舅妈就决定从深圳回去。虽然两个人相爱了，但是舅妈的家里人不同意啊！人长得五大三粗的，黑不溜秋，眼睛又小，这以后有了小崽子，可不也是这个怂样子？加上年龄又大，这大十几岁，都快喊人家爹了，还怎么嫁？</p>
+<blockquote>
+<p>其实，虽然幺舅形象上不是特别帅气的那种。但是人是真的不错，讲义气，大方，工作也好。在那个小县城，国家电网，也是相当有牌面了。舅妈如果回去，可能是没有正式工作的。</p>
+</blockquote>
+<p>舅妈当时说，那我不管，你们跟我好好说，我就跟你们好好说。你们不然我跟他过，越不让， 我就偏去反着来。结果，还是扭不过舅妈，丈母娘同意了。</p>
+<h2 id="我幺舅的新娘可是从深圳专门为他跑回来的"><a href="#我幺舅的新娘可是从深圳专门为他跑回来的" class="headerlink" title="我幺舅的新娘可是从深圳专门为他跑回来的"></a>我幺舅的新娘可是从深圳专门为他跑回来的</h2><p>幺舅和舅妈的感情是美满的，我印象里是表姐说：“你们知道不，幺舅要结婚了，新娘可是专门从深圳跑回来，为了幺舅的！”那个时候大家都不知道，平时闷闷的幺舅，暗地里，还有这么一段追美人的经历呢。</p>
+<p>现在呀，幺舅和舅妈有一个女儿一个儿子，女儿快上高中了，儿子也上小学了。舅妈也有了正式的工作，两个人的感情一直很好。舅妈现在说起这段往事，也还是很开心。因为在她自己的姊妹里面，过得是最好的，幸福是自己倔强出来的。</p>
+<p>幺舅和舅妈的新房子今年也刚刚装修好，今天在新家做了第一顿饭，没错，就在我们家楼上。哈哈哈，从此和幺舅多了一个身份，邻居！</p>
+<h1 id="尾巴"><a href="#尾巴" class="headerlink" title="尾巴"></a>尾巴</h1><p>其实，和幺舅一样，每一个看似内向，看似话少，看似五大三粗的人，内心都是很温柔的。也许他的话少，只是针对不同的人。面对自己的挚爱，他嘴里有世界上最美的情话。</p>
+<p>也不是讲什么大道理，毕竟自己也已经分手了。有谁想听听我的分手经验，来亲身试试不？不过，我还是一个相当理想主义的人，还是想说说我的看法。我认为一段感情，或者婚姻，两个人本身，是大过金钱或是其他东西的。就像幺舅和舅妈当初，舅妈不嫌弃幺舅丑，“话少”，幺舅也不嫌弃舅妈没有正式工作。即使家人反对，只要双方认准，对方是我要的人，对方能给我幸福，所有条件，在日后都能一起努力创造的，事实上也正是如此！要相信你的眼光，人，永远比冷冰冰的条件温暖靠谱。不然男女之间还谈什么恋爱？两家父母合计一下两家的状况，直接结婚呗？</p>
+<p>工科的男生啊，通常家境本身都不是特别优越（也不至于贫寒，大部分是普通家庭吧），都是靠自己的努力，希望让家庭过的更好（你问我为啥？条件好的还搞什么IT，接老子的班啊！）。即使满身光环，清华北大的博士，生活也相当的艰辛，有许多的压力，这就是当今社会。这就是人往高处走，水往低处流。<strong>但是，希望看到这篇文章的你我，不卑不亢。依靠自己的努力，让自己在一个陌生的城市立足，让自己和自己的家庭过的更好，不丢人。希望你我，即使被生活的重担压得喘不过气，也还能相信爱情，能够用真心去面对另一半，想起TA，依然嘴角上扬，胸口温热。</strong></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%94%9F%E6%B4%BB/">生活</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本作品采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/6f888707.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Typora自定义命令自动上传图片</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/ee24dc2e.html">
+                        <span class="hidden-mobile">当你老了，又成了谁的累赘</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" rel="nofollow noopener"> <span> 本站由<img border="0" src="/img/upyun_logo6.png" srcset="/img/loading.gif"  width="80" height="25"/>提供对象存储服务 </span>  </a> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        陕ICP备18017214号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+    <!-- cnzz Analytics Icon -->
+    <span id="cnzz_stat_icon_1278912843" style="display: none"></span>
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+
+  
+    <script>
+      (function (window, document) {
+        var typing = Fluid.plugins.typing;
+        var title = document.getElementById('subtitle').title;
+        typing(title)
+      })(window, document);
+    </script>
+  
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4966387dd3693d431161872876fb1011";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- cnzz Analytics -->
+    <script defer src="//s4.cnzz.com/z_stat.php?id=1278912843&show=pic"
+            type="text/javascript"></script>
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,598 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" type="image/png" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="分享各种电子设计DIY、物联网DIY、读书笔记、生活想法、流行钢琴、工作中遇到的问题（docker使用技巧、网络安全、python、网络协议）、博客建站技巧等等内容">
+  <meta name="author" content="scarleast">
+  <meta name="keywords" content="物联网">
+  <title>转来转去还是我还在社会底层 - 加菲猫的创客工坊</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_2145872_unckbjh4m8.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.gaficat.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"4966387dd3693d431161872876fb1011","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1278912843,"leancloud":{"app_id":"lY82cvb8vqSOls13F6jndxq3-gzGzoHsz","app_key":"uu7fyOEvPWmCOxtxNL6rlsGV","server_url":"https://ly82cvb8.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="加菲猫的创客工坊" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>加菲猫的创客工坊</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/aboutme/">
+                <i class="iconfont icon-user-fill"></i>
+                关于我
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+                rss
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="转来转去还是我还在社会底层">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-04-12 21:31" pubdate>
+        2020年4月12日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      25
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">转来转去还是我还在社会底层</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年9月21日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+            <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script>
+            <meting-js  id="574919767" server="netease" type="song" autoplay="false" mutex="true" listmaxheight="340px" preload="auto" theme="#ad7a86" loop="none"></meting-js>
+
+
+<h1 id="转折点"><a href="#转折点" class="headerlink" title="转折点"></a>转折点</h1><blockquote>
+<p>“介绍一下你自己吧。”</p>
+<p>“我叫XXX，我最大的优势是我有很强的工程能力，我的简历上注明了我在竞赛上的获奖经历，我的工程能力在今天所有面试的学生中是最强的。我选择本硕连读，是因为我认为我的导师很博学，他真的能在我的专业上对我有很大的指导和帮助，我希望之后的研究学习生活中，继续深入无线传感器网络。”</p>
+<p>“我看你有过挂科？”</p>
+<p>“这个是个人的抉择吧，有的人喜欢去研究理论，有人喜欢去做工程。我承认我把精力和时间投入到了竞赛中，在应试成绩上有不足。因为我真正是对各种无线技术有兴趣和热情的，我认为安排的课程满足不了我对于我兴趣的渴望，但是不是说，我用这些时间去玩，浪费了这些时间，我只是努力在了其他方面，就是我说的，工程能力。”</p>
+<p>“研究生是研究，不是流水线上的工人，跟你做竞赛一样去凑答案，研究生是要去发英文SCI的，英语，四级？哦四级过了，那六级还没过嘛？”</p>
+<p>“我说过，英语、成绩或者是研究工作，是个人选择，只是我把精力投入到了其他方面上，我的兴趣点在那。我不认为以我的个人能力，不能提高自己的应试成绩或者通过一个英语考试，发不了论文做不了研究工作。我靠自己的成绩拿过全学院仅有两个人拿的奖学金，我认为足以证明我在这方面的能力了。”</p>
+<p>“你看，你奖项确实很多，但是基础不好，不也没拿到一等奖吗？”</p>
+<p>“我做了那个比赛两年，我整个大学时光都投入到这个项目中，今年我们队的队员已经带着我们的作品去参赛了，这一次我有信心是一等奖。不同项目难度是不一样的，我只是选择了一个比较难的项目在挑战自己，提升自己应对问题的能力，而不是功利的为了保研或者怎么样去获奖。”</p>
+</blockquote>
+<p>那一天我真的崩溃了，我从学长手上接过的比赛项目，历经了三届学生的努力，被所谓面试官说的一文不值，三届学生的努力被说的那么卑微。还有，职业无贵贱，是看不起流水上的工人吗？他们也是靠自己的双手，自己的努力挣钱，有什么不对？当然，也不负众望，最后我们拿到一等奖了，很想把获奖证书砸在她脸上。但结果呢，很可笑，招四个，把我排在第五，和第四差1分。一面之缘，我甚至不知道那个嘲讽我的面试官叫什么。</p>
+<h1 id="今天怎么了"><a href="#今天怎么了" class="headerlink" title="今天怎么了"></a>今天怎么了</h1><p>我觉得我选择目前的职业，是因为研究员的title，我希望证明自己，你，一所不知名一本院校的面试官看不上我，认为我做不了所谓的研究工作，那么清华、北大的研究团队，在一个我没接触过的领域，愿意给我机会，做研究工作，你，瞎了眼。我太想证明自己了。</p>
+<p>但是今天在朋友圈，看到了一位以前老师发的招聘启事，博士后，年薪25W起步，忽然觉得吧，因为自己当初的决定，似乎永远只能在社会底层了，且不说社会地位，社会资源，仅仅是25W年薪，我需要多少年？</p>
+<p>我最近和女票闹矛盾了，我女票是一个很优秀的人，公务员工作稳定，研究生学历，长得漂亮大方，性格和善，相处起来温和。我突然觉得从任何一点看，我都配不上她，她完完全全能找一个社会地位、社会资源比我更丰富的人，我，这辈子再努力，很难有改变了。她选择我，如果我不能带给她幸福，那对她而言，真不是一个很好的决定，但，我们在吵架，我们不快乐。</p>
+<h1 id="回到过去，能有改变吗？"><a href="#回到过去，能有改变吗？" class="headerlink" title="回到过去，能有改变吗？"></a>回到过去，能有改变吗？</h1><p>我觉得，即使回到过去，让我再做一次选择，我目前的决定也应该是众多选择里最好的一个。我不知道别人怎么样，不知道在看这篇文章的你怎么样，总之，我不是一个善于考试的人，我经历过复读，我完完全全用勤奋，用别人数倍的努力，取得了别人也许不用那么努力就能得到的东西。</p>
+<p>如果大学一直好好学习，我不会有专业分流的机会，我会顺着卓越工程师班，一路学着自动化毕业，接触不到物联网，接触不到我感兴趣的无线通信。</p>
+<p>如果我应试能力真的足够强，考试前花两周时间，也能像别人一样，考出漂亮的成绩，但是否会因为别的原因被拒呢？后来实验室老师找我聊，说到原因，欲言又止。</p>
+<p>如果本硕连读失败，再选择考研呢？复读已经浪费了一年的时间成本了，我没有时间浪费了，我受不起考研失败的折腾。</p>
+<p>退一万步讲，成功读研了，又怎么样？工科生，出来还是做工程师。不是说工程师不好，而是说还是有35岁的危机。读博呢？就像前两天我们的总监，清华博士说的：“博士，名校宽进严出，普通学校又没意思，读博需谨慎，失足误十年。”就像毕导说的：“有的人就喜欢去写论文、做研究，有的人就不是那么喜欢，在学校也要承担科研上巨大的压力。”也许那个时候，你有发现，你没有那么热爱科研了。</p>
+<p>所以你看，无论怎么抉择，似乎，都有所谓的风险，所谓不好的东西。</p>
+<h1 id="尾巴"><a href="#尾巴" class="headerlink" title="尾巴"></a>尾巴</h1><p>其实写到这里，我情绪有些好转了，但还是，不知道是对自己的无能，还是其他的。觉得很无奈或是恨铁不成钢，觉得自己怎么这么废物。我以为我比父母过得好，我比他们优秀，我的工作都是所谓高精尖，他们都不懂。事实上，这只是时代变化而已，我手头的工作，还不如我看不起的父亲，当初毕业包分配，分到的工作稳定、社会地位高呢。我看不起的文艺工作，母亲的收入比我高太多了。</p>
+<p>有人说，你的工作很好啊，网络安全啊，龙头企业啊，清华北大团队啊。其实，别人清华北大和你有什么关系，龙头企业又怎样，你还是你，不会因为在哪，和谁，做了什么工作，就有本质的变化。更不会因为你工作做的好，你就能耐了。你只是一个团队中，最快的刀，最好用的枪罢了。你还是收入微薄，你还是生活艰辛的底层。不是说目前的工作或是现状不满意，真的很感激，现在的领导，能在自己最绝望的时候，给自己这份工作，能让自己在很长一段时间里面，有底气，重新抬起头生活、说话。只是觉得，自己无能，没有奋斗出更好的生活，配不上自己的另一半。</p>
+<p>我相信能看到我网站的，大多也都是程序猿，大多是IT行业的从业者。不知道大家的状况如何呢？是否和我一样，干着自己陌生的职业，有那么一刻，觉得自己无论怎么努力，在所谓的大城市，和蝼蚁一样，总是在底层辗转呢？面对这种无力，大家又是怎么做的呢？</p>
+<blockquote>
+<p>“我今天给各位老师介绍的，是我做的基于异构网络的智能家居系统。市面上包括小米在内，都是基于某一种短距离通信协议的，比如绿米使用了ZigBee，但是缺少一个平台，能够同时兼容目前常见的无线技术，打造这样一套智能家居系统。可以看到我的系统中，有10余个ZigBee节点，支持点播和组播，证明多跳的组网能力和定点通信的能力。有三个蓝牙BLE从机，星型网络，符合异构的主题。一个220V的蓝牙电灯，证明对实际家电的控制能力。小米的智能灯泡和开关，支持对他们的控制，证明对市面在售设备的兼容性。有天猫精灵，支持语音控制。一个多功能网关，我创新的加入了RFID，刷设备1秒完成配对连接。温度传感器，人体传感器，无线开关，门锁，风扇，除了完成基本组网的要求，在功能性上，我的完成度也是远超题目要求的。”</p>
+<p>“这个，你的工程能力真是，你这个是某个大学生创新创业项目拿来用的吗？”</p>
+<p>“我做过创新创业项目，但是显然，这个的工程量和财力投入要多得多。这个，只是我个人喜欢，兴趣所在吧。整个项目中的所有代码都是我查TI原始的英文文档，一行一行打出来的，因为无线相关的芯片都是使用TI的。很多东西我问过从事相关工作的工程师，他们甚至都不知道，所有技术细节您可以随便问。”</p>
+<p>“你现在是已经读研了吗？跟的哪个老师？”</p>
+<p>“哦，没有，我本来是本硕连读，因为兴趣点真是在这，后来因为，额，遭遇了一些变故，很可惜。嗯，现在也挺好的，在清华北大的团队，之后会从事网络安全。：）”</p>
+</blockquote>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%94%9F%E6%B4%BB/">生活</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本作品采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/dbafe1be.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">你打算怎么给你儿子取名字呢？</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/e52727ba.html">
+                        <span class="hidden-mobile">有些时候我挺羡慕会喝酒的人</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" rel="nofollow noopener"> <span> 本站由<img border="0" src="/img/upyun_logo6.png" srcset="/img/loading.gif"  width="80" height="25"/>提供对象存储服务 </span>  </a> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        陕ICP备18017214号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+    <!-- cnzz Analytics Icon -->
+    <span id="cnzz_stat_icon_1278912843" style="display: none"></span>
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+
+  
+    <script>
+      (function (window, document) {
+        var typing = Fluid.plugins.typing;
+        var title = document.getElementById('subtitle').title;
+        typing(title)
+      })(window, document);
+    </script>
+  
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4966387dd3693d431161872876fb1011";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- cnzz Analytics -->
+    <script defer src="//s4.cnzz.com/z_stat.php?id=1278912843&show=pic"
+            type="text/javascript"></script>
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,615 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" type="image/png" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="分享各种电子设计DIY、物联网DIY、读书笔记、生活想法、流行钢琴、工作中遇到的问题（docker使用技巧、网络安全、python、网络协议）、博客建站技巧等等内容">
+  <meta name="author" content="scarleast">
+  <meta name="keywords" content="物联网">
+  <title>生活的意义？我想聊聊IKIGAI - 加菲猫的创客工坊</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_2145872_unckbjh4m8.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.gaficat.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"4966387dd3693d431161872876fb1011","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1278912843,"leancloud":{"app_id":"lY82cvb8vqSOls13F6jndxq3-gzGzoHsz","app_key":"uu7fyOEvPWmCOxtxNL6rlsGV","server_url":"https://ly82cvb8.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="加菲猫的创客工坊" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>加菲猫的创客工坊</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/aboutme/">
+                <i class="iconfont icon-user-fill"></i>
+                关于我
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+                rss
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="生活的意义？我想聊聊IKIGAI">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-08-26 23:02" pubdate>
+        2020年8月26日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      30
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">生活的意义？我想聊聊IKIGAI</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年10月20日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>睡眼惺忪地向前走，独特的幽香突然就充盈了整个鼻腔，整个人也随之精神了起来。四处打探，发现不远就是桂花院，嗯，是桂花香。忍不住再贪婪地猛吸两口清香的空气，然后就开心地上学去了。</p>
+</blockquote>
+<p>我小时候生活的院子里有一棵桂花树，上面说的是便是它，那是一棵两三个人才能抱得住的桂花树，枝叶繁茂，整个院子都在它的树荫之下，我们把那个院子称为桂花院。桂花是一种非常独特的植物，平时看起来并不起眼，你甚至会忘记它的存在。但一夜之间，它会用独特的香气会瞬间唤起你的记忆。嗅觉过后，便是远看遍地金黄，近看颗粒分明的桂花瓣，静静铺满整个地面，吸引着你的视觉。小时候总是习惯绕着走，舍不得踩上去。<strong>我的乡愁，大概是桂花吧！</strong></p>
+<h1 id="开头的碎碎念"><a href="#开头的碎碎念" class="headerlink" title="开头的碎碎念"></a>开头的碎碎念</h1><p>前面是一些题外话，上班的园区种着几棵三指粗的桂花树，平时在园区散步并没有注意到路边的这些植物，最近桂花开了，气味唤起了记忆，挺奇妙，所以这篇文章开头提一嘴。</p>
+<p>我有很长时间没有更新文章了，七月份在准备公务员考试，本来计划着考完试就好好更新文章，结果这两个月经历了挺多事。其实说是准备考试，实际上因为和女朋友吵架主动冷战，根本静不下心。铁子们，真的<strong>家和万事兴</strong>。有一段稳定的感情，对工作、生活都挺重要的，不然无尽头的争吵你做啥事都一点心思没有。当然，考试的结果你们也猜到了，肯定没有过，毕竟我是个普通人，我的智商碾压不了别人付出的努力。进面210分，我考了190分，意料之中吧。</p>
+<p>和冯冯吵了半年的架，不完全统计，光冷战就经历了141天。其实根本的原因，是我对她有一些负面的情绪，我以为自己能消化，没想到越积越多，根本消化不了。所以情侣之间，有心结，有负面情绪，一定得以双方都接受的方式去沟通解决，毕竟是恋爱是两个人的事，一个人消化不来的。不过还是很庆幸吧，虽然很多做法对女票伤害很深，她还是原谅我啦，我们现在和好如初，很感激她。</p>
+<h1 id="这篇文章想说啥？"><a href="#这篇文章想说啥？" class="headerlink" title="这篇文章想说啥？"></a>这篇文章想说啥？</h1><p>这篇文章，我想聊聊<strong>IKIGAI</strong>。IKIGAI是我看DannyData视频提到的一个概念，其实当时看到这个概念就想写一篇文章了，但一直拖到了现在。<strong>IKIGAI翻译自日语，意思是生活的意义</strong>。这其实不是一个很空的话题，相反，我觉得它非常的现实，对我们安排自己实际的日常生活、学习很重要。</p>
+<p>以我自己为例子，我最近想干很多事，但似乎每天什么事也没干，时间就没有了：</p>
+<ul>
+<li><p>比如我喜欢电子设计，那折腾一些电子设计的小玩意儿我就很开心，我想在这花一些时间；</p>
+</li>
+<li><p>比如给别人弹钢琴伴奏，也许是一个能赚钱，那为了这个事投入一些精力，理所当然，我想在这花一些时间；</p>
+</li>
+<li><p>比如我觉得自己折腾或者对生活的看法，以文章的形式展现出来，会帮助到其他人，我想在这花一些时间。</p>
+</li>
+</ul>
+<p>你看，折腾电子设计需要时间，学习即兴伴奏需要时间，写文章需要时间。每一个点都需要大量时间，那每天晚上回到家，如何安排这些事，就成了问题。<strong>当你完全没有优先级的时候，就会发现，自己什么都不想做，时间就在思想斗争中流逝了。</strong></p>
+<p>你也许会说，那你应该向罗老师学习一下时间管理呀。也许真有用，但我还是想和各位聊聊IKIGAI。</p>
+<h1 id="聊聊IKIGAI"><a href="#聊聊IKIGAI" class="headerlink" title="聊聊IKIGAI"></a>聊聊IKIGAI</h1><p>IKIGAI说的实际上是四个事：你热爱什么、你擅长做的是、你能靠什么赚钱、世界需要的事。对我而言：</p>
+<ul>
+<li>我喜欢电子设计，电子设计就是我热爱的事。</li>
+<li>给别人弹钢琴伴奏，也许是一个能赚钱，那学习即兴伴奏也许是未来能赚钱的事。</li>
+<li>写文章，让更多人看到，能让他们少走弯路，那这个就是世界需要的事。</li>
+<li>啥？你问为啥没有擅长的事，作为社畜，惨遭社会毒打，我真不知道自己擅长啥。大概，吃喝？</li>
+</ul>
+<center><img src="https://pic.gaficat.com/default/IKIGAI.png" srcset="/img/loading.gif" alt="IKIGAI" style="zoom: 67%;" /></center>
+
+<p>IKIGAI说的四个事，实际上就是上面这张图里的四个大圆圈，如果只满足其中一个圆，那肯定离生活圆满比较远。如果是同时满足两个圆呢？</p>
+<ul>
+<li><strong>做自己热爱且擅长的事，能让人保持热情。</strong>比如我喜欢电子设计，事实上我自认为自己还挺擅长的，所以我对这件事一直比较有热情。</li>
+<li><strong>做自己擅长且能赚钱的事，那就很专业，变身职业达人。</strong>那这个我就没资格说了，我不是职业达人，T.T~</li>
+<li><strong>做世界需要且能赚钱的事，就能获得成就感和自我价值。</strong>比如我从事网络安全的研究工作，与黑产对抗，并且公司给我发钱，那我就很有成就感。</li>
+<li><strong>做自己热爱并且世界需要的事，高尚且受人尊重。</strong>比如乡村教师、守卫边疆的战士。</li>
+</ul>
+<p>现实生活中，有很多找到了自己IKIGAI的人，无论是魅族合作的晓芳窑蔡晓芳先生；还是曾经在NBA大展身手的篮球巨星姚明。他们找到了自己的IKIGAI，自己的钟爱之事、擅长之能、必履之责、营生之业，真的很让人羡慕。</p>
+<p>当然啦，作为社畜的我们，生存都已经很困难了，哪还有时间分清IKIGAI说的这四件事对应到自己身上到底是什么，然后去找交集、付诸行动呢？我自己也是这样。但虽然生活艰难，人间不值得。我还是认为应该花时间弄清楚自己的IKIGAI，毕竟搞清楚自己的IKIGAI，就会活的通透些。生活已经这么苦了，再苦能怎样，苦中作乐，说不定能让自己的生活柳暗花明呢！</p>
+<h1 id="坐而论道不如起而行之"><a href="#坐而论道不如起而行之" class="headerlink" title="坐而论道不如起而行之"></a>坐而论道不如起而行之</h1><p>我们普通人，很难像精英一样找到自己四个圈的交集，去追求完美的IKAGAI，自己喜欢的事赚不了钱，赚钱的事自己不喜欢，都很正常。如果一定要舍弃一样，我个人会舍弃掉世界需要的事（自己如果有空余时间，那当然可以去做，你会获得认同感），相比其他的事，这件事优先级低。我就是一个俗人，身为凡人的我，多赚钱，让自己和家人生活质量更好，这是我能真切感受到的。</p>
+<p>所以我个人认为应该专注于自己热爱的事、擅长的事以及能赚钱的事，努力找到这三个圈的交集。因为这三件圈的交集，能让你保持热情，能让你赚到钱，改善你的生活。吃都吃不饱，房都买不起房，女票都找不到，谈何社会需要我去做一些事，谈何社会责任感，认同感。</p>
+<p>那么，<strong>第一步，找到自己喜欢的事，自己的爱好。</strong>进入社会，遭遇工作、感情的不如意，太正常了。这个时候，太需要一件能宣泄自己情绪的事了，这件事可以是一种乐器，可以是唱歌，可以是画画，可以是书法、可以是拼积木，可以是做菜等等。</p>
+<p>接下来，<strong>第二步，当我们在尝试不同兴趣爱好的时候，很容易就能找到喜欢之事和擅长之事的交集。</strong>比如突然发现自己是吉他小天才，上手就各种和弦弹得飞起。突然发现自己做菜很棒，不同菜品伸手就来。人天生就是懒惰的，就是不喜欢学习的。那么在兴趣的推动下，我们就能很容易克服天性，去学习一件事情，结果，后来意外发现这件事自己比别人上手快，有天赋，自然就会对这些事充满热情。</p>
+<p>最后呢，<strong>第三步，擅长、热爱的事，逐渐的就能转化成一些能赚钱的事。</strong>比如摄影，可以向杂志投稿获取稿费。比如厨艺，拍短视频，像麻辣德子，就可能流量变现。比如乐器，就能分享自己学习的过程，知识付费。总之，随着你眼界不断的开拓，你就会发现越来越多赚钱的途径。</p>
+<blockquote>
+<p>言论：<strong>当然，你只能赚到你认知范围内的钱。但愿我的读者们能看清未来的趋势，这样就能多一些准备。凡事预则立。</strong>——今天看到的一篇文章：<a target="_blank" rel="noopener" href="https://tumutanzi.com/archives/16741">土木坛子</a></p>
+</blockquote>
+<p>坐而论道不如起而行之，我还是希望大家动起来，去寻找自己的兴趣。因为兴趣是一切的起点，随着了解的越多，你就越能扩大自己的认知范围，认知范围大，你就能赚到更多的钱，能改善自己的生活。没有这个起点，哪有后续。</p>
+<h1 id="尾巴"><a href="#尾巴" class="headerlink" title="尾巴"></a>尾巴</h1><p><strong>我自己的生活也是一地鸡毛，我觉得我没有资格对别人如何生活指手画脚，但还是希望把自己的想法分享出来，也许有人也认同呢？</strong></p>
+<p>写这篇文章的目的，是希望大家能动起来，找到自己的兴趣，擅不擅长不重要，能不能赚钱不重要，毕竟，还没有开始动呢，对吧！切忌一开始把赚钱看的太重了，因为当你把钱看的很重的时候，一旦你做的那件事，短时间内很难转化出赚钱的方法，或者你看不到赚钱的希望，就很容易产生放弃的念头。</p>
+<blockquote>
+<p>言论：一开始学习即兴伴奏我动力很足，觉得自己喜欢，也擅长，并且未来无论是去钢伴演出还是教学生，可以转化成赚钱的途径。但后来，生活所迫，太希望把这件事转化成赚钱的手段而忘记了初衷（那就是爱好），一旦遇到困难，退缩，厌倦的心态就产生了。——我自己</p>
+</blockquote>
+<p>冯冯最近开始找自己的爱好了，这一点是我挺吃惊的。因为我跟冯冯说过很多次了，去找一个自己的兴趣爱好，不然当生活遇到负面情绪，只能对另一半发火。冯冯现在开始唱歌，开始学习剪辑视频，虽然一开始不是很熟练，但是乐在其中。我问她：“你说剪视频能转化成啥赚钱的途径不?除了UP主。”</p>
+<p>冯冯说：“唔，好像没啥了？不过，只是<strong>当成一种兴趣嘛，自己消遣喜欢，不也挺好吗？为什么啥都要和钱扯上关系呢？</strong>”</p>
+<p>每个人的IKIGAI都不一样，有的人找到一个符合自己圈就很困难了，有的人可以轻松的找到四个圈。但无论是一个还是四个，还是希望看文章的各位，都能想想自己的IKIGAI，快快动起来吧。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A5%87%E6%80%AA%E7%9A%84%E7%9F%A5%E8%AF%86/">奇怪的知识</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A5%87%E6%80%AA%E7%9A%84%E7%9F%A5%E8%AF%86/">奇怪的知识</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本作品采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/ff5ccbe6.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">语雀webhook的那些坑</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/f471d42d.html">
+                        <span class="hidden-mobile">concurrent和requests的那些坑</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" rel="nofollow noopener"> <span> 本站由<img border="0" src="/img/upyun_logo6.png" srcset="/img/loading.gif"  width="80" height="25"/>提供对象存储服务 </span>  </a> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        陕ICP备18017214号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+    <!-- cnzz Analytics Icon -->
+    <span id="cnzz_stat_icon_1278912843" style="display: none"></span>
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+
+  
+    <script>
+      (function (window, document) {
+        var typing = Fluid.plugins.typing;
+        var title = document.getElementById('subtitle').title;
+        typing(title)
+      })(window, document);
+    </script>
+  
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4966387dd3693d431161872876fb1011";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- cnzz Analytics -->
+    <script defer src="//s4.cnzz.com/z_stat.php?id=1278912843&show=pic"
+            type="text/javascript"></script>
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

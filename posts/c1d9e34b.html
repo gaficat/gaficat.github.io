@@ -1,0 +1,635 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" type="image/png" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="分享各种电子设计DIY、物联网DIY、读书笔记、生活想法、流行钢琴、工作中遇到的问题（docker使用技巧、网络安全、python、网络协议）、博客建站技巧等等内容">
+  <meta name="author" content="scarleast">
+  <meta name="keywords" content="物联网">
+  <title>今天想聊聊灰犀牛 - 加菲猫的创客工坊</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_2145872_unckbjh4m8.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.gaficat.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"4966387dd3693d431161872876fb1011","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1278912843,"leancloud":{"app_id":"lY82cvb8vqSOls13F6jndxq3-gzGzoHsz","app_key":"uu7fyOEvPWmCOxtxNL6rlsGV","server_url":"https://ly82cvb8.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="加菲猫的创客工坊" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>加菲猫的创客工坊</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/aboutme/">
+                <i class="iconfont icon-user-fill"></i>
+                关于我
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+                rss
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="今天想聊聊灰犀牛">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-10-20 22:26" pubdate>
+        2020年10月20日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      27
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">今天想聊聊灰犀牛</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年10月20日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>人们用“黑天鹅”来比喻难以预测的极小概率事件。比如，泰坦尼克号、911等。<strong>而“灰犀牛”就是与“黑天鹅”互斥补充的概念，比喻的是经常被人视而不见的大概率风险。</strong>想象一下，在非洲大草原，一只体型庞大，行动迟缓、远远看起来似乎没有任何威胁的灰犀牛，正在慢悠悠散步，但当你毫无戒备地靠近它的领地，它被突然间激怒，向你狂奔而来，你便无处躲避。</p>
+<a id="more"></a>
+
+<h1 id="口水话环节"><a href="#口水话环节" class="headerlink" title="口水话环节"></a>口水话环节</h1><blockquote>
+<p>周六，通勤的公交车依然有很多人，到达公司，发现我所在的楼层只有我一个。呵，挺新奇，竟然只有我一个人加班。最近降温很厉害，我整个人蜷缩着，昨天那股“半天干完活就回家”的意愿早就不知道跑哪儿去了。在公司就看看bilibili，刷刷v2ex，再点几个经常浏览的网站，一上午时间就过去了。吃了饭，本来心想回去休息半个小时，就开始干活儿，工作量不小呢！结果想到那么多的事情没做，一点动力都没有，午休起来都下午四点了。得，去上个厕所，结果回来发现忘带门卡，被锁在了门外了，钥匙也在里面，家也回不去了。就这么一瞬间，我有些崩溃了，一屁股坐在公司门口，心想自己怎么就活成这个窝囊样。自己这个萎靡不振样子，有一些像丢了钱包的江阳。</p>
+<p>国考前几天开始报名了，看了看职位表，就马上一通操作猛如狗，然后，一个能报的都没有。我想到各种35岁危机的说法，有些不安。又想到女票的父母因为自己不是公务员，不太愿意让女票跟自己相处。满脑子就只有一个念头：“这世道，除了公务员，就不配活着了呗？除了公务员，所有人35岁之后就都去送外卖，当保安了呗？所有职业都低公务员一等呗？”但，呵？你还挺高兴，不愿意考公务员？你看看你有资格考试不？</p>
+</blockquote>
+<p>我最近过的有些焦虑，一方面，我已经参加工作快三年了，跟同事聊天，发现大家到了这个时间点，都有些疲倦、迷茫了，对手头的工作提不起兴趣。另一方面，想到自己可能遭遇35岁的危机，挺无能为力。那怎么办呢？正在做的工作似乎已经触及行业的天花板了，大幅的加薪很困难。自己的兴趣很难在短期内转化成变现的能力。就连参加铁饭碗考试的资格都没有。怎么办呢？</p>
+<p>前段时间，看到一个关于灰犀牛的视频，想想自己的现状，嗯，记录下来吧，当作是读书笔记了。</p>
+<h1 id="什么是灰犀牛？"><a href="#什么是灰犀牛？" class="headerlink" title="什么是灰犀牛？"></a>什么是灰犀牛？</h1><p>说到灰犀牛，就一定要提到它的反义词——“黑天鹅”。</p>
+<blockquote>
+<p>据说在十七世纪以前，欧洲人只见过白色的天鹅，所以他们就认为全世界的天鹅都是白色的。后来随着他们开发澳大利亚，在当地看见第一只黑色的天鹅起，这个原本看似绝不可动摇的信条就给彻底颠覆了。此即所谓的“黑天鹅事件”，它原意旨在说明，人类总是过度地相信经验，殊不知一只黑天鹅的出现，就足以颠覆以往的认知。</p>
+</blockquote>
+<p>后来，人们用<strong>“黑天鹅”来比喻难以预测的极小概率事件</strong>。比如，泰坦尼克号、911等。<strong>而“灰犀牛”就是与“黑天鹅”互斥补充的概念，比喻的是经常被人视而不见的大概率风险。</strong></p>
+<blockquote>
+<p>想想一下，在非洲大草原，一只体型庞大，行动迟缓、远远看起来似乎没有任何诶西安的灰犀牛，正在慢悠悠散步，但当你毫无戒备地靠近它的领地，它被突然间激怒，向你狂奔而来，你便无处躲避。</p>
+</blockquote>
+<p>与难以预测的“黑天鹅”不同，<strong>灰犀牛式的重大危机往往早就呈现出各种端倪。</strong></p>
+<h1 id="应对灰犀牛时的五个阶段"><a href="#应对灰犀牛时的五个阶段" class="headerlink" title="应对灰犀牛时的五个阶段"></a>应对灰犀牛时的五个阶段</h1><ul>
+<li>抵制否认阶段</li>
+<li>混日子阶段</li>
+<li>判断性质阶段</li>
+<li>惊恐阶段</li>
+<li>行动阶段或崩溃阶段</li>
+</ul>
+<h2 id="抵制否认阶段"><a href="#抵制否认阶段" class="headerlink" title="抵制否认阶段"></a>抵制否认阶段</h2><p><strong>人们会拒绝承认不安的事实，这是一种自我保护机制。</strong>比如我们的父母，逐渐衰老，身体会出现各种各样的小毛病，但当我们提出，带他们去体检时，他们的第一反应往往都是，“我身体好着呢，不需要体检”。</p>
+<blockquote>
+<p>我们小时候，暑假就只顾着玩，到了快开学发现作业没写完，咋办？肯定是先否定，我咋可能啥也没写，肯定写了一些的，差的不多。</p>
+</blockquote>
+<h2 id="混日子阶段"><a href="#混日子阶段" class="headerlink" title="混日子阶段"></a>混日子阶段</h2><p><strong>这一阶段，人们往往会得过且过，想办法把问题推到将来。</strong>想想我们自己吧，一边被各种贩卖焦虑搞得真的挺焦虑，35岁怎么办，一方面每天按部就班，回到家，抖音、微博、知乎刷不停，得过且过，就混呗。</p>
+<blockquote>
+<p>否定完，然后就心想，反正还有几天，往后拖吧，最后几天再补。</p>
+</blockquote>
+<h2 id="判断性质阶段"><a href="#判断性质阶段" class="headerlink" title="判断性质阶段"></a>判断性质阶段</h2><p><strong>这一阶段，人们往往会对灰犀牛危机的性质进行判断，并会对该做什么进行争吵，从而浪费大量的时间和绝佳的机会。</strong></p>
+<blockquote>
+<p>混着混着，到了快开学的前几天，就该判断性质了，到底差了多少没写，要不要补，先补哪个。</p>
+</blockquote>
+<h2 id="惊恐"><a href="#惊恐" class="headerlink" title="惊恐"></a>惊恐</h2><p><strong>这一阶段有多惊恐，取决于我们在前面三个阶段浪费了多少时间。</strong></p>
+<blockquote>
+<p>判断完性质，可不就挺惊恐麽。天老爷，差这么多没写，咋整？</p>
+</blockquote>
+<h2 id="行动阶段或崩溃阶段"><a href="#行动阶段或崩溃阶段" class="headerlink" title="行动阶段或崩溃阶段"></a>行动阶段或崩溃阶段</h2><p><strong>惊恐过后，行动阶段和崩溃阶段往往是同时存在的。</strong></p>
+<blockquote>
+<p>最后，只能一把鼻涕一把泪，熬夜写作业呗？当然也有那种欠太多，死猪不怕开水烫，崩溃等死的时候。</p>
+</blockquote>
+<h1 id="如何应对灰犀牛？"><a href="#如何应对灰犀牛？" class="headerlink" title="如何应对灰犀牛？"></a>如何应对灰犀牛？</h1><ul>
+<li>承认危机的存在</li>
+<li>判断灰犀牛事件的性质</li>
+<li>动起来</li>
+<li>不要浪费危机</li>
+<li>成为发现并控制灰犀牛式危机的人</li>
+</ul>
+<h2 id="承认危机的存在"><a href="#承认危机的存在" class="headerlink" title="承认危机的存在"></a>承认危机的存在</h2><p><strong>承认危机，就要时刻防范群体思维，并以接受的态度对待不同的声音和观点。</strong>我认为做到这一点是相当困难的，首先，我们天生就有群体思维，比如法不责众，大家都是那样的， 我就跟着大家就行。那么，在这种情况下，能够跳出群体思维，对事情本身进行思考，保持自己的想法就非常困难了。其次，我们在面对自己不利的东西时，会本能地编造出一万种理由逃避，试图自欺欺人，拒绝自己意识到的危机。</p>
+<h2 id="判断灰犀牛事件的性质"><a href="#判断灰犀牛事件的性质" class="headerlink" title="判断灰犀牛事件的性质"></a>判断灰犀牛事件的性质</h2><p><strong>判断灰犀牛事件的性质，分析事情的起因，列出Todo</strong>。承认危机的存在后，要立即处理所有的危机一定很难。所以需要有这样一个阶段，给自己思考的时间，好好想想事情的原因是什么，应该怎么做，并衡量各种Todo的轻重缓急，制定应对灰犀牛的方案。</p>
+<h2 id="动起来"><a href="#动起来" class="headerlink" title="动起来"></a>动起来</h2><p><strong>一定要动起来，动起来不一定能解决问题，但混日子、等待一定解决不了问题。</strong>行动、解决问题也是一件很困难的事情，我们因为不擅长或者其他原因，才造成了灰犀牛危机，那么要解决它势必很困难，否则就不会出现灰犀牛了。当我们感觉Todo非常困难时，可以想想哪一些比较小的举措可以做。但无论如何，一定要动起来。也可以自己制定一种流程，当恐惧、惰性阻止自己行动时，能强迫自己向前。</p>
+<h2 id="不要浪费危机"><a href="#不要浪费危机" class="headerlink" title="不要浪费危机"></a>不要浪费危机</h2><p><strong>乱世出英雄，请抓住我们经历的“乱世”，无论任何危机，总会有人能获益。</strong>有时候灾难是无法避免的，阻止危机的最佳时机，可能就是灾难发生之后。当所有人都心怀恐惧，不敢动弹时，我们如果能立刻振作起来，抓住这次危机，也许会有意想不到的机遇。</p>
+<h2 id="成为发现并控制灰犀牛式危机的人"><a href="#成为发现并控制灰犀牛式危机的人" class="headerlink" title="成为发现并控制灰犀牛式危机的人"></a>成为发现并控制灰犀牛式危机的人</h2><p><strong>敢于同大多数人背道而驰，愿意激励他人一起行动。</strong>成为这样的人，需要大量的训练。虽然我们不知道灰犀牛式危机，会在什么时候以什么方式降临，但我们依然能够尽力防范。比如给住宅配备消防用品、上车系安全带、多学习新的知识、锻炼身体等等。这些看起来不足为奇的举动，往往能让我们扛过灰犀牛的危机。</p>
+<h1 id="尾巴"><a href="#尾巴" class="headerlink" title="尾巴"></a>尾巴</h1><p>每一只负面的黑天鹅都是由许许多多的灰犀牛聚集而成的，真正的危险往往就在我们身边，常常被我们忽视。但往往最危险的，就是这些灰犀牛，因为当头一棒的黑天鹅逼迫你必须去做一些事，而看似无关紧要的灰犀牛，等真正积累，出现大问题的时候，往往焦虑不已，而行动或是崩溃，往往就在一念之间。如果我们能积极应对每一个灰犀牛，那么对我们不利的很多黑天鹅，很可能就被扼杀在摇篮中了。</p>
+<p>35岁焦虑，是我们当代年轻人必然的问题。体制外的羡慕体制内的想进去。体制内的，不甘心永远在基层给别人打工，想着努力晋升当领导。当领导的，行事谨慎，担心扫黑除恶，反腐倡廉，羡慕体制外生意人的自由。人人都有焦虑，但重要的是，承认35岁会遇到的灰犀牛后，无论通过自己，或是另一半、父母，不要过度焦虑，坦然、积极接受遇到的危机并真的动起来。只有动起来，才有好起来的可能吧！</p>
+<h1 id="原视频"><a href="#原视频" class="headerlink" title="原视频"></a>原视频</h1>
+        <style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style>
+        <div class="bbplayer">
+        <iframe class="bbplayer" id="mmedia-oflTYcJk" src="//player.bilibili.com/player.html?bvid=BV1pz4y1o74P&page=1&high_quality=1&danmaku=false"
+            allowfullscreen="no"
+            scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe>
+        </div>
+        <script>
+            document.getElementById("mmedia-oflTYcJk").style.height=document.getElementById("mmedia-oflTYcJk").scrollWidth*0.76+"px";
+            window.onresize = function(){
+              document.getElementById("mmedia-oflTYcJk").style.height=document.getElementById("mmedia-oflTYcJk").scrollWidth*0.76+"px";
+            };
+        </script>
+        
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A5%87%E6%80%AA%E7%9A%84%E7%9F%A5%E8%AF%86/">奇怪的知识</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A5%87%E6%80%AA%E7%9A%84%E7%9F%A5%E8%AF%86/">奇怪的知识</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%94%9F%E6%B4%BB/">生活</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本作品采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/bac5f5bf.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">大调和小调，你还可以这样理解</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/5d933848.html">
+                        <span class="hidden-mobile">如何用51单片机控制舵机加减速</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" rel="nofollow noopener"> <span> 本站由<img border="0" src="/img/upyun_logo6.png" srcset="/img/loading.gif"  width="80" height="25"/>提供对象存储服务 </span>  </a> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        陕ICP备18017214号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+    <!-- cnzz Analytics Icon -->
+    <span id="cnzz_stat_icon_1278912843" style="display: none"></span>
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+
+  
+    <script>
+      (function (window, document) {
+        var typing = Fluid.plugins.typing;
+        var title = document.getElementById('subtitle').title;
+        typing(title)
+      })(window, document);
+    </script>
+  
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4966387dd3693d431161872876fb1011";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- cnzz Analytics -->
+    <script defer src="//s4.cnzz.com/z_stat.php?id=1278912843&show=pic"
+            type="text/javascript"></script>
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

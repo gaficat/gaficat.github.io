@@ -1,0 +1,601 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" type="image/png" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="分享各种电子设计DIY、物联网DIY、读书笔记、生活想法、流行钢琴、工作中遇到的问题（docker使用技巧、网络安全、python、网络协议）、博客建站技巧等等内容">
+  <meta name="author" content="scarleast">
+  <meta name="keywords" content="物联网">
+  <title>2019的昨天、今天、明天 - 加菲猫的创客工坊</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_2145872_unckbjh4m8.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.gaficat.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"4966387dd3693d431161872876fb1011","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1278912843,"leancloud":{"app_id":"lY82cvb8vqSOls13F6jndxq3-gzGzoHsz","app_key":"uu7fyOEvPWmCOxtxNL6rlsGV","server_url":"https://ly82cvb8.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="加菲猫的创客工坊" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>加菲猫的创客工坊</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/aboutme/">
+                <i class="iconfont icon-user-fill"></i>
+                关于我
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+                rss
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="2019的昨天、今天、明天">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-01-31 14:04" pubdate>
+        2020年1月31日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">2019的昨天、今天、明天</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年9月16日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="2019的计划"><a href="#2019的计划" class="headerlink" title="2019的计划"></a>2019的计划</h1><p>2020已经过了一个月了，实在是在家里待得太闲了，所以打算整理整理2019的一些事，过年回家之前，冒着赶不上火车的风险，拍了一张2019的计划。</p>
+<img src="https://pic.gaficat.com/maker/2019计划.jpeg" srcset="/img/loading.gif" alt="2019计划" style="zoom:40%;" />
+
+<p>自己列了6点，实际上呢：</p>
+<ul>
+<li>读书：哈哈，2019摸了一年鱼，没读什么书。</li>
+<li>早起：懒癌泛滥，除了逼自己练琴的时候回早起，给晚上留一些时间。</li>
+<li>交际：和多年不见的基友，看了WE的比赛。最开心的是，脱单啦！并且，女票体贴懂事，这是2019最成功的事啦！</li>
+<li>财务：没存太多钱，带爸妈旅游一波清空，剩了一些黄金和比特币。</li>
+<li>事业：主业上从干劲儿十足，到有些懈劲儿了，也不知道自己的工匠精神在所谓的KPI面前能顶多久。副业上，做了TVOC传感器，打样的5个卖完了，也有人给了一些鼓励和支持，但是靠这个吃饭，肯定不可能。</li>
+<li>琴：除了弹了几首石进的曲子，几千块买了姜创的书，就没进展了。</li>
+</ul>
+<h1 id="2019那些事"><a href="#2019那些事" class="headerlink" title="2019那些事"></a>2019那些事</h1><ul>
+<li>1222：冬至，和冯冯，你懂得。</li>
+<li>1119：公司通知了人才引进政策，子女纳税、子女入学、人才公寓申请有相应的优惠政策。但是要求年薪三十万、硕士博士、留学金陵、创业经历。自己什么都没沾上，挺不开心吧。</li>
+<li>1118：kindle voyage到了，可以继续快乐的看《读者》了。后来其实一直吃灰了，买了乐理书，后来发现mac上看比kindle上看舒服多了。</li>
+<li>1115-1117：跟冯冯度过了一个愉快的周末，做了一些很很胆大的事。</li>
+<li>1105：拿到了体检报告，发现一身的毛病，尿酸偏高、甘油三酯偏高、颈椎骨质增生、腰椎侧弯。</li>
+</ul>
+<p>不幸的是，11月才开始正式维护自己的网站，更多好玩的事情没有记录上，2020加油吧！</p>
+<h1 id="2020的计划"><a href="#2020的计划" class="headerlink" title="2020的计划"></a>2020的计划</h1><p>前几天跟冯冯吵架了，怎么说呢，我们都面临一些压力，冯冯是：“我图这个男生什么呢？”，我是：“你女票比你优秀，你得努力呀？”，我一直是一个忧患意识很强的人，所以活的很悲观，加上亲戚朋友火上浇油，我TM不知道努力吗？你告诉我怎么努力呀？你能保证我做什么事，一定能挣多少钱？这个钱是永远能挣的，不会失业？所以我冲冯冯一通牢骚，一通呛，但是呢，最欣慰的是，冯冯是个很懂事的姑娘，非但没有跟我吵，反而给我台阶下，安慰我，哎呀，你说何德何能，能有这么好的女票嘞？</p>
+<p>2020年初，youtube关注了几个UP主，都是人在美国，对国内的经济形势做了一些分析，个人也觉得国内未来五年不容乐观。春节回家，感受最深的是，原来步行街熙熙攘攘的人群，热热闹闹的服装店，倒闭的差不多了，已经看不到太多卖衣服，卖鞋的店了。反而是各种美术、书法、音乐、补习、幼教培训班，拉上了各种横幅，即使经济再不景气，中国的父母也愿意将大头投入到子女的教育上。</p>
+<p>我的2020计划是什么嘞？</p>
+<ul>
+<li>读书：其实真的挺疲惫的，没有心思读书，还是看看《读者》之类的杂志吧，丰富自己的眼界，毕竟小时候看《读者》很多文章对我塑造三观帮助挺大的。</li>
+<li>早起：还是想坚持，公司搬了地址，要想给晚上腾出更多时间做自己的事，就只能早起，六点半起床？</li>
+<li>财务：持续以税后收入百分之五十左右，买入黄金和比特币。我坚信人民币的通胀是必然，并且在近几年会达到空前的高度，所以我依然会坚持4321的理财原则，实际上，2019年，我在比特币和黄金的投入就在收入的百分之五十以上。与之相随的，是极度节俭的生活，没有买自己喜欢的数码产品，没有买一件新衣服，克制自己的欲望其实挺难受的，但是，没办法，这五年韬光养晦，积累财富，“活着”吧！</li>
+<li>事业：经过了一年半的沉淀，今年我打算将自己的研究成果逐渐转化成专利，并且通过各种微信文章之类的平台发声，提高自己的影响力。很开心的是，google的关键词：<strong>比特币节点识别</strong>，排行第一的文章《比特币节点识别的原理及实现方式》，就是出自我之手。</li>
+<li>梦想：我是想有自己的科技公司的，无论是TVOC传感器还是智能家居。过年前，发现了易微联和涂鸦智能，发现的这些2C的厂商已经把产业链做的这么完整了，今年想联系杜哥，做一些demo出来，然后练习姐夫，不知道能不能通过线下，把这个生意搞起来。</li>
+<li>琴：我其实一直保持的练琴，虽然一个月需要给琴行掏300块钱。不过很开心的是，有一次练琴，有小朋友的家长，敲门问我，你教小孩子弹琴吗？我是有计划把教琴当做一个副业的，我在<a href="https://www.gaficat.com/posts/56b04d6f.html">谈谈我对学钢琴的看法</a>中分析了我对于古典钢琴和即兴的区别，我感兴趣，也想教的是流行和即兴。不过，我目前自己还不会呢，因为一直没有人教呀，音乐本身应该是一件好玩的事。所以2020年，希望自己能好好学习乐理，然后进行一些视唱练耳的训练，总结出一些教程或者方法论，让冯冯成为我的第一个学生吧！</li>
+</ul>
+<h1 id="种草清单"><a href="#种草清单" class="headerlink" title="种草清单"></a>种草清单</h1><p>不管怎样，自己还是有一些欲望的，我想把这些东西列成清单，虽然这两年可能没有钱买，但是作为一种激励吧！激励自己努力工作。</p>
+<ul>
+<li><strong>NAS</strong>：这个一咬牙，已经买了，觉得自己有非常多的照骗、电影、资料，存在非常多不同的设备上，虽然有坚果云之类的很好用，但是大文件还是存不下。</li>
+<li><strong>电单车</strong>：本来是打算通勤用的，但是冬天冷，夏天热，还是公交舒服。</li>
+<li><strong>洗碗机</strong>：有些科技是真的能解放人的双手，解决很多家庭矛盾的，洗碗机就是其中之一。想给爸妈买一个洗碗机，小的就可以，锅虽然还是需要自己刷，但是碗和盘子起码不需要刷了。</li>
+<li><strong>扫地机器人</strong>或者<strong>吸尘器</strong>：家里的房子160，爸妈打扫房子就很累，其实大部分是一些灰，扫地机器人或者吸尘器会很有效吧！</li>
+<li><strong>CLP-685</strong>：想给自己的新家里面买一台琴，雅马哈的电钢琴真的做的很棒！</li>
+</ul>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>下周就要开始在家办公啦，下下周就要正式复工啦，就意味着2020的战斗开始啦，加油吧！！</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%94%9F%E6%B4%BB/">生活</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本作品采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/74eee304.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">迷惘的26岁</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/e20e9539.html">
+                        <span class="hidden-mobile">加菲猫的乐理学习笔记(番外)——李永乐老师讲十二平均律</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" rel="nofollow noopener"> <span> 本站由<img border="0" src="/img/upyun_logo6.png" srcset="/img/loading.gif"  width="80" height="25"/>提供对象存储服务 </span>  </a> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        陕ICP备18017214号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+    <!-- cnzz Analytics Icon -->
+    <span id="cnzz_stat_icon_1278912843" style="display: none"></span>
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+
+  
+    <script>
+      (function (window, document) {
+        var typing = Fluid.plugins.typing;
+        var title = document.getElementById('subtitle').title;
+        typing(title)
+      })(window, document);
+    </script>
+  
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4966387dd3693d431161872876fb1011";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- cnzz Analytics -->
+    <script defer src="//s4.cnzz.com/z_stat.php?id=1278912843&show=pic"
+            type="text/javascript"></script>
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

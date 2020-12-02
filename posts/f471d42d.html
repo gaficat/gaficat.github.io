@@ -1,0 +1,611 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" type="image/png" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="分享各种电子设计DIY、物联网DIY、读书笔记、生活想法、流行钢琴、工作中遇到的问题（docker使用技巧、网络安全、python、网络协议）、博客建站技巧等等内容">
+  <meta name="author" content="scarleast">
+  <meta name="keywords" content="物联网">
+  <title>concurrent和requests的那些坑 - 加菲猫的创客工坊</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_2145872_unckbjh4m8.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.gaficat.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"4966387dd3693d431161872876fb1011","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1278912843,"leancloud":{"app_id":"lY82cvb8vqSOls13F6jndxq3-gzGzoHsz","app_key":"uu7fyOEvPWmCOxtxNL6rlsGV","server_url":"https://ly82cvb8.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="加菲猫的创客工坊" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>加菲猫的创客工坊</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/aboutme/">
+                <i class="iconfont icon-user-fill"></i>
+                关于我
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+                rss
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="concurrent和requests的那些坑">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-08-11 18:55" pubdate>
+        2020年8月11日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      29
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">concurrent和requests的那些坑</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年9月16日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>这篇文章记录了一下python concurrent.future和requests的一些坑，不是程序猿的铁子们直接关掉吧。</p>
+<h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>最近在写一个爬虫，需要爬5000000个IP，待爬的IP以<code>IP,PORT</code>的形式存储在一个100Mb的文件中。这么粗略算一下，一秒钟一个IP，5000000个IP需要差不多57天，这肯定不行啊，得用多线程。但是使用的过程中，发现还是遇到了很多坑，这里分享出来，以免其他小伙伴踩我踩过的坑吧。</p>
+<h1 id="先说结论"><a href="#先说结论" class="headerlink" title="先说结论"></a>先说结论</h1><p>节约大家时间，先说结论吧！我遇到了以下几个坑：</p>
+<ul>
+<li><p><strong>不要一次将大文件的内容读到一个列表中</strong>。5000000个IP，虽然文件看起来只有100Mb，但程序直接怼到列表中，内存爆了。尽量读一行处理一行，即使用以下的形式读文件：</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">with</span> open(<span class="hljs-string">&quot;file&quot;</span>) <span class="hljs-keyword">as</span> f:<br>		<span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> line:<br>				print(f)<br></code></pre></div></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p><strong>使用多线程时，处理函数一定一定一定一定不要阻塞，concurrent.futures只有当所有子线程运行结束后，才会释放资源</strong>。</p>
+</li>
+<li><p><strong>requests库在处理某些请求时会阻塞卡死。</strong>上面刚说多线程不要阻塞，这里就阻塞了。实际上是这次我爬取的过程中，发现了部分奇葩的IP，使用requests的timeout参数对它们无效，会始终阻塞。</p>
+</li>
+<li><p><strong>可以了解一下eventlet库的Timeout</strong>。如果实在无法解决某些处理流程中（比如上面requests）的阻塞，建议使用eventlet库的Timeout。</p>
+</li>
+</ul>
+<h1 id="曲折历程"><a href="#曲折历程" class="headerlink" title="曲折历程"></a>曲折历程</h1><h2 id="读IP干爆内存"><a href="#读IP干爆内存" class="headerlink" title="读IP干爆内存"></a>读IP干爆内存</h2><p>一开始要做这个爬虫的时候，我想要用多线程，自然而然想到了<code>concurrent.futures</code>，参考说明文档的示例，我写了<strong>第一版程序</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> concurrent.futures<br><span class="hljs-keyword">import</span> requests<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_url</span>(<span class="hljs-params">ip, port</span>):</span><br>    <span class="hljs-keyword">try</span>:<br>        r = requests.get(<span class="hljs-string">&quot;http://&#123;&#125;:&#123;&#125;/path&quot;</span>.foramt(ip, port), timeout=<span class="hljs-number">3</span>)<br>        <span class="hljs-keyword">return</span> r.text<br>    <span class="hljs-keyword">except</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span><br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span>():</span><br>    <span class="hljs-keyword">with</span> concurrent.futures.ThreadPoolExecutor(max_workers=<span class="hljs-number">100</span>) <span class="hljs-keyword">as</span> executor:<br>        <span class="hljs-keyword">with</span> open(<span class="hljs-string">&quot;123.txt&quot;</span>) <span class="hljs-keyword">as</span> f:<br>            <span class="hljs-comment"># submit所有IP</span><br>            future_dict = &#123;executor.submit(get_url, line.strip().split(<span class="hljs-string">&quot;,&quot;</span>)[<span class="hljs-number">0</span>], line.strip().split(<span class="hljs-string">&quot;,&quot;</span>)[<span class="hljs-number">1</span>]): line.strip().split(<span class="hljs-string">&quot;,&quot;</span>) <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> f&#125;<br>            print(len(future_dict))<br>            <br>        <span class="hljs-comment"># 等待所有线程执行完毕</span><br>        <span class="hljs-keyword">for</span> future <span class="hljs-keyword">in</span> concurrent.futures.as_completed(future_dict):<br>            ip_port = future_dict[future]<br>            <span class="hljs-keyword">try</span>:<br>                data = future.result()<br>            <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> exc:<br>                print(<span class="hljs-string">&#x27;%r generated an exception: %s&#x27;</span> % (ip_port, exc))<br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-comment"># print(data)</span><br>                <span class="hljs-keyword">pass</span><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    main()<br></code></pre></div></td></tr></table></figure>
+
+<p>我当时发现，内存直接被干爆了。为什么？其实程序中的<strong>18行</strong>已经有答案了。<code>concurrent.future</code>官方的示例中，会将所有<code>future</code>对象存到一个字典中，然后再等待所有线程执行完毕。虽然用了<code>for line in f</code>这种形式迭代，但5000000的<code>future</code>对象，还是太大了。</p>
+<p>那咋办嘛？就控制<code>future_dict</code>的长度呗，规定一个长度，执行完毕直接释放内存，所以我使用了<code>Queue</code>，保证传入<code>future_dict</code>的内容大小始终可控，<strong>第二版代码</strong>如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> concurrent.futures<br><span class="hljs-keyword">import</span> queue<br><span class="hljs-keyword">import</span> json<br><span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> ctime<br><br>ip_queue = queue.Queue(<span class="hljs-number">100</span>)<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_url</span>(<span class="hljs-params">ip, port</span>):</span><br>    <span class="hljs-keyword">try</span>:<br><br>        r = requests.get(<span class="hljs-string">&quot;http://&#123;&#125;:&#123;&#125;/path_info&quot;</span>.format(ip, port),<br>                         timeout=<span class="hljs-number">5</span>)<br>        <span class="hljs-keyword">return</span> r.text<br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>        <span class="hljs-keyword">return</span> e<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span>():</span><br>    future_dict = &#123;&#125;<br>    <span class="hljs-keyword">with</span> open(<span class="hljs-string">&quot;./ipfile&quot;</span>) <span class="hljs-keyword">as</span> f:<br>        <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> f:<br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> ip_queue.full():<br>                ip_queue.put(line.strip().split(<span class="hljs-string">&quot;,&quot;</span>))<br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-keyword">with</span> concurrent.futures.ThreadPoolExecutor(max_workers=<span class="hljs-number">100</span>) <span class="hljs-keyword">as</span> executor:<br>                    <span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> ip_queue.empty():<br>                        <span class="hljs-keyword">try</span>:<br>                            ip_port = ip_queue.get(block=<span class="hljs-literal">False</span>)<br>                            future_dict[executor.submit(get_url, ip_port[<span class="hljs-number">0</span>], ip_port[<span class="hljs-number">1</span>])] = ip_port<br>                        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>                            print(e)<br><br>                    <span class="hljs-keyword">for</span> future <span class="hljs-keyword">in</span> concurrent.futures.as_completed(future_dict, timeout=<span class="hljs-number">30</span>):<br>                        ip_port = future_dict[future]<br>                        <span class="hljs-keyword">try</span>:<br>                            data = future.result()<br>                        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> exc:<br>                            print(<span class="hljs-string">&#x27;%r generated an exception: %s&#x27;</span> % (ip_port, exc))<br>                        <span class="hljs-keyword">else</span>:<br>                            print(data)<br>                    future_dict.clear()<br><br>    print(<span class="hljs-string">&quot;finish&quot;</span>)<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    main()<br><br></code></pre></div></td></tr></table></figure>
+
+<h2 id="跑着跑着就被系统kill了"><a href="#跑着跑着就被系统kill了" class="headerlink" title="跑着跑着就被系统kill了"></a>跑着跑着就被系统kill了</h2><p>就像预期的，上面第二版的程序在刚开始运行的时候可以正常跑，但是跑一段时间后，会没有任何提示，直接被系统kill掉。为什么呢？通过<code>htop</code>监控程序运行过程中的状态，我发现内存会明显随着运行时间的边长也增大。</p>
+<p>既然使用了<code>Queue</code>，程序中该清理释放内存的地方（比如<code>future_dict</code>都做了相应的的处理），那为什么内存还会出问题呢？其实，有两点：**<code>concurrent.future</code>的内存释放机制和卡死的requests请求。**</p>
+<h3 id="concurrent-future的内存释放机制"><a href="#concurrent-future的内存释放机制" class="headerlink" title="concurrent.future的内存释放机制"></a>concurrent.future的内存释放机制</h3><p>第二版有一个<strong>致命</strong>的地方：<strong>我们使用了with的方式开了一个<code>Executor</code>，第35行虽然设置了超时，但是concurrent.future只会等所有子线程执行完成后才会<code>return</code>并释放内存，可以仔细读一下下图的相关说明。</strong></p>
+<center><img src="https://pic.gaficat.com/default/concurrent内存清理机制.png" srcset="/img/loading.gif" alt="concurrent内存清理机制" style="zoom: 50%;" /></center>
+
+<blockquote>
+<p>第二版程序的35行设置了超时，所以程序执行的逻辑是：<code>ip_queue</code>第一次满之后，开一个<code>executor</code>，对<code>ip_queue</code>中的ip进行处理，但由于一些未知的异常，导致某一些子线程没有在30秒的时间内执行完，这时主线程会报超时的错误，不等第一个<code>executor</code>所有的子线程执行完，释放内存，就直接进入下一轮。如果第一轮的子线程能处理好所有异常，在之后退出，那么不会有内存问题，因为虽然提前进入了第二轮，某个时段存在两个甚至多个<code>executor</code>，但前面的<code>executor</code>总会退出的，内存总会释放的，对吧。</p>
+<p>但事实和我们想的不一样，子线程实际上是在执行<code>get_url()</code>函数，若<code>get_url()</code>函数本身逻辑有问题，没有办法处理所有的异常被挂起，那么就会有相当的<code>executor</code>挂着，不能释放，当内存占用到一定程度，操作系统自然就会kill掉我们的程序了。</p>
+</blockquote>
+<h3 id="requests卡死？挂起？"><a href="#requests卡死？挂起？" class="headerlink" title="requests卡死？挂起？"></a>requests卡死？挂起？</h3><p>正常来说，我们第二版的代码里面，<code>requests</code>是设了超时的，但为什么<code>get_url()</code>函数就卡死了呢？其实部分IP，可能它返回的内容非常大，requests默认的get，会将其临时保存在内存中，那假如我们爬虫同时遇到10个返回100Mb内容的IP，1个Gb的内容，1M的带宽，算算要多久才能下完？当然就卡住了。带宽越大，下得越快，线程越多，内存炸的也就更快。</p>
+<p>咋办呢？其实requests提供了流的模式，使用方式参照官方的文档吧，这里贴一个官方例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> json<br><span class="hljs-keyword">import</span> requests<br><br>r = requests.get(<span class="hljs-string">&#x27;https://httpbin.org/stream/20&#x27;</span>, stream=<span class="hljs-literal">True</span>)<br><br><span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> r.iter_lines():<br><br>    <span class="hljs-comment"># filter out keep-alive new lines</span><br>    <span class="hljs-keyword">if</span> line:<br>        decoded_line = line.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>        print(json.loads(decoded_line))<br></code></pre></div></td></tr></table></figure>
+
+<p>根据需求改动下，实时写入文件就行了。</p>
+<h2 id="设置子线程的超时异常？"><a href="#设置子线程的超时异常？" class="headerlink" title="设置子线程的超时异常？"></a>设置子线程的超时异常？</h2><p>上面分析了被系统kill的原因，实际上还是内存炸了，所以修改了代码，<strong>第三版程序</strong>如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> concurrent.futures<br><span class="hljs-keyword">import</span> queue<br><span class="hljs-keyword">import</span> json<br><span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> ctime<br><br>ip_queue = queue.Queue(<span class="hljs-number">100</span>)<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_url</span>(<span class="hljs-params">ip, port</span>):</span><br>    <span class="hljs-keyword">try</span>:<br><br>        r = requests.get(<span class="hljs-string">&quot;http://&#123;&#125;:&#123;&#125;/path_info&quot;</span>.format(ip, port),<br>                         timeout=<span class="hljs-number">5</span>, stream=<span class="hljs-literal">True</span>)<br>        <span class="hljs-keyword">return</span> next(r.iter_lines())<br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>        <span class="hljs-keyword">return</span> e<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span>():</span><br>    future_dict = &#123;&#125;<br>    <span class="hljs-keyword">with</span> concurrent.futures.ThreadPoolExecutor(max_workers=<span class="hljs-number">10</span>) <span class="hljs-keyword">as</span> executor:<br>        <span class="hljs-keyword">with</span> open(<span class="hljs-string">&quot;./ipfile&quot;</span>) <span class="hljs-keyword">as</span> f:  <br>            <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> f:<br>                <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> ip_queue.full():<br>                    ip_queue.put(line.strip().split(<span class="hljs-string">&quot;,&quot;</span>))<br>                <span class="hljs-keyword">else</span>:<br>                    <span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> ip_queue.empty():<br>                        <span class="hljs-keyword">try</span>:<br>                            ip_port = ip_queue.get(block=<span class="hljs-literal">False</span>)<br>                            future_dict[executor.submit(get_url, ip_port[<span class="hljs-number">0</span>], ip_port[<span class="hljs-number">1</span>])] = ip_port<br>                        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>                            print(e)<br><br>                    <span class="hljs-keyword">for</span> future <span class="hljs-keyword">in</span> concurrent.futures.as_completed(future_dict, timeout=<span class="hljs-number">30</span>):<br>                        ip_port = future_dict[future]<br>                        <span class="hljs-keyword">try</span>:<br>                            data = future.result()<br>                        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> exc:<br>                            print(<span class="hljs-string">&#x27;%r generated an exception: %s&#x27;</span> % (ip_port, exc))<br>                        <span class="hljs-keyword">else</span>:<br>                            print(data)<br>                    future_dict.clear()<br><br>    print(<span class="hljs-string">&quot;finish&quot;</span>)<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    main()<br><br></code></pre></div></td></tr></table></figure>
+
+<p>结果呢，还是没能如愿，程序依然会出现卡死的现象。后来我分析原因，是部分IP不太正常，会一直返回内容，类似摄像头，所以永远不可能接收完内容，那这个子线程就一直挂着了。咋办？我就想，能不能设置子线程的超时，后来发现了一个库：<code>eventlet</code>。</p>
+<p>所以最终，<strong>第四版程序</strong>的样子：</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> requests.auth <span class="hljs-keyword">import</span> HTTPBasicAuth<br><span class="hljs-keyword">import</span> concurrent.futures<br><span class="hljs-keyword">import</span> queue<br><span class="hljs-keyword">import</span> json<br><span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> ctime<br><span class="hljs-keyword">import</span> eventlet<br><br>eventlet.monkey_patch()<br><br>ip_queue = queue.Queue(<span class="hljs-number">200</span>)<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_url</span>(<span class="hljs-params">ip, port</span>):</span><br>    <span class="hljs-keyword">with</span> eventlet.Timeout(<span class="hljs-number">20</span>):<br>        <span class="hljs-keyword">with</span> requests.Session() <span class="hljs-keyword">as</span> s:<br>            <span class="hljs-keyword">try</span>:<br>                r = s.get(<span class="hljs-string">&quot;http://&#123;&#125;:&#123;&#125;/path_info&quot;</span>.format(ip, port),<br>                           timeout=(<span class="hljs-number">3</span>, <span class="hljs-number">3</span>))<br>                s.close()<br>                <span class="hljs-keyword">return</span> r.text<br>            <span class="hljs-keyword">except</span> eventlet.timeout.Timeout <span class="hljs-keyword">as</span> e:<br>                print(<span class="hljs-string">&quot;eventlet timeout:&quot;</span>, e)<br>                s.close()<br>                <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span><br>            <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>                s.close()<br>                <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span><br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">multithread_attach</span>():</span><br>    future_dict = &#123;&#125;<br>    <span class="hljs-keyword">with</span> concurrent.futures.ThreadPoolExecutor(max_workers=<span class="hljs-number">100</span>) <span class="hljs-keyword">as</span> executor:<br>        ip_port = <span class="hljs-string">&quot;&quot;</span><br>        <span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> ip_queue.empty():<br>            <span class="hljs-keyword">try</span>:<br>                ip_port = ip_queue.get(block=<span class="hljs-literal">False</span>)<br>                <span class="hljs-comment"># print(ip_port)</span><br>                future_dict[executor.submit(attach_tools, ip_port[<span class="hljs-number">0</span>], ip_port[<span class="hljs-number">1</span>])] = ip_port<br>            <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>                print(e)<br>        print(<span class="hljs-string">&quot;time:&#123;&#125;&quot;</span>.format(ctime()), <span class="hljs-string">&quot;200&quot;</span>, <span class="hljs-string">&quot;start attach&quot;</span>)<br>        print(<span class="hljs-string">&quot;last ip:&quot;</span>, ip_port)<br><br>        <span class="hljs-keyword">for</span> future <span class="hljs-keyword">in</span> concurrent.futures.as_completed(future_dict):<br>            ip_port = future_dict[future]<br>            <span class="hljs-keyword">try</span>:<br>                data = future.result()<br>            <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> exc:<br>                print(<span class="hljs-string">&#x27;%r generated an exception: %s&#x27;</span> % (ip_port, exc))<br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-keyword">pass</span><br>        print(<span class="hljs-string">&quot;time:&#123;&#125;&quot;</span>.format(ctime()), <span class="hljs-string">&quot;200&quot;</span>, <span class="hljs-string">&quot;finish attach&quot;</span>)<br>        print(<span class="hljs-string">&quot;last ip:&quot;</span>, ip_port, <span class="hljs-string">&quot;\n&quot;</span>)<br>    <span class="hljs-keyword">del</span> future_dict<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span>():</span><br>    <span class="hljs-keyword">with</span> open(<span class="hljs-string">&quot;./ipfile&quot;</span>) <span class="hljs-keyword">as</span> f:<br>        <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> f:<br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> ip_queue.full():<br>                ip_queue.put(line.strip().split(<span class="hljs-string">&quot;,&quot;</span>))<br>            <span class="hljs-keyword">else</span>:<br>                multithread_attach()<br><br>    multithread_attach()<br>    print(<span class="hljs-string">&quot;finish&quot;</span>)<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    main()<br><br></code></pre></div></td></tr></table></figure>
+
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>其实，收获最大的是concurrent.future的内存处理机制吧，这个坑肯定是不踩不知道的，python好像主动停止正在运行的子线程也比较麻烦，所以eventlet这个库，在某些场景给子线程设置超时也是一种挺好的方式。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%99%E7%A8%8B/python/">python</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/python/">python</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本作品采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/1a376f79.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">生活的意义？我想聊聊IKIGAI</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/a1558b50.html">
+                        <span class="hidden-mobile">目睹有人在我面前倒下时，我在想什么</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" rel="nofollow noopener"> <span> 本站由<img border="0" src="/img/upyun_logo6.png" srcset="/img/loading.gif"  width="80" height="25"/>提供对象存储服务 </span>  </a> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        陕ICP备18017214号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+    <!-- cnzz Analytics Icon -->
+    <span id="cnzz_stat_icon_1278912843" style="display: none"></span>
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+
+  
+    <script>
+      (function (window, document) {
+        var typing = Fluid.plugins.typing;
+        var title = document.getElementById('subtitle').title;
+        typing(title)
+      })(window, document);
+    </script>
+  
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4966387dd3693d431161872876fb1011";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- cnzz Analytics -->
+    <script defer src="//s4.cnzz.com/z_stat.php?id=1278912843&show=pic"
+            type="text/javascript"></script>
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

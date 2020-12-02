@@ -1,0 +1,623 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" type="image/png" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="分享各种电子设计DIY、物联网DIY、读书笔记、生活想法、流行钢琴、工作中遇到的问题（docker使用技巧、网络安全、python、网络协议）、博客建站技巧等等内容">
+  <meta name="author" content="scarleast">
+  <meta name="keywords" content="物联网">
+  <title>Mbed OS 6踩坑手册——全新串口API - 加菲猫的创客工坊</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_2145872_unckbjh4m8.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.gaficat.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"4966387dd3693d431161872876fb1011","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1278912843,"leancloud":{"app_id":"lY82cvb8vqSOls13F6jndxq3-gzGzoHsz","app_key":"uu7fyOEvPWmCOxtxNL6rlsGV","server_url":"https://ly82cvb8.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="加菲猫的创客工坊" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>加菲猫的创客工坊</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/aboutme/">
+                <i class="iconfont icon-user-fill"></i>
+                关于我
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+                rss
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Mbed OS 6踩坑手册——全新串口API">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-06-14 00:09" pubdate>
+        2020年6月14日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      16
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Mbed OS 6踩坑手册——全新串口API</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年9月16日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="哪来的坑？"><a href="#哪来的坑？" class="headerlink" title="哪来的坑？"></a>哪来的坑？</h1><p>前两天，Mbed OS 6发布了，在一脸期待的打开IDE，看看有什么好玩的东西后，我惊奇地发现：之前所有的工程一片红，所有串口程序，都跑不通了，<code>printf</code>也不好使了，<code>%f</code>打印不出小数（浮点数）了。</p>
+<h1 id="Mbed-OS-5串口程序"><a href="#Mbed-OS-5串口程序" class="headerlink" title="Mbed OS 5串口程序"></a>Mbed OS 5串口程序</h1><p>一个典型的Mbed OS 5的串口程序是这样的：</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;mbed.h&quot;</span></span><br><br><span class="hljs-function">Serial      <span class="hljs-title">pc</span><span class="hljs-params">(PA_9, PA_10)</span></span>; <span class="hljs-comment">// TX, RX</span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span><br><span class="hljs-function"></span>&#123;  <br>    <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>) &#123;<br>				pc.<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;float test:%f\\r\\n&quot;</span>, <span class="hljs-number">0.5</span>);<br>				thread_sleep_for(<span class="hljs-number">1000</span>);   <span class="hljs-comment">// wait 200 millisecond</span><br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>参考文档：<a target="_blank" rel="noopener" href="https://os.mbed.com/docs/mbed-os/v5.15/apis/serial.html">https://os.mbed.com/docs/mbed-os/v5.15/apis/serial.html</a></p>
+</blockquote>
+<p>Mbed OS 5中，<code>printf</code>是使用的标准库的，所以我们按照C语言正常的写法，是没有任何问题的。</p>
+<h1 id="Mbed-OS-6-BufferedSerial-And-UnbufferedSerial"><a href="#Mbed-OS-6-BufferedSerial-And-UnbufferedSerial" class="headerlink" title="Mbed OS 6 BufferedSerial And UnbufferedSerial"></a>Mbed OS 6 BufferedSerial And UnbufferedSerial</h1><p>Mbed OS 6对串口部分的接口做了升级，分为<a href="%5B%5D()">BufferedSerial</a>和<a href="%5B%5D()">UnbufferedSerial</a>。</p>
+<p><code>BufferedSerial</code>的性能要优于<code>UnbufferedSerial</code>并具有较少的CPU负载和较少的延迟问题。只有RAM不足且无法承受缓冲或需要更多控制串行端口并从IRQ使用它的应用程序才应使用<code>UnbufferedSerial</code>。</p>
+<p>这里我就用<code>BufferedSerial</code>做相关的示例：</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;mbed.h&quot;</span></span><br><br><span class="hljs-function">BufferedSerial      <span class="hljs-title">pc</span><span class="hljs-params">(PA_9, PA_10)</span></span>; <span class="hljs-comment">// TX, RX</span><br><br><span class="hljs-function">FileHandle *<span class="hljs-title">mbed::mbed_override_console</span><span class="hljs-params">(<span class="hljs-keyword">int</span> fd)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> &amp;pc;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span><br><span class="hljs-function"></span>&#123;<br>		<span class="hljs-keyword">while</span>(True)&#123;<br>				<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%f\\r\\n&quot;</span>, <span class="hljs-number">0.1</span>);<br>				thread_sleep_for(<span class="hljs-number">1000</span>);  <span class="hljs-comment">// wait 1000 millisecond</span><br>		&#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>我们的第一反应是，Mbed OS 6的串口接口变得更加复杂了，需要通过C++代码，将<code>BufferedSerial</code>的实例<code>pc</code>传递给系统I/O的重定向，之后才能调用<code>printf</code>，将希望的内容通过串口打印到控制台。</p>
+<p>但是其实你会发现，上面的代码，打印不出小数了，会出现下面的状况：</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c">f<br>f<br>f<br>f<br>f<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="无法用printf打印小数原因"><a href="#无法用printf打印小数原因" class="headerlink" title="无法用printf打印小数原因"></a>无法用<code>printf</code>打印小数原因</h2><p>这个问题让我很抓狂，因为google直接搜索，搜不到相关的解释。于是开始研究官方的说明文档，最终下面三篇文档解决了我的疑惑：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://os.mbed.com/docs/mbed-os/v5.15/tutorials/optimizing.html#printf-and-reducing-memory">Mbed 内存优化</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ARMmbed/mbed-os/tree/master/platform/source/minimal-printf#size-comparison">Mbed minimal-print</a></li>
+<li><a target="_blank" rel="noopener" href="https://os.mbed.com/docs/mbed-os/v6.0/program-setup/advanced-configuration.html#configuration-parameters-in-mbed-app-json-mbed-lib-json">Mbed 配置系统</a></li>
+</ul>
+<h3 id="Mbed-OS-6开始默认使用minimal-printf"><a href="#Mbed-OS-6开始默认使用minimal-printf" class="headerlink" title="Mbed OS 6开始默认使用minimal-printf"></a>Mbed OS 6开始默认使用<code>minimal-printf</code></h3><p>首先，我无意间看到<a href="%5B%5D()">Mbed 内存优化</a>的文档中提及，如果我们的程序不需要64位整数或浮点打印希望优化flash，Mbed OS提供了<code>minimal-printf</code>库。之后，出于随缘的好奇心，我查阅了<a href="%5B%5D()">Mbed minimal-print</a>的文档。</p>
+<p><code>minimal-printf</code>是Mbed为了减少flash的占用，提供的一个替代<code>printf</code>家族的库。它直接向串口/stdio输出而不使用<code>malloc</code>，所有的标志和精度修饰符都将被忽略。如果发生写入错误，没有对错误的处理。支持以下的格式化输出：</p>
+<ul>
+<li>%d: signed integer [h, hh, (none), l, ll, z, j, t].</li>
+<li>%i: signed integer [h, hh, (none), l, ll, z, j, t].</li>
+<li>%u: unsigned integer [h, hh, (none), l, ll, z, j, t].</li>
+<li>%x: unsigned integer [h, hh, (none), l, ll, z, j, t], printed as hexadecimal number (e.g., ff).</li>
+<li>%X: unsigned integer [h, hh, (none), l, ll, z, j, t], printed as hexadecimal number (e.g., FF).</li>
+<li>%f: floating point (<strong>disabled by default</strong>).</li>
+<li>%F: floating point (<strong>disabled by default</strong>, treated as %f).</li>
+<li>%g: floating point (<strong>disabled by default</strong>, treated as %f).</li>
+<li>%G: floating point (<strong>disabled by default</strong>, treated as %f).</li>
+<li>%c: character.</li>
+<li>%s: string.</li>
+<li>%p: pointer (e.g. 0x00123456).</li>
+</ul>
+<p>注意上面的加粗，所有的浮点型数据默认都是禁用的。并且，Mbed OS 6为了尽可能减少对flash的占用，默认使用<code>minimal-printf</code>，</p>
+<center><img src="https://pic.gaficat.com/default/Mbed6默认minimal-printf.png" srcset="/img/loading.gif" alt="Mbed6默认minimal-printf" style="zoom: 50%;" /></center>
+
+<h2 id="如何启用对浮点数输出的功能？"><a href="#如何启用对浮点数输出的功能？" class="headerlink" title="如何启用对浮点数输出的功能？"></a>如何启用对浮点数输出的功能？</h2><p><a href="%5B%5D()">Mbed minimal-print</a>的文档中提到了两种方法：</p>
+<p>第一种配置<code>printf</code>家族的库为标准库。修改<code>mbed_app.json</code>文件中的应用程序配置，将<code>target.printf_lib</code>的值覆盖为<code>std</code>（即不使用<code>minimal-printf</code>，使用标准库），如下所示：</p>
+<figure class="highlight"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">&quot;target_overrides&quot;: &#123;<br>        &quot;*&quot;: &#123;<br>            &quot;target.printf_lib&quot;: &quot;std&quot;<br>        &#125;<br>    &#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>第二种方法是，启用<code>minimal-printf</code>对浮点数输出的功能，修改<code>mbed_app.json</code>文件：</p>
+<figure class="highlight"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">&quot;target_overrides&quot;: &#123;<br>        &quot;*&quot;: &#123;<br>            &quot;target.printf_lib&quot;: &quot;minimal-printf&quot;,<br>            &quot;platform.minimal-printf-enable-floating-point&quot;: true,<br>            &quot;platform.minimal-printf-set-floating-point-max-decimals&quot;: 6,<br>            &quot;platform.minimal-printf-enable-64-bit&quot;: false<br>        &#125;<br>    &#125;<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>platform.minimal-printf-enable-floating-point：是否启用浮点数输出</li>
+<li>platform.minimal-printf-set-floating-point-max-decimals：浮点数输出的精度</li>
+<li>platform.minimal-printf-enable-64-bit：是否启用64位长整数型输出</li>
+</ul>
+<h2 id="配置文件在哪？"><a href="#配置文件在哪？" class="headerlink" title="配置文件在哪？"></a>配置文件在哪？</h2><p>我们知道了问题所在了，那就对配置文件做一些修改，但是，<code>mbed_app.json</code>这个配置文件在哪里？其实，<a href="%5B%5D()">Mbed 配置系统</a>的文档中有相关的说明：</p>
+<p>我们可以在工程的根目录下，新建一个<code>mbed_app.json</code>文件，然后将上一小节所述的配置，写到<code>mbed_app.json</code>文件中，再次编译，bingo！</p>
+<h1 id="尾巴"><a href="#尾巴" class="headerlink" title="尾巴"></a>尾巴</h1><p>其实，这个坑，一度想让我去官方的论坛留言，但还是有一些运气成分吧，还是搞明白了怎么回事。</p>
+<p>当然还有一些遗憾，比如：如果我有多个串口，怎么让每个串口都能用printf呢？我完全不懂c++，所以这个问题，搭建感兴趣吗？感兴趣的话，就当是给自己埋的一个坑吧！之后搞明白了再继续更新。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1/">电子设计</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1/Mbed/">Mbed</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1/">电子设计</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Mbed/">Mbed</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本作品采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/4de16deb.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">大学的那些老师们</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/ee759d6d.html">
+                        <span class="hidden-mobile">Mbed——我心中完美物联网OS</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" rel="nofollow noopener"> <span> 本站由<img border="0" src="/img/upyun_logo6.png" srcset="/img/loading.gif"  width="80" height="25"/>提供对象存储服务 </span>  </a> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        陕ICP备18017214号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+    <!-- cnzz Analytics Icon -->
+    <span id="cnzz_stat_icon_1278912843" style="display: none"></span>
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+
+  
+    <script>
+      (function (window, document) {
+        var typing = Fluid.plugins.typing;
+        var title = document.getElementById('subtitle').title;
+        typing(title)
+      })(window, document);
+    </script>
+  
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4966387dd3693d431161872876fb1011";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- cnzz Analytics -->
+    <script defer src="//s4.cnzz.com/z_stat.php?id=1278912843&show=pic"
+            type="text/javascript"></script>
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

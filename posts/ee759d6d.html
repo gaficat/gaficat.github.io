@@ -1,0 +1,610 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" type="image/png" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="分享各种电子设计DIY、物联网DIY、读书笔记、生活想法、流行钢琴、工作中遇到的问题（docker使用技巧、网络安全、python、网络协议）、博客建站技巧等等内容">
+  <meta name="author" content="scarleast">
+  <meta name="keywords" content="物联网">
+  <title>Mbed——我心中完美物联网OS - 加菲猫的创客工坊</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_2145872_unckbjh4m8.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.gaficat.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"4966387dd3693d431161872876fb1011","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1278912843,"leancloud":{"app_id":"lY82cvb8vqSOls13F6jndxq3-gzGzoHsz","app_key":"uu7fyOEvPWmCOxtxNL6rlsGV","server_url":"https://ly82cvb8.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="加菲猫的创客工坊" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>加菲猫的创客工坊</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/aboutme/">
+                <i class="iconfont icon-user-fill"></i>
+                关于我
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+                rss
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Mbed——我心中完美物联网OS">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-06-13 00:29" pubdate>
+        2020年6月13日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      29
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Mbed——我心中完美物联网OS</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年9月16日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="我是怎么知道Mbed的？"><a href="#我是怎么知道Mbed的？" class="headerlink" title="我是怎么知道Mbed的？"></a>我是怎么知道Mbed的？</h1><p>我希望用舵机做一个开灯神器（就是喊一声“天猫精灵，开灯！”，贴在传统墙壁开关上的舵机就转一下，开灯）很久了，大家感兴趣嘛？感兴趣我这里给自己挖一个坑，后续专门写一篇文章，讲具体的辛酸历程。</p>
+<p>总之呢，折腾的过程中，我很好奇，我的Mac电脑，应该如何把arduino的固件烧录到我的STM32F103C8T6中？在查询资料的过程中，我看到了一个视频，视频中老外为了尽快生成一个固件，使用<strong>Mbed</strong>在线的编辑工具，在线编译了一个固件出来。这波操作给我惊呆了，印象中，想要用STM32点亮一盏LED灯，代码量还是比较多的，你要开各种总线时钟，你要对引脚做各种配置。但老外只用了几行代码，就类似于下面几行代码就完事儿，这？</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-function">DigitalOut <span class="hljs-title">led1</span><span class="hljs-params">(PB_5)</span></span>;led1=<span class="hljs-number">1</span>;<br></code></pre></div></td></tr></table></figure>
+
+<h1 id="何为Mbed-OS"><a href="#何为Mbed-OS" class="headerlink" title="何为Mbed OS"></a>何为Mbed OS</h1><p>Mbed是ARM亲自操刀（傻了吧？芯片架构是人家设计的，人家再来亲自操刀OS，那肯定是专业团队~）的一款物联网OS，针对的芯片是Arm Cortex系列的，其设计的full profile（我也不知道该怎么翻译）是RTOS，提供了一个抽象层，以便开发人员可以编写在任何启用了Mbed的板上运行的C / C ++应用程序。</p>
+<p>说人话，啥意思？按照传统，我们在STM32上写一个程序是什么过程？首先是在<strong>windows</strong>上，装<strong>keil</strong>或者<strong>iar</strong>，然后看着ST的数据手册，即使用库开发，依然需要配置大量的时钟、总线等等（有人说STM32Cube，你看下一句话）。这个时候，如果跟你说，换个公司的芯片，你给我换Ti的Cortex-M3，你是不是就要骂娘了？</p>
+<p>类似于Arduino，Mbed是一个针对Arm Cortex系列芯片的框架，作为开发者的我们，使用Mbed，可以获得以下好处：</p>
+<ul>
+<li>优秀的多平台开发环境，Mac上终于可以写STM32的程序啦！Mbed有配套的本地开发IDE、CLI工具，支持Windows、Mac以及linux。同时也提供在线的编辑、编译环境。也支持将Mbed的工程导出，导成VS Code，Keil，IAR的工程都可以。</li>
+<li>极少的代码量，一行代码初始化IO口、串口等外设，再也无需关注复杂的数据手册、钻研库开发啦！硬件层均由OS完成，各种复杂的驱动？专业团队，高兴送走！</li>
+<li>OS提供丰富的API，多线程、信号量等等，我们只需要关注最上层的业务逻辑。</li>
+<li>再也不用为换芯片型号、厂商担心啦（我曾经参加一个3天时间的比赛，后来两天时间都在学TI TIVA系列芯片，移植点亮一盏LED）！使用Mbed,一套逻辑代码，ST的芯片好使，NXP的芯片好使，TI的芯片也好使。</li>
+</ul>
+<h2 id="优秀的多平台开发环境"><a href="#优秀的多平台开发环境" class="headerlink" title="优秀的多平台开发环境"></a>优秀的多平台开发环境</h2><p>多平台开发环境，意味着我们可以在Windows，MacOS，Linux甚至树莓派上做嵌入式的开发。</p>
+<p>我在工作之前，一直使用windows系统，windows是一个非常好的操作系统（主要是打游戏舒服）。但是不能否认的是，存在相当一部分人，使用苹果电脑。你当然可以说那我装个虚拟机或者MacBook装个双系统就好了呀？但就像我这样的人，就觉得我花了大价钱，买了苹果的设备了，我还返回去用Windows，我这不是吃饱了没事干吗？</p>
+<blockquote>
+<p>其实，工作以后，我购入最满意的东西，就是我的MacBook，它足够的轻，续航足够长，屏幕素质优秀（屏幕好真的，用过才知道）。晚上回家或是上班，随手掏出来，记笔记，改代码，写博客，真的有欲望做这些事。再也不用望着几斤重的游戏本，呼哧呼哧，连打开的欲望都没有了。</p>
+</blockquote>
+<p>但是，购入MacBook后，我就再没有碰过STM32了，因为没有Keil这样的IDE，传统观念里面，在Mac上玩单片机相当的麻烦（有人用VS Code搭建过开发环境嘛？）。Mbed就解决了这个问题，用它的在线编辑器和编译环境，你只需要一个浏览器，就能玩转单片机了。</p>
+<center><img src="https://pic.gaficat.com/default/Mbed%E5%9C%A8%E7%BA%BF%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83.png" srcset="/img/loading.gif" alt="Mbed在线开发环境" style="zoom: 25%;" /></center>
+
+<p>当然了，可支持导出到我们熟悉的IDE。</p>
+<center><img src="https://pic.gaficat.com/default/%E5%B7%A5%E7%A8%8B%E5%8F%AF%E5%AF%BC%E5%87%BA.png" srcset="/img/loading.gif" alt="工程可导出" style="zoom:50%;" /></center>
+
+<h2 id="极少的代码量"><a href="#极少的代码量" class="headerlink" title="极少的代码量"></a>极少的代码量</h2><p>Mbed的代码量能少到什么程度呢？我们以点亮一盏LED为例，STM32库开发，代码是这样的：</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;led.h&quot;</span>  </span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;SysTick.h&quot;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">LED_GPIO_Config</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span><br><span class="hljs-function"></span>&#123;		<br>	<span class="hljs-comment">/*定义一个GPIO_InitTypeDef类型的结构体*/</span><br>	GPIO_InitTypeDef GPIO_InitStructure;<br><br>	<span class="hljs-comment">/*开启GPIOB和GPIOE的外设时钟*/</span><br>	RCC_APB2PeriphClockCmd( RCC_APB2Periph_GPIOC|RCC_APB2Periph_GPIOB, ENABLE); <br><br>	<span class="hljs-comment">/*选择要控制的GPIOB引脚*/</span>															   <br>	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2;	<br><br>	<span class="hljs-comment">/*设置引脚模式为通用推挽输出*/</span><br>	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;   <br><br>	<span class="hljs-comment">/*设置引脚速率为50MHz */</span>   <br>	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; <br><br>	<span class="hljs-comment">/*调用库函数，初始化GPIOB0*/</span><br>	GPIO_Init(GPIOC, &amp;GPIO_InitStructure);	<br><br>	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;<br><br>	GPIO_Init(GPIOB, &amp;GPIO_InitStructure);		<br>	<br>	<span class="hljs-comment">/* 关闭所有led灯	*/</span><br>	GPIO_ResetBits(GPIOC, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2);<br>	GPIO_ResetBits(GPIOB, GPIO_Pin_0);<br><br>	Delay_ms(<span class="hljs-number">1000</span>);<br>	<br>	GPIO_SetBits(GPIOC, GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2);<br>	GPIO_SetBits(GPIOB, GPIO_Pin_0);<br>	Delay_ms(<span class="hljs-number">1000</span>);<br>		<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>Mbed的代码长这样：</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;mbed.h&quot;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">LED_GPIO_Config</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-function">DigitalOut  <span class="hljs-title">led1</span><span class="hljs-params">(PB_6)</span></span>;   <span class="hljs-comment">// on-board LED</span><br>	<br>	led1 = <span class="hljs-number">1</span>;<br>	thread_sleep_for(<span class="hljs-number">200</span>);   <span class="hljs-comment">// wait 200 millisecond</span><br>	led1 = <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>代码量少了多少，一眼可见吧？这个例子只是初始化一个IO口，其他的比如串口，PWM，SPI，CAN等等外设，Mbed都会像初始化一个IO一样，非常简单。</p>
+<h2 id="丰富的API"><a href="#丰富的API" class="headerlink" title="丰富的API"></a>丰富的API</h2><p>不同于Arduino，Arduino的代码结构是有两个主要的函数，一个是初始化的，一个是大循环。我们的很多项目中，大循环的形式，效率相当底下，这也是我不太喜欢使用Arduino的原因。</p>
+<p>Mbed提供了丰富的API，如RTOS的API，外设的API，数据存储的API，甚至于网络相关的API（如DNS，NetworkSocket）等等。</p>
+<h2 id="优秀的跨平台能力"><a href="#优秀的跨平台能力" class="headerlink" title="优秀的跨平台能力"></a>优秀的跨平台能力</h2><p>这里列出Mbed支持的厂商吧，单是这长长的一列，你用的cortex架构芯片，哪个不是这些厂商出的？</p>
+<center><img src="https://pic.gaficat.com/default/%E8%B7%A8%E5%B9%B3%E5%8F%B0%E8%83%BD%E5%8A%9B.png" srcset="/img/loading.gif" alt="优秀的跨平台能力" style="zoom: 50%;" /></center>
+
+<p>比如当我们针对ST公司的芯片，开发出一个产品。这时候需要更换另一个公司的芯片时，只需要改一下引脚即可，底层的驱动完全不用我关心，是不是从未有过如此爽快的体验？</p>
+<h1 id="尾巴"><a href="#尾巴" class="headerlink" title="尾巴"></a>尾巴</h1><p>Mbed真的极大的拉低了硬件开发的门槛。以前我有一个创意，我可能会因为要再看一遍野火的《STM32库开发实战指南》，再熟悉一下各种结构体，各种外设应该怎么配置，想到如此复杂的过程，很快就放弃了。但现在，我有一个想法，用Mbed，我可以很快实现我的想法，即使我半年一年没接触过硬件的开发了，我已经不熟悉某一款芯片了，也没问题，好的工具真的能激发人创作的欲望。</p>
+<p>其实我始终认为，硬件的开发，对于我们学生或者极客而言，IDE、OS都是工具，我们的目的是借助这些硬件实现我们的创意，无论是机器人还是我想做的开灯神器（手动滑稽），我们不应该把精力浪费在这些工具上。我们希望用最快的速度，最少的弯路，先把自己的创意实现了，再去关注原理（甚至于某些情况下，原理我们都不用关注）。而不是把百分之八十以上的时间，花在学习芯片本身应该如何使用，驱动应该怎么写上。等你做完这些事，也就没有心境去完成你的创意了。硬件的开发，门槛不应该被拉的这么高。</p>
+<blockquote>
+<p> 我印象最深刻的，就是大学那会儿我因为要生成一个控制舵机的PWM，从STC89C52，到STC12C5A60S2，到STC15系列，整整折腾了半年时间。大家感兴趣吗？感兴趣的话，我就再给自己挖一个坑，之后写一篇文章，痛述当年的心酸历程。</p>
+</blockquote>
+<p>前段时间，我在知乎上看到一个回答，说中国嵌入式行业的学生们，并不像CS专业的学生，始终接触最新的技术，去努力提升自己，而是用着十几年前的IDE，循规蹈矩的做一些事。我在大学也是做机器人的，也是用着十几年前的IDE过来的。中国的学生、极客，在这方面真的很吃亏。不是我们不思进取，而是我们从一个做机器人、电子设计或是物联网的念头开始，了解到单片机这个概念。我们希望学习各种知识，但我们接触到的信息，就是郭天祥多年前的51单片机教程，然后去学习一款性能并不怎么样的芯片。就是野火的《STM32库开发实战指南》，花费很长的学习周期，学会调库，但是各种结构体，依然让人非常的抓狂。不是嵌入式的同学们不愿意接触最新的东西，而是我们压根都不知道，还有Mbed这种东西呢？还有Platformio这种东西呢？硬件还能这么玩呢？我们身边的老师不知道有这些东西，我们的学长不知道有这些东西。我们就只能用最笨的办法，最老的工具，最浪费时间的方式，走很多的弯路，浪费非常多不必要的时间和精力。</p>
+<p>这种现状，导致了我们参加一个比赛、或是实现一个创意，百分之八十的时间都是在熟悉芯片的使用，熟悉各种传感器、电机的原理，折腾驱动，而真正做产品，实现功能的时间非常少。Mbed勾起了我重新玩单片机的热情，所以我非常想把这样一个工具告诉所有正在接触单片机、希望用单片机实现一些创意的人，它真的把硬件开发的门槛降得非常低。</p>
+<p>我不奢求我这样一个单片机的爱好者，写这样一篇文章，就能改变现状。我只希望自己把折腾的过程，走过的弯路，整理成文字，祈祷文章中的关键字，能被百度、谷歌收录，有更多的人看到我的文章。我之后会出一系列的文章，比如我在使用Mbed的过程中遇到的一些问题，或者时我用Mbed实现的一些小创意。无论你是从博客还是知乎等平台看到我的文章，都请大家RSS订阅或者关注走一波吧，原创不易，但愿至少当你在百度或者google搜索的时候，不至于冒出来的全是一堆英文链接吧！</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1/">电子设计</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1/Mbed/">Mbed</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1/">电子设计</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Mbed/">Mbed</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本作品采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/6b047738.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Mbed OS 6踩坑手册——全新串口API</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/e4dcbcaf.html">
+                        <span class="hidden-mobile">学乐器不是为了成为人体播放器！</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" rel="nofollow noopener"> <span> 本站由<img border="0" src="/img/upyun_logo6.png" srcset="/img/loading.gif"  width="80" height="25"/>提供对象存储服务 </span>  </a> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        陕ICP备18017214号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+    <!-- cnzz Analytics Icon -->
+    <span id="cnzz_stat_icon_1278912843" style="display: none"></span>
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+
+  
+    <script>
+      (function (window, document) {
+        var typing = Fluid.plugins.typing;
+        var title = document.getElementById('subtitle').title;
+        typing(title)
+      })(window, document);
+    </script>
+  
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4966387dd3693d431161872876fb1011";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- cnzz Analytics -->
+    <script defer src="//s4.cnzz.com/z_stat.php?id=1278912843&show=pic"
+            type="text/javascript"></script>
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

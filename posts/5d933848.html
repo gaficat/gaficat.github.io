@@ -1,0 +1,640 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" type="image/png" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="分享各种电子设计DIY、物联网DIY、读书笔记、生活想法、流行钢琴、工作中遇到的问题（docker使用技巧、网络安全、python、网络协议）、博客建站技巧等等内容">
+  <meta name="author" content="scarleast">
+  <meta name="keywords" content="物联网">
+  <title>如何用51单片机控制舵机加减速 - 加菲猫的创客工坊</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_2145872_unckbjh4m8.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.gaficat.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"4966387dd3693d431161872876fb1011","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1278912843,"leancloud":{"app_id":"lY82cvb8vqSOls13F6jndxq3-gzGzoHsz","app_key":"uu7fyOEvPWmCOxtxNL6rlsGV","server_url":"https://ly82cvb8.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="加菲猫的创客工坊" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>加菲猫的创客工坊</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/aboutme/">
+                <i class="iconfont icon-user-fill"></i>
+                关于我
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+                rss
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="如何用51单片机控制舵机加减速">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-10-12 22:58" pubdate>
+        2020年10月12日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      53
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">如何用51单片机控制舵机加减速</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年11月5日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p>本文介绍使用如何51单片机控制舵机转动、加减速。</p>
+<a id="more"></a>
+
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><blockquote>
+<p>这边文章是2016年上大学的时候写的，当时还不太懂做一个自己的网站，这篇文章写在了新浪博客上，排版阅读体验极差，重新把他整理处理出来，我的网站SEO还行，希望帮助更多人吧。</p>
+</blockquote>
+<p>关于舵机，网络和书本上，很难找到详细的资料，我在2015年准备中国工程机器人暨国际公开赛的时候，做了一个采用舵机驱动的车型搬运机器人。由于当时知识有限，使用90系列51单片机，无法生成满足舵机精度要求的PWM，导致一个舵机的控制问题花费了近半年时间，并没有按照预期参加比赛（这个也真的不怪谁，不走个弯路）。</p>
+<p>关于舵机的控制，我查询过一些资料，也请教过实验室的老师，但是结果都很不满意。舵机乱转，转速控制不精确，出现过各种问题。最终，硬是通过砸钱和砸时间（20块一个的PWM调制器不知道烧了多少- -！这个反正烧的不是我的，不心疼，但是90块一个舵机，加上60块一个的航模PWM舵机调制器还是砸了几百块进去的），和小伙伴通过实验，反复测试得到的结果，在这里分享出来，希望能帮助到感兴趣的铁子们。</p>
+<h1 id="舵机VS减速电机"><a href="#舵机VS减速电机" class="headerlink" title="舵机VS减速电机"></a>舵机VS减速电机</h1><p>我们知道，普通的减速电机也能转，舵机也能转，那这两个玩意儿有什么区别？</p>
+<p>舵机，按照转动的方式，可以分为180°和360°连续旋转舵机。</p>
+<ul>
+<li><p>180°舵机，顾名思义，就是只能旋转180°的舵机，我们可以通过PWM，精确的控制舵机旋转的角度。舵机从0°转到180°就不能继续转了，只能往回去转。另外，180°舵机无法调速，就是说，他始终会以最快速度，朝着你设定的角度旋转，直到旋转到目标角度刹停。因此，180°舵机在航模（控制飞机机翼）、双足机器人等很多场景中都有使用。</p>
+</li>
+<li><p>360°连续旋转舵机，顾名思义，就是可以朝着顺时针或者逆时针的方向，按照一定的速度一直转。可以通过PWM，控制舵机的旋转方向和速度，因此，也常常用于车型机器人的驱动上。360°舵机是无法控制旋转的角度的，只可以控制转和停、正转和反转以及转速。</p>
+<center>    <img style="border-radius: 0.3125em;    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);zoom:40%;"     src="https://pic.gaficat.com/default/舵机.jpeg" srcset="/img/loading.gif">    <br>    <div style="color:orange; border-bottom: 1px solid #d9d9d9;    display: inline-block;    color: #999;    padding: 2px;">360°舵机</div></br> </center>
+
+</li>
+</ul>
+<p>减速电机，其实类似于360°连续旋转舵机，也常用小车的动力，就通电就一直转呗，断电就停呗。一般在某宝上面买的什么寻迹机器人，都是使用的减速电机。</p>
+<center>    <img style="border-radius: 0.3125em;    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);zoom:60%;"     src="https://pic.gaficat.com/default/ 减速电机.jpg" srcset="/img/loading.gif">    <br>    <div style="color:orange; border-bottom: 1px solid #d9d9d9;    display: inline-block;    color: #999;    padding: 2px;">减速电机</div></br> </center>
+
+<p>减速电机和舵机的区别是：</p>
+<ul>
+<li>硬件上：由于舵机内置有电路，因此我们做机器人设计电路的时候，仅需要设计好阴阳极和PWM信号输入的接口，非常简单。而普通的减速电机在设计电路的时候，则需要考虑到驱动芯片，就比较复杂了。淘宝上有现成的l298n驱动模块，买回来可以直接用了。</li>
+<li>控制难度上，舵机对于PWM的精度要求非常高，而电机相对就不高。</li>
+<li>价格方面：通常来说，舵机的价格是普通减速电机的很多倍，就记得之前带一个中学的学生参加机器人比赛，结果土豪学校用的舵机是300块一个的磁传感舵机。一个机器人，四个轮子就1200出去了，真的有钱。</li>
+<li>转动效果上：减速电机转速高，扭矩小（说人话，如果车轻，跑的飞快，车重就跑不动）。舵机通常转速一般，扭矩大（说人话，车重车轻影响不大，始终能以一个固定的最大速度跑）。</li>
+<li>个人认为最核心的差别：<strong>舵机是带刹停的。</strong>什么意思？如果减速电机需要停止转动，那就断电呗。但是假如一个小车在斜坡上，那减速电机就很难让小车刹住，断电就滑下去了嘛。反观舵机就比较容易实现了，只需要给一个固定的PWM就能刹住了。因为舵机的停，实际上是通电的，舵机本身是有力量保持住停止的这个状态的。<strong>快速响应的拖刹，给定高电平1.5ms的pwm，舵机会立刻刹住以及其充沛的动力这一点是减速电机做不到的。</strong></li>
+</ul>
+<h1 id="PWM"><a href="#PWM" class="headerlink" title="PWM"></a>PWM</h1><p>上一段中，我提到可以通过PWM，控制舵机转动。咱不做百度百科的搬运工，复制一堆看不懂的东西去解释概念。这里，只要知道，控制舵机，输出一个周期为20ms-30ms（最好20ms），高电平为0.5ms-2.5ms的信号即可，这个信号具体控制舵机的范围如下：</p>
+<ul>
+<li><strong>对于180°舵机而言，PWM高电平0.5-2.5ms每一个值对应一个角度，比如0.5ms对应转动到0°的位置，那1.5ms就对应转动到90°的位置，那2.5ms就对应转动到180°的位置。</strong></li>
+<li><strong>对于360°舵机而言，PWM高电平0.5-1.5ms为正转区间，1.5-2.5ms为反转区间，1.5ms为舵机刹车点，调速的区间通常在1.5ms左右0.1ms宽度的范围内。</strong>举个例子，我使用的舵机，高电平0.5ms-1.37ms为以最大速度正转，正转的调速高电平区间为1.37ms-1.47ms（高电平越靠近1.5ms，舵机转速越慢），高电平1.53ms-2.5ms为以最大速度反转，反转调速高电平区间为：1.53-1.63ms（高电平越靠近1.5ms，舵机转速越慢），刹车高电平区间为：1.47-1.53ms。</li>
+</ul>
+<center>    <img style="border-radius: 0.3125em;    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);zoom:80%;"     src="https://pic.gaficat.com/default/PWM.jpeg" srcset="/img/loading.gif">    <br>    <div style="color:orange; border-bottom: 1px solid #d9d9d9;    display: inline-block;    color: #999;    padding: 2px;">PWM示意图</div></br> </center>
+
+<p>关于硬件上的设计，无非是保证供电的稳定和预留出PWM的接口，这里就不详细说明了，这里附上一张原理图，感兴趣的小伙伴可以研究一下。如果舵机反向电流很大，建议加上光耦隔离。</p>
+<center>    <img style="border-radius: 0.3125em;    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);zoom:50%;"     src="https://pic.gaficat.com/default/舵机控制原理图.jpeg" srcset="/img/loading.gif">    <br>    <div style="color:orange; border-bottom: 1px solid #d9d9d9;    display: inline-block;    color: #999;    padding: 2px;">舵机控制原理图</div></br> </center>
+
+<h1 id="STC90系列能控制360°舵机吗？"><a href="#STC90系列能控制360°舵机吗？" class="headerlink" title="STC90系列能控制360°舵机吗？"></a>STC90系列能控制360°舵机吗？</h1><p>这里对360°舵机如果通过51单片机的程序进行控制做详细的说明。如何使用51单片机产生我们需要的PWM？用定时器嘛！当然，我一开始也是这么想的，看看下面这段程序：</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;reg51.h&gt;</span></span><br><br><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;<br><span class="hljs-keyword">int</span> n;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ste360</span><span class="hljs-params">(n)</span></span>&#123;<br>  TMOD=<span class="hljs-number">0X01</span>;<br>  TL0=<span class="hljs-number">0XF6</span>; <span class="hljs-comment">// 0.01ms</span><br>  TH0=<span class="hljs-number">0XFF</span>;<br>  TR0=<span class="hljs-number">1</span>;<br>  EA=<span class="hljs-number">1</span>;<br>  ET0=<span class="hljs-number">1</span>;<br>  P1=<span class="hljs-number">0X00</span>; <br>	<span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>);<br>&#125;<br><br><span class="hljs-keyword">void</span> _pwm() interrupt <span class="hljs-number">1</span> &#123;<br>  TH0=<span class="hljs-number">0xff</span>; <span class="hljs-comment">// 0.01ms</span><br>  TL0=<span class="hljs-number">0xF6</span>;<br>	i++;<br><br>	<span class="hljs-keyword">if</span>(i&lt;=n)&#123;<br>		P1=<span class="hljs-number">0XFF</span>; <span class="hljs-comment">// 1.37&lt;&lt;1.47-1.54&lt;&lt;1.63</span><br>	&#125; <span class="hljs-keyword">else</span> P1=<span class="hljs-number">0x00</span>;<br><br>	<span class="hljs-keyword">if</span>(i&gt;=<span class="hljs-number">2000</span>)&#123;<br>		i=<span class="hljs-number">1</span>;<br>	&#125;<br><br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>看起来程序好像没有什么问题，ste360(n)这个函数，n就可以控制pwm高电平的时间，我设定定时器为每0.01ms进入一次中断，所以，要想得到1.5ms高电平，是不是n填写150就行了？答案是否定的，虽然程序逻辑是没有问题的，计算出来确实是1.5ms，但是现实中，很有可能是高电平为3ms+，为什么？这个问题困惑了我挺久，我和一位学长也讨论过，他认为：编译过程中，会将我们写的c文件，编译成汇编文件，然后转成机器语言，这个过程中可能会有误差。而我觉得，主要是晶振本身是有误差，其次，这样反复的进入中断，细小的误差会被无限的放大。最后，可能STC90系列的单片机设计有缺陷？我也不确定。因为同样是使用c，stm32上pwm的精度高的离谱。所以，使用STC90系列单片机（所有只有8位定时器的51单片机）来控制舵机，在我看来，是完全不可行的（我在很长一段时间里，极力优化代码，尝试过各种思路，但是结果只能说有提升，但是远远达不到控制舵机的要求）。当然了，还是要有点朋克精神，铁子们也可以自己写点小程序，打在示波器上看看，STC90系列的单片机能不能生成满足精度要求的PWM。</p>
+<h1 id="STC12系列能控制360°舵机吗？"><a href="#STC12系列能控制360°舵机吗？" class="headerlink" title="STC12系列能控制360°舵机吗？"></a>STC12系列能控制360°舵机吗？</h1><p>不能用定时器，那怎么办？stc12系列的51单片机是自带8位pwm波形发生器，是不是可以用12系列的单片机实现？看程序：</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;reg51.h&gt;</span></span><br><br>sfr CCON=<span class="hljs-number">0xD8</span>;<br><span class="hljs-comment">//CF CR - - | - - CCF1 CCF0</span><br><span class="hljs-comment">//-----------------------------</span><br><span class="hljs-comment">//CF:PCA计数阵列溢出标志.计数值翻转时由硬件置位。</span><br><span class="hljs-comment">//CR:PCA计数阵列运行控制位。</span><br><span class="hljs-comment">//CCF1:PCA模块1中断标志。当出现匹配或者捕获时由硬件置位。</span><br><span class="hljs-comment">//CCF0:PCA模块0中断标志。当出现匹配或者捕获时由硬件置位。</span><br>           /<br>sfr CCAP0L=<span class="hljs-number">0xEA</span>;<span class="hljs-comment">//PCA模块0的捕捉/比较寄存器低8位</span><br>sfr CCAP0H=<span class="hljs-number">0xFA</span>;<span class="hljs-comment">//PCA模块0的捕捉/比较寄存器高8位</span><br><br>sfr CCAPM0=<span class="hljs-number">0xDA</span>;<span class="hljs-comment">//PCA模块0的工作模式寄存器</span><br><span class="hljs-comment">//---------------------------------------</span><br><span class="hljs-comment">//7   6   5     4     3   2    1    0</span><br><span class="hljs-comment">//- ECMn CAPPn CAPNn MATn T0Gn PWMn ECCFn</span><br><span class="hljs-comment">//----------------------------------------</span><br><span class="hljs-comment">//ECOMn:使能比较器，1时使能比较器功能</span><br><span class="hljs-comment">//CAPPn：正捕获，1时使能上升沿捕获</span><br><span class="hljs-comment">//CAPNn：负捕获，1时使能下降沿捕获</span><br><span class="hljs-comment">//MATn:匹配:1时，PCA计数器的值与模块的比较/捕获寄存器的值匹配将置位CCON寄存器中断标志位CCFn</span><br><span class="hljs-comment">//T0Gn:翻转，1时，工作在PCA告诉输出模式，PCA计数器的值与模块的比较/捕获寄存器的值匹配将是CEXn脚翻转</span><br><span class="hljs-comment">//PWMn:脉宽调节输出模式，1时，使能CEXn脚用做PWM输出</span><br><span class="hljs-comment">//EECFn:使能CCFn中断，使能寄存器CCON中的捕获/比较标志CCFn，用来产生中断</span><br>sfr PCA_PWM0=<span class="hljs-number">0xF2</span>;<span class="hljs-comment">//PCA模块0,PWM寄存器</span><br><span class="hljs-comment">//-----------------------------------</span><br><span class="hljs-comment">//        7 6 5 4   3 2   1    0   </span><br><span class="hljs-comment">//PCA_PWMn:- - - - | - - EPCnH EPCnL</span><br><span class="hljs-comment">//-----------------------------------</span><br>sfr CCAP1L=<span class="hljs-number">0xEB</span>;<br>sfr CCAP1H=<span class="hljs-number">0xFB</span>;<br>sfr CCAPM1=<span class="hljs-number">0xDB</span>;<br>sfr PCA_PWM1=<span class="hljs-number">0xF3</span>;<span class="hljs-comment">//</span><br>sbit CR=<span class="hljs-number">0xDE</span>;<span class="hljs-comment">//因为只有能和8整除的才能位寻址，所以能些0xDE，看起来有冲突，实际上不会。</span><br>sfr AUXR1=<span class="hljs-number">0xA2</span>;<span class="hljs-comment">//PWM引脚位置 串口2位置 双DPTR选择 AD转换结果存放方式调整 SPI位置调整</span><br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ini_T0</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span><br><span class="hljs-function"></span>&#123;<br>    TMOD=<span class="hljs-number">0x02</span>;<span class="hljs-comment">//T0方式2</span><br>    TH0=<span class="hljs-number">0xb2</span>; <span class="hljs-comment">//12MH时</span><br>    TL0=<span class="hljs-number">0xb2</span>;<br>    TR0=<span class="hljs-number">1</span>;<br>&#125;<br><br><span class="hljs-comment">//频率为50HZ 周期的1/50=0.02s,将0.02S分成256分：0.02/256=0.000078125S=0.078125ms</span><br><span class="hljs-comment">//0.078125为一份的时间 一共256份</span><br><span class="hljs-comment">//CCAP0L=223;CCAP0H=223;为2.5ms //243时约为1ms (0.9375)</span><br><span class="hljs-comment">//CCAP0L=249;CCAP0H=248;为0.5ms //236时为1.5ms (1.484375)</span><br>                                <span class="hljs-comment">//230为2ms (2.03125)</span><br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span><br><span class="hljs-function"></span>&#123;<br>   ini_T0();  <span class="hljs-comment">//方式2，0.078125ms溢出，每溢出一次CL加1</span><br>    CMOD=<span class="hljs-number">0x04</span>;<span class="hljs-comment">//定时器0溢出率作为时钟输入</span><br>    <span class="hljs-comment">//CIDL - - -  CPS2 CPS1 CPS0 ECF</span><br>    <span class="hljs-comment">//--------------------------------</span><br>    <span class="hljs-comment">//CIDL:计数阵列空闲控制，0时，空闲模式下PCA计数器继续工作；1时空闲模式PCA停止工作。</span><br>    <span class="hljs-comment">//----------------------------------------------</span><br>    <span class="hljs-comment">//CPS2 CPS1 CPS0: PCA计数脉冲选择</span><br>    <span class="hljs-comment">//000:系统时钟，FOSC/12</span><br>    <span class="hljs-comment">//001:系统时钟，FOSC/2</span><br>    <span class="hljs-comment">//010:定时器0的溢出，可实现可调频率PWM输出</span><br>    <span class="hljs-comment">//011:ECI/P3.4脚的外部时钟输入(最大速率FOSC/2)</span><br>    <span class="hljs-comment">//100:系统时钟,FOSC</span><br>    <span class="hljs-comment">//101:系统时钟/4,FOSC/4</span><br>    <span class="hljs-comment">//110:系统时钟/6,FOSC/6</span><br>    <span class="hljs-comment">//111:系统时钟/8,FOSC/8</span><br>    <span class="hljs-comment">//-----------------------------------------------</span><br>    <span class="hljs-comment">//ECF:PCA计数溢出中断使能:1时，使能寄存器CCON CF位的中断。0时禁止该功能。</span><br>    CL=<span class="hljs-number">0x00</span>;<span class="hljs-comment">//清零自由递增计数的16位定时器的值</span><br>    CH=<span class="hljs-number">0x00</span>;<span class="hljs-comment">//CH0为00  看结构图，CL前面是永远是0</span><br>  <br>    <span class="hljs-comment">//CCAP0L=223;//装入比较初值</span><br>    <span class="hljs-comment">//CCAP0H=223;</span><br>    PCA_PWM0=<span class="hljs-number">0x00</span>; <span class="hljs-comment">//EPC0H=0,EPC0L=0</span><br>    CCAPM0=<span class="hljs-number">0x42</span>;<span class="hljs-comment">//设置ECOM1=1,PWM1=1.</span><br>  <br>    <span class="hljs-comment">//CCAP1L=223;</span><br>    <span class="hljs-comment">//CCAP1H=223;</span><br>    PCA_PWM1=<span class="hljs-number">0x00</span>;<span class="hljs-comment">//EPC1H=0,EPC1L=0</span><br>    CCAPM1=<span class="hljs-number">0x42</span>;<span class="hljs-comment">//设置ECOM1=1,PWM1=1.</span><br>    CR=<span class="hljs-number">1</span>;<span class="hljs-comment">//CR=1,启动PCA阵列计数。  看151页，其中和CMOD的CIDL位有关，又和IDLE有关，看183页。</span><br>  <br>  <br>    <span class="hljs-comment">//AUXR1=0xc0;//PWM0从P1.3切换到P4.2</span><br>       <span class="hljs-comment">//PWM1从P1.4切换到P4.3</span><br>    <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)<br>    &#123;<br>    		<span class="hljs-comment">//========================两舵机停止，中位调节用</span><br>        CCAP0L=<span class="hljs-number">236</span>;<span class="hljs-comment">//装入比较初值</span><br>        CCAP0H=<span class="hljs-number">236</span>;<br>        CCAP1L=<span class="hljs-number">230</span>;<span class="hljs-comment">//装入比较初值</span><br>        CCAP1H=<span class="hljs-number">230</span>;<br>        <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>至于怎么调整pwm的高电平，修改上面CCAPXL和CCAPXH就可以了。是不是大功告成了呢？并没有！测试中我在示波器上发现，CCAPXH和CCAPXL的值每改变1，PWM高电平改变0.07ms左右。那么问题来了，在前面我提到过，360°舵机调速的区间，只有0.1ms(1.47-1.37=0.1），这个0.07，是可以让舵机实现正转反转，以及停止，但是没办法调速，循迹小车是需要控制车子两侧的轮子产生转速差来控制方向的，没法调速，就没法实现循迹。造成这个问题的原因是什么？8位的pwm模块，8位的pwm，上面程序中的注释中有这样一段:</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-comment">//频率为50HZ 周期的1/50=0.02s,将0.02S分成256分：0.02/256=0.000078125S=0.078125ms</span><br><br><span class="hljs-comment">//0.078125为一份的时间 一共256份</span><br></code></pre></div></td></tr></table></figure>
+
+<p>很清楚了吧！频率50HZ就是周期为20ms的PWM，8位的计数器，最大值是256，精度只能到0.07ms左右。</p>
+<h1 id="51单片机还能控制360°舵机吗？"><a href="#51单片机还能控制360°舵机吗？" class="headerlink" title="51单片机还能控制360°舵机吗？"></a>51单片机还能控制360°舵机吗？</h1><p>那么是不是51单片机控制不了360°舵机呢？当然还是可以控制的，关键要选择一款好芯片。我最终发现了<code>STC15W4K32S4</code>系列单片机，这个系列的芯片带6路15位的PWM波形发生器，也有16位的定时器，自动重装模式能够实现8~16位的PWM。真的挺服STC的产品线的，他还有一个STC15系列单片机，不带PWM波形发生器。我真以为它15打头的全系都不带PWM波形发生器。</p>
+<p>具体的程序在这里我就不列出来了，<code>STC15W4K32S4</code>自带pwm波形发生器的示例代码在<a target="_blank" rel="noopener" href="http://www.stcmcudata.com/datasheet/stc/STC-AD-PDF/STC15.pdf">官方文档</a>的1056页，自动重装模式实现8~16位PWM的示例代码在<a target="_blank" rel="noopener" href="http://www.stcmcudata.com/datasheet/stc/STC-AD-PDF/STC15.pdf">官方文档</a>的991页。</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-comment">//对于15位PWM波形发生器而言，频率为50HZ 周期的1/50=0.02s,将20ms分成32768份：20/32768≈0.0006ms</span><br><br><span class="hljs-comment">//0.0006为一份的时间 一共32768份</span><br></code></pre></div></td></tr></table></figure>
+
+<p>所以，15位的PWM波形发生器，精度足够生成能够控制舵机的PWM了。</p>
+<h1 id="舵机供电很重要"><a href="#舵机供电很重要" class="headerlink" title="舵机供电很重要"></a>舵机供电很重要</h1><p>前面所述，360°舵机的控制基本上能通过<code>STC15W4K32S4</code>系列单片机或者其他带15、16位PWM波形生成器的单片机解决，其实180°舵机相似，程序都是一样的。但是，尤其需要注意一下供电的问题，舵机要求的电压为6v-7.2v，你也许会发现5v其实舵机也能转，但是，低电压会带来很多未知的问题，比如舵机乱转，曾经有一段时间，我陷入舵机乱转的怪圈，我以为是我程序的问题，但是示波器显示没问题，以至于我以为是舵机坏了。实际上，是电池的问题，电池用的时间长了，电压不足，让舵机乱转。所以，建议使用航模sss电池，这个电池是11.2V的，使用降压模块，降成7.2v，给舵机供电，降成5v给单片机和传感器供电就行了。</p>
+<h1 id="尾巴（听我一句劝环节）"><a href="#尾巴（听我一句劝环节）" class="headerlink" title="尾巴（听我一句劝环节）"></a>尾巴（听我一句劝环节）</h1><p>其实，舵机的控制，很简单，保证硬件上供电的稳定，保证软件上，能输出稳定、精度够高的PWM就足够了。个人觉得，这里面最大的坑，莫过于我们学习单片机的过程中，资料太过老旧。我学习51单片机那会儿，教程中使用的STC89、90系列的单片机，速度慢、外设少、价格高。也许当你抱着学习的心态去对待，没有太大的问题。但我相信，能看到这里的我相信，大概率是都对机器人制作感兴趣，刚学单片机（51），然后舵机控制遇到了问题；大概率都是希望通过单片机这样一个工具，去实现自己的一些创意，去做一些小玩意儿出来的。<strong>这种情况下，一款老旧的芯片，会给你带来很多不必要的麻烦。</strong></p>
+<blockquote>
+<p>PWM这一个场景为例，就像文本所述，从STC90系列单片机到STC12系列单片机，单片机本身外设太差导致PWM的精度始终达不到要求。当我使用<code>STC15W4K32S4</code>让舵机稳定转起来的时候，心里面真的长舒一口气。当我学习STM32F103时，在示波器上看到无比精准的PWM时，除了吃惊，还有一点想笑，自己要是不学51单片机，直接用STM32，哪有这么多事？</p>
+</blockquote>
+<p>但，听我一句劝吧：<strong>作为电子设计的初学者，选择一个性能合适的芯片真的很重要。注意，我这里说的是合适。</strong>比如本文提到的舵机控制的场景：</p>
+<ul>
+<li>我们可以使用51单片机（<code>STC15W4K32S4</code>）实现，前提是，你真的吃透51单片机，看得懂数据手册上不同寄存器是啥意思，<code>STC15W4K32S4</code>能输出精度够用的PWM。</li>
+<li>我们可以使用arduino实现，那我们就不需要懂寄存器什么的，我们照着各种教程的程序，改一改就能实现，arduino能输出精度很够用的PWM。</li>
+<li>我们可以使用STM32库开发实现，前提是，我们起码知道怎么调库函数，各种库函数是在干什么，STM32能输出精度完美的PWM。</li>
+<li>我们可以使用STM32 HAL开发实现，配置一下功能，自动生成工程，稍微改动代码，就能实现，STM32能输出精度完美的PWM。</li>
+<li>我们可以使用Mbed开发实现，前提是你英文水平还行，起码看得懂英文文档，Mbed支持的ARM芯片能输出精度完美的PWM。</li>
+<li>我们可以使用树莓派实现。前提是你稍微掌握一点linux的基本知识，学一点python，甚至用C语言都能实现，树莓派能输出精度完美的PWM。</li>
+</ul>
+<p>跳出舒适圈，是一件很不容易的事儿，特别是抛弃自己学会的东西，去学一个新的东西。我自己在最初的学习过程中，十分畏惧新的东西，所以想在这里把自己的经验分享出来：</p>
+<ul>
+<li>arduino上手真的比51单片机容易，做个简单的项目真的比51单片机好用。</li>
+<li>STM32也没有想象中那么复杂，51单片机学习需要10天，STM32一个月也就会用了吧。</li>
+<li>树莓派没有什么上来就linux，听起来的那么复杂，linux和windows一样，就是个操作系统，我们在上面写程序跑就行了，python写代码比C语言简单多了。</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1/">电子设计</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1/%E5%85%B6%E4%BB%96/">其他</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%99%E7%A8%8B/">教程</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1/">电子设计</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本作品采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/c1d9e34b.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">今天想聊聊灰犀牛</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/11640910.html">
+                        <span class="hidden-mobile">给你的fluid主题加入一言吧！</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" rel="nofollow noopener"> <span> 本站由<img border="0" src="/img/upyun_logo6.png" srcset="/img/loading.gif"  width="80" height="25"/>提供对象存储服务 </span>  </a> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        陕ICP备18017214号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+    <!-- cnzz Analytics Icon -->
+    <span id="cnzz_stat_icon_1278912843" style="display: none"></span>
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+
+  
+    <script>
+      (function (window, document) {
+        var typing = Fluid.plugins.typing;
+        var title = document.getElementById('subtitle').title;
+        typing(title)
+      })(window, document);
+    </script>
+  
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4966387dd3693d431161872876fb1011";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- cnzz Analytics -->
+    <script defer src="//s4.cnzz.com/z_stat.php?id=1278912843&show=pic"
+            type="text/javascript"></script>
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

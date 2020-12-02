@@ -1,0 +1,591 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" type="image/png" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="分享各种电子设计DIY、物联网DIY、读书笔记、生活想法、流行钢琴、工作中遇到的问题（docker使用技巧、网络安全、python、网络协议）、博客建站技巧等等内容">
+  <meta name="author" content="scarleast">
+  <meta name="keywords" content="物联网">
+  <title>目睹有人在我面前倒下时，我在想什么 - 加菲猫的创客工坊</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_2145872_unckbjh4m8.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.gaficat.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"4966387dd3693d431161872876fb1011","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1278912843,"leancloud":{"app_id":"lY82cvb8vqSOls13F6jndxq3-gzGzoHsz","app_key":"uu7fyOEvPWmCOxtxNL6rlsGV","server_url":"https://ly82cvb8.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="加菲猫的创客工坊" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>加菲猫的创客工坊</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/aboutme/">
+                <i class="iconfont icon-user-fill"></i>
+                关于我
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+                rss
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="目睹有人在我面前倒下时，我在想什么">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-07-16 21:56" pubdate>
+        2020年7月16日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      24
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">目睹有人在我面前倒下时，我在想什么</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年9月16日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p><strong>你有想过在一米左右的距离，亲眼目睹有人在你面前倒下吗？</strong></p>
+<p>前几天，同事在群里分享了一个视频，是某互联网公司的程序员，倒在地上呻吟，旁边人在议论，到底打120还是怎么办，园区有没有医生。当时的感受是，一方面觉得IT行业的从业者压力真的很大，另一方面觉得人与人之间很冷漠，甚至都没有一个人扶起那个在地上呻吟的人。</p>
+<p>我在一家网络安全公司的研究部门工作，弹性工作制，每天打满9个小时卡就行了，没有KPI压力，没有领导的压力。所以，基本上在领导给的大方向内，有所产出即可，这就是我们的工作内容。至于如何完成工作，可以按照自己的想法，可以大家一起讨论请教，没有人强迫。所以，我个人始终很难理解，IT行业真的有那么多的代码要写吗？真的要每天加班到那么晚吗？我一直觉得身边的人，工作状态都很好，<strong>我真的没有想到，自己离视频里，目睹一个人在自己面前突然倒的场景这么近。</strong></p>
+<h1 id="那个男人倒下了"><a href="#那个男人倒下了" class="headerlink" title="那个男人倒下了"></a>那个男人倒下了</h1><p>我工作的地方，IT公司非常集中，最近天气预报一直有雨，没有办法骑自己的小摩托，这几天就只好坐公交通勤。公交一路开过去，会经过华为、阿里云、三星、中软国际等等IT或者外包企业。公交车上的人，有像我这样双肩包格子衫的IT男，也有露腰热裤精致包包的漂亮小姐姐。</p>
+<p>我一般喜欢在坐车的时候往车厢最后面走，因为最后面通常会有人下车，大概率会混到一个座。今天上班路上，如愿以偿，我又混到了一个座，一路上我都在发呆，“士不可以不弘毅啥意思来着？”、“坐而论道不如起而行之出处是什么？反正肯定不是王兴的饭否。”、“昨天那个问我iBeacon的少年，我不回他了吧，真是超级简单的问题啊，自己查查百度都能查到的，非要来问别人”。</p>
+<p>“扑通通”，突然挺闷几声异响瞬间打断了我的思绪，我甚至还没来得及聚集自己的目光，看清楚发生了什么，就只感觉前方的车厢开始骚动，定睛一看，我发现前方1米左右走廊的地上，侧卧着一个人，旁边的人很慌乱。</p>
+<blockquote>
+<p>侧卧的人，30岁左右，一件深蓝色工装外套，黑色工装裤，联想电脑包，银色眼镜，头发蓬乱，皮肤黝黑。没有呻吟，没有抽搐，就很安静的倒在走廊上。</p>
+</blockquote>
+<p>这时候旁边一个打扮清爽，五官清秀的男生没有丝毫犹豫，几乎是男人倒下的瞬间，马上反应了过来，一边示意周围人帮忙喊司机停车，一边弯下腰拍那个倒下男人的肩膀，确认他是否清醒，周围的人便大声呼喊司机停车。确认男人神智清醒后，那个男生和旁边的人一起，将男人扶起，坐到座位上，整个过程不到20秒。</p>
+<p>我就在不到一米左右距离的座位上，目睹了整个过程，没有做任何事，内心似乎没有一丝波澜，整件事跟我没有任何关系一样。我当时在想什么？我第一时间想到的是，夏天的公交司机，开车非常毛躁，估计是没站稳摔了一跤吧？肯定自己就爬起来了。见那个男人第一时间没起来，我又在想，是不是没吃早饭就急着赶车上班，低血糖晕了？该不会和前几天同事发的那个视频一样，突然就猝死吧？是不是要耽误很多时间啊？我是不是应该下车啊？我应不应该过去帮他啊？万一他出事了，他的家人讹我咋办？</p>
+<h1 id="怎么搞成这个样子了"><a href="#怎么搞成这个样子了" class="headerlink" title="怎么搞成这个样子了"></a>怎么搞成这个样子了</h1><p>我不知道自己为什么突然就变成了一个这么冷漠的人。我想起了自己小时候的两件事。</p>
+<blockquote>
+<p>有一天和父亲回家，前方两三米的地方，眼睁睁就看着一个老大爷从站着，到身子一点点向后倾斜，最后一屁股就从马路牙子上倒在了马路上。父亲当时想都没有想，拉着我就去扶老爷爷起来，那个老爷爷面容慈祥，满头银丝，扶起他我记得花了挺大的力气。扶老爷爷坐在路旁后，我们问他用不用打120，老爷爷说不用，自己坐一会儿缓缓就行了。确认老爷爷没有大碍后，我和父亲就离开了，父亲说：“你认识那个老爷爷吗？他是我们家属院的XXX，可能刚才没站稳吧。本身认识加上那个老爷爷平时身体不错，所以爸爸才没有犹豫，带你去扶他。”</p>
+</blockquote>
+<blockquote>
+<p>我记得还有一次，那是一个夏天的傍晚，我和父母去江边遛弯，回家的路上，看到路边趴着一个流浪的老妪。夏天的闷热，我们穿着短袖短裤都难以忍耐，但那个老妪却裹着厚厚棉袄（那件满是破洞的棉袄，棉花都看不出白色了）。傍晚光线昏暗，加上她黑黑的皮肤和脏臭的衣服混在一起，根本分不清头发、脸庞和身子。我记得当时还挺害怕的，就想快点走开，这时候父母拉住了我，说我们要帮帮她。于是我去不远的小卖部买了牛奶和面包（花的是我自己的私房钱，因为做好事，虽然花自己的前，但我也可开心了），店员问我为什么买牛奶面包，我说那边有个老奶奶饿的走不动了，我想帮她。我把牛奶面包买回来便递给父母，觉得自己任务完成了，我还是很怕那个老妪，但父母说：“你自己去拿给那个老奶奶，我们在你后面看着你，你很安全。”我没办法，只能壮着胆子去。我故作镇定走过去，把牛奶面包放到那个老奶奶面前，拔腿就想跑，全程只看着她前方的地面，不敢看她长什么样子。她看到我们拿来了吃的，说了句不知道是哪的方言，我知道那是谢谢。</p>
+<p>最后她似乎连拿起食物，撕开包装的力气都没有，我也没有管那么多，只是觉得自己任务完成了，一身轻，马上就跑开了。</p>
+<p>其实，我现在想起这件事，我意识到一件很荒唐的事情，那个老妪的对面，就是我们当地一家非常不错的医院，就在街对面。一条街，一边是医院灯火通明的高楼；另一边是光线昏暗的拆迁区，一个夏天裹着棉袄的流浪老妪没有人管。</p>
+</blockquote>
+<p>所以，我从小受到的教育，都是竭尽自己的所能去帮助别人，一直以来，我也都是那么做的。但不知不觉，我的世界观就被改变了，媒体大肆报道某某学生帮助老人反被讹，慢慢让你就对这个世界失望，不敢去做正确的事情了。父母，恋人，逐渐也都说，“你别去给别人添乱，保护好自己就行了，别管别人的事。”</p>
+<p>我真的一直有一个帮助别人的心，我记得上大学那会儿，我还花了几千块，参加学校急救的培训。手机里那张我被同伴练手，胳膊榜上绷带挂了彩，我自己还开心的不行的照片不知道还找不找得到了。我印象很深的是，老师在教授每个技能的时候，首先都是告诉我们，<strong>先保护好自己，再去救人</strong>。比如确认一个人是不是还活着，要去摸脉搏，这个时候不能直接从正面上手，抓着脖子摸。而是握拳，伸出食指和中指，用指腹贴到被救人靠近你自己这一侧的脖子上。为什么不贴到另一侧，因为一旦被人从正面拍到，你的手势极有可能被认为是在掐被救人的脖子，你自己知道你是在摸脉搏，但是你解释不清楚。</p>
+<h1 id="尾巴"><a href="#尾巴" class="headerlink" title="尾巴"></a>尾巴</h1><p>我真的希望自己做一个很纯粹的人，像那个长相清秀的男生一样，遇到需要帮助的人毫不犹豫。但，也许我变了吧，当你掌握了急救的技巧，拿了证书，真遇到了事，却并不敢去救人，想到的全是自保，真的是一件很痛苦的事。</p>
+<p>那个30岁的男人，背后是妻子，孩子，四个老人。大概率他的父母、妻子、孩子不会知道自己的儿子、丈夫、父亲今天上班突然倒下了。他回家可能依然会说：</p>
+<ul>
+<li>爸妈，我很好，工作虽然辛苦，但是薪水还行。</li>
+<li>老婆，我很好，发奖金了给你买喜欢的那件连衣裙。</li>
+<li>儿子，我很好，好好学习（长大像你爸一样当程序员然后猝死），爸爸给你买PS4。</li>
+</ul>
+<p>越来越多的男人，就在我们眼前没有征兆倒下了，这是行业的悲哀还是这代人的悲哀？</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%94%9F%E6%B4%BB/">生活</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本作品采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/f471d42d.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">concurrent和requests的那些坑</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/4de16deb.html">
+                        <span class="hidden-mobile">大学的那些老师们</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" rel="nofollow noopener"> <span> 本站由<img border="0" src="/img/upyun_logo6.png" srcset="/img/loading.gif"  width="80" height="25"/>提供对象存储服务 </span>  </a> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        陕ICP备18017214号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+    <!-- cnzz Analytics Icon -->
+    <span id="cnzz_stat_icon_1278912843" style="display: none"></span>
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+
+  
+    <script>
+      (function (window, document) {
+        var typing = Fluid.plugins.typing;
+        var title = document.getElementById('subtitle').title;
+        typing(title)
+      })(window, document);
+    </script>
+  
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4966387dd3693d431161872876fb1011";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- cnzz Analytics -->
+    <script defer src="//s4.cnzz.com/z_stat.php?id=1278912843&show=pic"
+            type="text/javascript"></script>
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

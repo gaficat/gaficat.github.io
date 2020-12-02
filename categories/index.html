@@ -1,0 +1,1424 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" type="image/png" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="分享各种电子设计DIY、物联网DIY、读书笔记、生活想法、流行钢琴、工作中遇到的问题（docker使用技巧、网络安全、python、网络协议）、博客建站技巧等等内容">
+  <meta name="author" content="scarleast">
+  <meta name="keywords" content="物联网">
+  <title>分类 - 加菲猫的创客工坊</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_2145872_unckbjh4m8.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.gaficat.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"4966387dd3693d431161872876fb1011","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1278912843,"leancloud":{"app_id":"lY82cvb8vqSOls13F6jndxq3-gzGzoHsz","app_key":"uu7fyOEvPWmCOxtxNL6rlsGV","server_url":"https://ly82cvb8.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="加菲猫的创客工坊" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 60vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>加菲猫的创客工坊</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/aboutme/">
+                <i class="iconfont icon-user-fill"></i>
+                关于我
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+                rss
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="分类">
+              
+            </span>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+
+
+
+
+
+<div class="category-list">
+  
+  
+  
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-cki7489g4002l3t668qk7bax9" role="tab" data-toggle="collapse" href="#collapse-cki7489g4002l3t668qk7bax9"
+        aria-expanded="false"
+      >
+        音乐
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E9%9F%B3%E4%B9%90/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>15</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cki7489g4002l3t668qk7bax9" class="collapse in " role="tabpanel"
+       aria-labelledby="heading-cki7489g4002l3t668qk7bax9">
+    
+  
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-cki7489gw004h3t66hp4qgkgh" role="tab" data-toggle="collapse" href="#collapse-cki7489gw004h3t66hp4qgkgh"
+        aria-expanded="false"
+      >
+        乐理
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E9%9F%B3%E4%B9%90/%E4%B9%90%E7%90%86/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>12</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cki7489gw004h3t66hp4qgkgh" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-cki7489gw004h3t66hp4qgkgh">
+    
+    
+    
+      
+      
+        <a href="/posts/bac5f5bf.html" class="list-group-item list-group-item-action">
+          <span class="category-post">大调和小调，你还可以这样理解</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/e4dcbcaf.html" class="list-group-item list-group-item-action">
+          <span class="category-post">学乐器不是为了成为人体播放器！</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/e20e9539.html" class="list-group-item list-group-item-action">
+          <span class="category-post">加菲猫的乐理学习笔记(番外)——李永乐老师讲十二平均律</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/fa606a56.html" class="list-group-item list-group-item-action">
+          <span class="category-post">加菲猫的乐理学习笔记（八）——五线谱</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1b7ce566.html" class="list-group-item list-group-item-action">
+          <span class="category-post">加菲猫的乐理学习笔记（七）——等音</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/5b849aee.html" class="list-group-item list-group-item-action">
+          <span class="category-post">加菲猫的乐理学习笔记（六）——半音和全音</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/6a7cc86b.html" class="list-group-item list-group-item-action">
+          <span class="category-post">加菲猫的乐理学习笔记（五）——音域与音区</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1e3479cf.html" class="list-group-item list-group-item-action">
+          <span class="category-post">加菲猫的乐理学习笔记（四）——音的分组</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/8ad7360b.html" class="list-group-item list-group-item-action">
+          <span class="category-post">加菲猫的乐理学习笔记（三）——乐音体系，音列，音级</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3c8b96ad.html" class="list-group-item list-group-item-action">
+          <span class="category-post">加菲猫的乐理学习笔记（二）——什么是音？</span>
+        </a>
+      
+    
+      
+      
+        <a href="/categories/%E9%9F%B3%E4%B9%90/%E4%B9%90%E7%90%86/" class="list-group-item list-group-item-action">
+          <span class="category-post">More...</span>
+        </a>
+        
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-cki7489gv004d3t66d3de5nl8" role="tab" data-toggle="collapse" href="#collapse-cki7489gv004d3t66d3de5nl8"
+        aria-expanded="false"
+      >
+        演奏
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E9%9F%B3%E4%B9%90/%E6%BC%94%E5%A5%8F/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>3</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cki7489gv004d3t66d3de5nl8" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-cki7489gv004d3t66d3de5nl8">
+    
+    
+    
+      
+      
+        <a href="/posts/f84feb0d.html" class="list-group-item list-group-item-action">
+          <span class="category-post">加菲猫的钢琴演奏——《樱之四月》</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/34782d87.html" class="list-group-item list-group-item-action">
+          <span class="category-post">加菲猫的钢琴演奏——《FT.ISLAND LOVE LOVE LOVE》</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/a13a5c78.html" class="list-group-item list-group-item-action">
+          <span class="category-post">加菲猫的钢琴演奏-《花的微笑》</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-cki7489f400083t66dtz2guvl" role="tab" data-toggle="collapse" href="#collapse-cki7489f400083t66dtz2guvl"
+        aria-expanded="false"
+      >
+        教程
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E6%95%99%E7%A8%8B/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>13</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cki7489f400083t66dtz2guvl" class="collapse in " role="tabpanel"
+       aria-labelledby="heading-cki7489f400083t66dtz2guvl">
+    
+  
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-cki7489h6005x3t662uvm20az" role="tab" data-toggle="collapse" href="#collapse-cki7489h6005x3t662uvm20az"
+        aria-expanded="false"
+      >
+        其他
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E6%95%99%E7%A8%8B/%E5%85%B6%E4%BB%96/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>3</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cki7489h6005x3t662uvm20az" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-cki7489h6005x3t662uvm20az">
+    
+    
+    
+      
+      
+        <a href="/posts/e857ecd7.html" class="list-group-item list-group-item-action">
+          <span class="category-post">用telegram订阅twitter</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1d5c6ccb.html" class="list-group-item list-group-item-action">
+          <span class="category-post">记录chrome禁止cookie导致无法显示iframe的问题</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/8e6e40dc.html" class="list-group-item list-group-item-action">
+          <span class="category-post">mac安装百度Python SDK的坑</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-cki7489h600613t66fulkgbdg" role="tab" data-toggle="collapse" href="#collapse-cki7489h600613t66fulkgbdg"
+        aria-expanded="false"
+      >
+        python
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E6%95%99%E7%A8%8B/python/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>2</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cki7489h600613t66fulkgbdg" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-cki7489h600613t66fulkgbdg">
+    
+    
+    
+      
+      
+        <a href="/posts/f471d42d.html" class="list-group-item list-group-item-action">
+          <span class="category-post">concurrent和requests的那些坑</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/7bb972e7.html" class="list-group-item list-group-item-action">
+          <span class="category-post">python计算日期相差几年几月几日</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-cki7489hk007t3t66f7fg9f2f" role="tab" data-toggle="collapse" href="#collapse-cki7489hk007t3t66f7fg9f2f"
+        aria-expanded="false"
+      >
+        hexo
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E6%95%99%E7%A8%8B/hexo/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>2</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cki7489hk007t3t66f7fg9f2f" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-cki7489hk007t3t66f7fg9f2f">
+    
+    
+    
+      
+      
+        <a href="/posts/11640910.html" class="list-group-item list-group-item-action">
+          <span class="category-post">给你的fluid主题加入一言吧！</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/353df0b0.html" class="list-group-item list-group-item-action">
+          <span class="category-post">给你的hexo插入音乐视频</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-cki7489h100583t66hs4u6uim" role="tab" data-toggle="collapse" href="#collapse-cki7489h100583t66hs4u6uim"
+        aria-expanded="false"
+      >
+        npm
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E6%95%99%E7%A8%8B/npm/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cki7489h100583t66hs4u6uim" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-cki7489h100583t66hs4u6uim">
+    
+    
+    
+      
+      
+        <a href="/posts/b1e6cb6b.html" class="list-group-item list-group-item-action">
+          <span class="category-post">解决安装全局npm包提示权限错误</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-cki7489h3005i3t66c47jhiz3" role="tab" data-toggle="collapse" href="#collapse-cki7489h3005i3t66c47jhiz3"
+        aria-expanded="false"
+      >
+        typora
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E6%95%99%E7%A8%8B/typora/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cki7489h3005i3t66c47jhiz3" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-cki7489h3005i3t66c47jhiz3">
+    
+    
+    
+      
+      
+        <a href="/posts/6f888707.html" class="list-group-item list-group-item-action">
+          <span class="category-post">Typora自定义命令自动上传图片</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-cki7489ha006f3t66czh84koq" role="tab" data-toggle="collapse" href="#collapse-cki7489ha006f3t66czh84koq"
+        aria-expanded="false"
+      >
+        小技巧
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E6%95%99%E7%A8%8B/%E5%B0%8F%E6%8A%80%E5%B7%A7/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cki7489ha006f3t66czh84koq" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-cki7489ha006f3t66czh84koq">
+    
+    
+    
+      
+      
+        <a href="/posts/50ccaf37.html" class="list-group-item list-group-item-action">
+          <span class="category-post">通过SSH客户端配置文件管理多个秘钥</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-cki7489hc006q3t664meubo83" role="tab" data-toggle="collapse" href="#collapse-cki7489hc006q3t664meubo83"
+        aria-expanded="false"
+      >
+        docker
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E6%95%99%E7%A8%8B/docker/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cki7489hc006q3t664meubo83" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-cki7489hc006q3t664meubo83">
+    
+    
+    
+      
+      
+        <a href="/posts/4e31e6d1.html" class="list-group-item list-group-item-action">
+          <span class="category-post">如何将docker容器打包成镜像？</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-cki7489hr008m3t66gxqg2kpk" role="tab" data-toggle="collapse" href="#collapse-cki7489hr008m3t66gxqg2kpk"
+        aria-expanded="false"
+      >
+        树莓派
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E6%95%99%E7%A8%8B/%E6%A0%91%E8%8E%93%E6%B4%BE/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cki7489hr008m3t66gxqg2kpk" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-cki7489hr008m3t66gxqg2kpk">
+    
+    
+    
+      
+      
+        <a href="/posts/e19723e0.html" class="list-group-item list-group-item-action">
+          <span class="category-post">只有一根电源线？照样玩转树莓派Zero W！</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-cki7489if009a3t66ge2gao2a" role="tab" data-toggle="collapse" href="#collapse-cki7489if009a3t66ge2gao2a"
+        aria-expanded="false"
+      >
+        语雀
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E6%95%99%E7%A8%8B/%E8%AF%AD%E9%9B%80/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cki7489if009a3t66ge2gao2a" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-cki7489if009a3t66ge2gao2a">
+    
+    
+    
+      
+      
+        <a href="/posts/ff5ccbe6.html" class="list-group-item list-group-item-action">
+          <span class="category-post">语雀webhook的那些坑</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-cki7489fn00163t660u6b5rjw" role="tab" data-toggle="collapse" href="#collapse-cki7489fn00163t660u6b5rjw"
+        aria-expanded="false"
+      >
+        生活
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E7%94%9F%E6%B4%BB/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>13</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cki7489fn00163t660u6b5rjw" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-cki7489fn00163t660u6b5rjw">
+    
+    
+    
+      
+      
+        <a href="/posts/40abbf69.html" class="list-group-item list-group-item-action">
+          <span class="category-post">工作快满三年的那些惑</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/a1558b50.html" class="list-group-item list-group-item-action">
+          <span class="category-post">目睹有人在我面前倒下时，我在想什么</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4de16deb.html" class="list-group-item list-group-item-action">
+          <span class="category-post">大学的那些老师们</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/ab4902bc.html" class="list-group-item list-group-item-action">
+          <span class="category-post">看到蜘蛛人，我想到了什么</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/a02d6da.html" class="list-group-item list-group-item-action">
+          <span class="category-post">幺舅是怎么追到舅妈的</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/ee24dc2e.html" class="list-group-item list-group-item-action">
+          <span class="category-post">当你老了，又成了谁的累赘</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/fe8f873c.html" class="list-group-item list-group-item-action">
+          <span class="category-post">转来转去还是我还在社会底层</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/e52727ba.html" class="list-group-item list-group-item-action">
+          <span class="category-post">有些时候我挺羡慕会喝酒的人</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/e3103cd3.html" class="list-group-item list-group-item-action">
+          <span class="category-post">我们怎么变成这样了</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/74eee304.html" class="list-group-item list-group-item-action">
+          <span class="category-post">迷惘的26岁</span>
+        </a>
+      
+    
+      
+      
+        <a href="/categories/%E7%94%9F%E6%B4%BB/" class="list-group-item list-group-item-action">
+          <span class="category-post">More...</span>
+        </a>
+        
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-cki7489hc006u3t66bkql7gk7" role="tab" data-toggle="collapse" href="#collapse-cki7489hc006u3t66bkql7gk7"
+        aria-expanded="false"
+      >
+        电子设计
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>6</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cki7489hc006u3t66bkql7gk7" class="collapse in " role="tabpanel"
+       aria-labelledby="heading-cki7489hc006u3t66bkql7gk7">
+    
+  
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-cki7489hp008e3t66dq0v89vh" role="tab" data-toggle="collapse" href="#collapse-cki7489hp008e3t66dq0v89vh"
+        aria-expanded="false"
+      >
+        其他
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1/%E5%85%B6%E4%BB%96/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>3</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cki7489hp008e3t66dq0v89vh" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-cki7489hp008e3t66dq0v89vh">
+    
+    
+    
+      
+      
+        <a href="/posts/5d933848.html" class="list-group-item list-group-item-action">
+          <span class="category-post">如何用51单片机控制舵机加减速</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/edbd28cc.html" class="list-group-item list-group-item-action">
+          <span class="category-post">总是忘打卡？用iBeacon提醒你！</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/bb4e922e.html" class="list-group-item list-group-item-action">
+          <span class="category-post">甲醛熏得人头痛？我做了一个TVOC传感器</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-cki7489hq008g3t666gvs60lw" role="tab" data-toggle="collapse" href="#collapse-cki7489hq008g3t666gvs60lw"
+        aria-expanded="false"
+      >
+        Mbed
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1/Mbed/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>2</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cki7489hq008g3t666gvs60lw" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-cki7489hq008g3t666gvs60lw">
+    
+    
+    
+      
+      
+        <a href="/posts/6b047738.html" class="list-group-item list-group-item-action">
+          <span class="category-post">Mbed OS 6踩坑手册——全新串口API</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/ee759d6d.html" class="list-group-item list-group-item-action">
+          <span class="category-post">Mbed——我心中完美物联网OS</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category-sub row">
+      <a
+        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-cki7489hp008b3t6682s9ftop" role="tab" data-toggle="collapse" href="#collapse-cki7489hp008b3t6682s9ftop"
+        aria-expanded="false"
+      >
+        树莓派
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1/%E6%A0%91%E8%8E%93%E6%B4%BE/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cki7489hp008b3t6682s9ftop" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-cki7489hp008b3t6682s9ftop">
+    
+    
+    
+      
+      
+        <a href="/posts/e19723e0.html" class="list-group-item list-group-item-action">
+          <span class="category-post">只有一根电源线？照样玩转树莓派Zero W！</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-cki7489ff000p3t66dtv28eil" role="tab" data-toggle="collapse" href="#collapse-cki7489ff000p3t66dtv28eil"
+        aria-expanded="false"
+      >
+        奇怪的知识
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E5%A5%87%E6%80%AA%E7%9A%84%E7%9F%A5%E8%AF%86/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>3</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cki7489ff000p3t66dtv28eil" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-cki7489ff000p3t66dtv28eil">
+    
+    
+    
+      
+      
+        <a href="/posts/c1d9e34b.html" class="list-group-item list-group-item-action">
+          <span class="category-post">今天想聊聊灰犀牛</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1a376f79.html" class="list-group-item list-group-item-action">
+          <span class="category-post">生活的意义？我想聊聊IKIGAI</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/dbafe1be.html" class="list-group-item list-group-item-action">
+          <span class="category-post">你打算怎么给你儿子取名字呢？</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-cki7489gy004s3t664bsqeyaa" role="tab" data-toggle="collapse" href="#collapse-cki7489gy004s3t664bsqeyaa"
+        aria-expanded="false"
+      >
+        读书笔记
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>2</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cki7489gy004s3t664bsqeyaa" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-cki7489gy004s3t664bsqeyaa">
+    
+    
+    
+      
+      
+        <a href="/posts/359102a1.html" class="list-group-item list-group-item-action">
+          <span class="category-post">《飞升与落地》读书笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/11dbcd5f.html" class="list-group-item list-group-item-action">
+          <span class="category-post">《高高举起，轻轻放下》-读书笔记</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-cki7489fc000k3t6623936pwc" role="tab" data-toggle="collapse" href="#collapse-cki7489fc000k3t6623936pwc"
+        aria-expanded="false"
+      >
+        关于
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E5%85%B3%E4%BA%8E/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cki7489fc000k3t6623936pwc" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-cki7489fc000k3t6623936pwc">
+    
+    
+    
+      
+      
+        <a href="/posts/62a44034.html" class="list-group-item list-group-item-action">
+          <span class="category-post">关于本站</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-cki7489hh007i3t6611tb8ir1" role="tab" data-toggle="collapse" href="#collapse-cki7489hh007i3t6611tb8ir1"
+        aria-expanded="false"
+      >
+        网络安全
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-cki7489hh007i3t6611tb8ir1" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-cki7489hh007i3t6611tb8ir1">
+    
+    
+    
+      
+      
+        <a href="/posts/f03c6789.html" class="list-group-item list-group-item-action">
+          <span class="category-post">物联网僵尸网络使用nc建立反向shell</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" rel="nofollow noopener"> <span> 本站由<img border="0" src="/img/upyun_logo6.png" srcset="/img/loading.gif"  width="80" height="25"/>提供对象存储服务 </span>  </a> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        陕ICP备18017214号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+    <!-- cnzz Analytics Icon -->
+    <span id="cnzz_stat_icon_1278912843" style="display: none"></span>
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+
+  
+    <script>
+      (function (window, document) {
+        var typing = Fluid.plugins.typing;
+        var title = document.getElementById('subtitle').title;
+        typing(title)
+      })(window, document);
+    </script>
+  
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4966387dd3693d431161872876fb1011";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- cnzz Analytics -->
+    <script defer src="//s4.cnzz.com/z_stat.php?id=1278912843&show=pic"
+            type="text/javascript"></script>
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

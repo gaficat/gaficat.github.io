@@ -1,0 +1,657 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" type="image/png" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="分享各种电子设计DIY、物联网DIY、读书笔记、生活想法、流行钢琴、工作中遇到的问题（docker使用技巧、网络安全、python、网络协议）、博客建站技巧等等内容">
+  <meta name="author" content="scarleast">
+  <meta name="keywords" content="物联网">
+  <title>给你的fluid主题加入一言吧！ - 加菲猫的创客工坊</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_2145872_unckbjh4m8.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.gaficat.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"4966387dd3693d431161872876fb1011","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1278912843,"leancloud":{"app_id":"lY82cvb8vqSOls13F6jndxq3-gzGzoHsz","app_key":"uu7fyOEvPWmCOxtxNL6rlsGV","server_url":"https://ly82cvb8.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="加菲猫的创客工坊" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>加菲猫的创客工坊</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/aboutme/">
+                <i class="iconfont icon-user-fill"></i>
+                关于我
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+                rss
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="给你的fluid主题加入一言吧！">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-09-27 20:41" pubdate>
+        2020年9月27日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      54
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">给你的fluid主题加入一言吧！</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年9月27日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>你是否想过，在别人访问你网站的时候，能动态的展示一句话呢？这句话可能是根据访客的地理位置、时间、天气返回的诗句，可能是网抑云上生而为人我很抱歉的评论？本篇文章介绍了如何给hexo的fluid主题的打字机特效插入Hitokoto和今日诗词，实现上面效果。</p>
+<a id="more"></a>
+
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>你是否想过，在别人访问你网站的时候，能动态的展示一句话呢？这句话可能是根据访客的地理位置、时间、天气返回的诗句，可能是网抑云上生而为人我很抱歉的评论？本文介绍的<a target="_blank" rel="noopener" href="https://hitokoto.cn/">Hitokoto</a>和<a target="_blank" rel="noopener" href="https://www.jinrishici.com/">今日诗词</a>（这俩玩意儿在本文的后续中就称作<strong>一言</strong>吧），就是干这个事儿的。</p>
+<p>一言的API，实际上是提供了一个JavaScript脚本，向网页html文件中的某个位置插入这个JavaScript脚本，就会在用户访问页面的时候自动调用，获取相应的语句并显示出来。之前，我网站的主题没有什么动态效果，副标题是直接显示的，所以我简单看了一下主题的源码，在副标题的位置很顺利插入了<a target="_blank" rel="noopener" href="https://www.jinrishici.com/">今日诗词</a>。但我最近给hexo更换了新的主题（<a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid">fluid</a>），这个主题的是自带打字机特效的（就是像打字一样，把一串文本一个一个显示出来），副标题的显示本身就是通过一个JavaScript脚本实现的，在一个JavaScript脚本中，就没办法直接插入一言提供的JavaScript脚本了。</p>
+<p>本篇文章介绍了如何给hexo的fluid主题的打字机特效（打字机特效就是下面这个动图显示的效果），插入一言，先来看一下效果吧~</p>
+<div id="mmedia-iaINbMCi"></div><script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
+      <script>
+        var dp_iaINbMCi = new DPlayer({
+            container: document.getElementById('mmedia-iaINbMCi'),
+            autoplay: false,
+            theme: '#b7daff',
+            loop: false,
+            lang: navigator.language,
+            screenshot: false,
+            hotkey: true,
+            preload: 'auto',
+            logo: '',
+            volume: 0.7,
+            mutex: true,
+            video: { url: 'https://pic.gaficat.com/default/%E6%89%93%E5%AD%97%E6%9C%BA%E4%B8%80%E8%A8%80%E6%95%88%E6%9E%9C.mov', pic: '', thumbnails: '', type: 'auto'},
+            
+            
+            contextmenu: [{text: 'hexo-tag-mmedia', link: 'https://github.com/MonoLogueChi/hexo-tag-mmedia'}],
+            highlight: [],
+            undefined
+        });
+        dp_iaINbMCi.on("fullscreen", function () { if (/Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) { screen.orientation.lock("landscape"); }});
+        
+      </script>
+        
+
+<p>当然啦，也可以直接访问本站的<a href="https://www.gaficat.com/">首页</a>，查看实际的效果：随机调用<a target="_blank" rel="noopener" href="https://hitokoto.cn/">Hitokoto</a>和<a target="_blank" rel="noopener" href="https://www.jinrishici.com/">今日诗词</a>其中一个显示副标题。</p>
+<h1 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h1><h2 id="JS脚本不能插入另一个JS脚本"><a href="#JS脚本不能插入另一个JS脚本" class="headerlink" title="JS脚本不能插入另一个JS脚本"></a>JS脚本不能插入另一个JS脚本</h2><p>我完全不懂前端，一点不会JavaScript，所以一开始的想法是，在原来打字机特效的JavaScript脚本里面插入一言的JavaScript脚本不就行了？我也不改代码啥的，对吧！然而，这样肯定是不行的。</p>
+<p>首先，一个JavaScript脚本在html里面的格式如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">&lt;script&gt;<br>alert(<span class="hljs-string">&quot;我的第一个 JavaScript&quot;</span>);<br>&lt;/script&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p>那么下面这样的格式肯定是有问题的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">&lt;script&gt;<br>    &lt;script&gt;alert(<span class="hljs-string">&quot;这是一言的JavaScript&quot;</span>);&lt;/script&gt;<br>    alert(<span class="hljs-string">&quot;这是打字机特效的JavaScript&quot;</span>);<br>&lt;/script&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p>那咋样是允许的呢？下面这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">&lt;script&gt;<br>  alert(<span class="hljs-string">&quot;这是一言的JavaScript&quot;</span>);<br>&lt;/script&gt;<br><br>&lt;script&gt;<br>  alert(<span class="hljs-string">&quot;我的打字机特效的JavaScript&quot;</span>);<br>&lt;/script&gt;<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="全局变量咋共享？"><a href="#全局变量咋共享？" class="headerlink" title="全局变量咋共享？"></a>全局变量咋共享？</h2><p>按照上一小节说的，JavaScript允许的格式，是一言的JavaScript和打字机特效的JavaScript并列各自运行。那这两个JavaScript显示内容的逻辑是什么样的？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">&lt;script&gt;<br>  alert(<span class="hljs-string">&quot;这是一言的JavaScript&quot;</span>);<br>    alert(<span class="hljs-string">&quot;我先获取今日随机的一句话&quot;</span>);<br>    alert(<span class="hljs-string">&quot;我获取到随机的一句话了，现在我显示这个内容&quot;</span>);<br>&lt;/script&gt;<br><br>&lt;script&gt;<br>  alert(<span class="hljs-string">&quot;这是打字机特效的JavaScript&quot;</span>);<br>    alert(<span class="hljs-string">&quot;我设置要显示的内容为副标题&quot;</span>);<br>    alert(<span class="hljs-string">&quot;现在我显示相关内容&quot;</span>);<br>&lt;/script&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p>那这样搞，打字机是动态显示的，一言是静态直接显示内容的，这不就乱套了吗？能不能先把一言的JavaScript脚本跑一遍，然后获取到的结果存到一个全局变量里面，最后打字机特效的JavaScript脚本里面用这个全局变量不就行了嘛？逻辑就是下面这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> global_somthing=<span class="hljs-string">&quot;&quot;</span>;<br>&lt;script&gt;<br>  alert(<span class="hljs-string">&quot;这是一言的JavaScript&quot;</span>);<br>    alert(<span class="hljs-string">&quot;我先获取今日随机的一句话&quot;</span>);<br>    alert(<span class="hljs-string">&quot;我把global_somthing赋值为刚才获取到的一句话&quot;</span>);<br>&lt;/script&gt;<br><br>&lt;script&gt;<br>  alert(<span class="hljs-string">&quot;接下来是打字机特效的JavaScript的内容&quot;</span>);<br>    alert(<span class="hljs-string">&quot;我把要显示的内容设为global_somthing变量&quot;</span>);<br>  alert(<span class="hljs-string">&quot;现在我开始动态显示&quot;</span>);<br>&lt;/script&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p>然而，理想很丰满，现实很残酷，一言提供的JavaScript脚本，是直接在脚本里面显示结果的，<strong>我暂时没有找到办法，实现上面的逻辑，把一言JavaScript脚本获取到的结果，存到一个全局变量里面，给打字机特效的JavaScript使用。</strong></p>
+<blockquote>
+<p>这里我是真不懂，有大神可以指正哈。我感觉，不同JavaScript脚本之间的关系，不像python上不同的函数的关系，它更像是不同python文件各自跑起来之间的关系，是在不同的进程中的，他们之间的变量要共享，也许有办法，但是我这种小白肯定是没辙了。</p>
+</blockquote>
+<h2 id="Hitokoto终于搞定"><a href="#Hitokoto终于搞定" class="headerlink" title="Hitokoto终于搞定"></a>Hitokoto终于搞定</h2><p>Hitokoto提供的JavaScript逻辑是这样的:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">&lt;script&gt;<br>    alert(<span class="hljs-string">&quot;这是Hitokoto的JavaScript&quot;</span>);<br>    alert(<span class="hljs-string">&quot;我先通过http获取随机的一句话&quot;</span>);<br>    alert(<span class="hljs-string">&quot;现在我显示global_somthing的内容&quot;</span>);<br>&lt;/script&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p>所以我想，打字机的特效是一个JavaScript，一言也是JavaScript，我给他们整合到一起不就成了？逻辑就是下面这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">&lt;script&gt;<br>  alert(<span class="hljs-string">&quot;这是我们整合的JavaScript&quot;</span>);<br>  <span class="hljs-keyword">var</span> global_somthing=<span class="hljs-string">&quot;&quot;</span>;<br><br>    alert(<span class="hljs-string">&quot;接下来是Hitokoto JavaScript的内容&quot;</span>);<br>    alert(<span class="hljs-string">&quot;我先通过http获取随机的一句话&quot;</span>);<br>    alert(<span class="hljs-string">&quot;我把global_somthing赋值为刚才获取到的一句话&quot;</span>);<br><br>  alert(<span class="hljs-string">&quot;接下来是打字机特效的JavaScript的内容&quot;</span>);<br>    alert(<span class="hljs-string">&quot;我把要显示的内容设为global_somthing变量&quot;</span>);<br>  alert(<span class="hljs-string">&quot;现在我开始动态显示&quot;</span>);<br>&lt;/script&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p>结果当然是可行的，没有任何问题。</p>
+<h2 id="今日诗词终于搞定"><a href="#今日诗词终于搞定" class="headerlink" title="今日诗词终于搞定"></a>今日诗词终于搞定</h2><p>那只使用Hitokoto感觉挺亏的，毕竟今日诗词提供的内容也挺棒的，也把今日诗词做一波整合呗？今日诗词的JavaScript逻辑是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">&lt;script&gt;<br>  alert(<span class="hljs-string">&quot;这是今日诗词的JavaScript&quot;</span>);<br>    alert(<span class="hljs-string">&quot;我定义了一大堆的函数，用来获取相关内容&quot;</span>);<br>&lt;/script&gt;<br><br>&lt;script&gt;<br>  alert(<span class="hljs-string">&quot;这是今日诗词的JavaScript&quot;</span>);<br>  alert(<span class="hljs-string">&quot;我调用上一个JavaScript脚本中定义的函数，显示相关内容&quot;</span>);<br>&lt;/script&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p>乍一看，这玩意儿跟Hitokoto长得不一样啊？你为啥不弄成Hitokoto那种逻辑，我整合也好整合，是吧。但是，相信今日诗词有他自己的考虑，我们暂时不吐槽他，想办法解决呗。</p>
+<blockquote>
+<p>我虽然看不懂今日诗词的JavaScript，但是感觉因为今日诗词是根据时间、IP地点、季节等信息，智能地返回一句诗词，所以不像Hitokoto直接通过http随机获取一句就完事了，他可能需要在访客端执行一些东西，才能完整的显示这些信息。</p>
+</blockquote>
+<p>那咋整麽，死马当活马医呗，所以我的逻辑是：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">&lt;script&gt;<br>  alert(<span class="hljs-string">&quot;这是今日诗词的JavaScript&quot;</span>);<br>    alert(<span class="hljs-string">&quot;我定义了一大堆的函数，用来获取相关内容&quot;</span>);<br>&lt;/script&gt;<br><br>&lt;script&gt;<br>  alert(<span class="hljs-string">&quot;这是我们整合的JavaScript&quot;</span>);<br>  <span class="hljs-keyword">var</span> global_somthing=<span class="hljs-string">&quot;&quot;</span>;<br><br>  alert(<span class="hljs-string">&quot;接下来是今日诗词JavaScript的内容&quot;</span>);<br>    alert(<span class="hljs-string">&quot;我直接调用今日诗词JavaScript定义的获取诗句的函数A&quot;</span>);<br>  alert(<span class="hljs-string">&quot;我把global_somthing赋值为函数A的执行结果&quot;</span>);<br><br>    alert(<span class="hljs-string">&quot;接下来是打字机特效的JavaScript的内容&quot;</span>);<br>    alert(<span class="hljs-string">&quot;我把要显示的内容设为global_somthing变量&quot;</span>);<br>  alert(<span class="hljs-string">&quot;现在我开始动态显示&quot;</span>);<br>&lt;/script&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p>结果当然也是可行的，那在之前的小节，不是说过，不同JavaScript脚本之间的变量没办法共享吗？这里为啥可以不同的JavaScript脚本调用对方定义的函数？这里我感觉吧，懂的自然懂，不懂的跟我一样，一脸懵逼。总之呢，这么做，确实是可行的。</p>
+<h2 id="随机调用Hitokoto和今日诗词"><a href="#随机调用Hitokoto和今日诗词" class="headerlink" title="随机调用Hitokoto和今日诗词"></a>随机调用Hitokoto和今日诗词</h2><p>那，打字机特效已经能和Hitokoto、今日诗词做整合了，那我想随机调用这俩种的一个，显示出来，咋处理呢？加一个随机数判断就完事了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">&lt;script&gt;<br>  alert(<span class="hljs-string">&quot;这是今日诗词的JavaScript&quot;</span>);<br>    alert(<span class="hljs-string">&quot;我定义了一大堆的函数，用来获取相关内容&quot;</span>);<br>&lt;/script&gt;<br><br>&lt;script&gt;<br>  alert(<span class="hljs-string">&quot;这是我们整合的JavaScript&quot;</span>);<br>  <span class="hljs-keyword">var</span> global_somthing=<span class="hljs-string">&quot;&quot;</span>;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">Math</span>.random() &lt; <span class="hljs-number">0.5</span>)&#123;<br>    alert(<span class="hljs-string">&quot;接下来是Hitokoto JavaScript的内容&quot;</span>);<br>        alert(<span class="hljs-string">&quot;我先通过http获取随机的一句话&quot;</span>);<br>        alert(<span class="hljs-string">&quot;我把global_somthing赋值为刚才获取到的一句话&quot;</span>);<br>  &#125;<span class="hljs-keyword">else</span>&#123;<br>    alert(<span class="hljs-string">&quot;接下来是今日诗词JavaScript的内容&quot;</span>);<br>    alert(<span class="hljs-string">&quot;我直接调用今日诗词JavaScript定义的获取诗句的函数A&quot;</span>);<br>    alert(<span class="hljs-string">&quot;我把global_somthing赋值为函数A的执行结果&quot;</span>);<br>  &#125;<br><br>    alert(<span class="hljs-string">&quot;接下来是打字机特效的JavaScript的内容&quot;</span>);<br>    alert(<span class="hljs-string">&quot;我把要显示的内容设为global_somthing变量&quot;</span>);<br>  alert(<span class="hljs-string">&quot;现在我开始动态显示&quot;</span>);<br>&lt;/script&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p>实际测试，这个逻辑很完美。</p>
+<h2 id="文章页的标题能不显示一言吗？"><a href="#文章页的标题能不显示一言吗？" class="headerlink" title="文章页的标题能不显示一言吗？"></a>文章页的标题能不显示一言吗？</h2><p>按照上一节的逻辑，已经可以正常使用打字机特效显示一言了，但是我发现，hexo的fluid，打字机特效没有做太多的判断，会把文章页的文章名也判定为副标题，所以就会出现一个问题，首页、标签页、分类页、文章页都会显示打字机特效，但文章页的文章名也会判定为副标题，也会跟一长串一言显示的内容，这个肯定是我们不希望看到的。</p>
+<p>其实，这篇文章讲了这么多，截止目前，这么多代码最终都是要加到hexo主题的ejs文件中的，ejs文件我们可以理解为hexo主题的模板，这个模板可以根据hexo的结构，针对不同的页面做不同的布局，添加不同的JavaScript脚本。那么，就打字机特效这个场景，我们可以在ejs模板中，针对首页、标签页、分类页、文章页做不同的处理，比如首页我就显示网站的副标题+一言，其他页面我就只显示副标题。那么，打字机ejs模板的逻辑就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ejs">&lt;% if(is_home()) &#123; %&gt;<br>  &lt;script&gt;<br>    alert(&quot;这是今日诗词的JavaScript&quot;);<br>    alert(&quot;我定义了一大堆的函数，用来获取相关内容&quot;);<br>  &lt;&#x2F;script&gt;<br><br>  &lt;script&gt;<br>    alert(&quot;这是我们整合的JavaScript&quot;);<br>    var global_somthing&#x3D;&quot;&quot;;<br>    if(Math.random() &lt; 0.5)&#123;<br>      alert(&quot;接下来是Hitokoto JavaScript的内容&quot;);<br>      alert(&quot;我先通过http获取随机的一句话&quot;);<br>      alert(&quot;我把global_somthing赋值为刚才获取到的一句话&quot;);<br>    &#125;else&#123;<br>      alert(&quot;接下来是今日诗词JavaScript的内容&quot;);<br>      alert(&quot;我直接调用今日诗词JavaScript定义的获取诗句的函数A&quot;);<br>      alert(&quot;我把global_somthing赋值为函数A的执行结果&quot;);<br>    &#125;<br><br>    alert(&quot;接下来是打字机特效的JavaScript的内容&quot;);<br>    alert(&quot;我把要显示的内容设为global_somthing变量&quot;);<br>    alert(&quot;现在我开始动态显示&quot;);<br>  &lt;&#x2F;script&gt;<br>&lt;% &#125; else &#123; %&gt;<br>    &lt;script&gt;<br>  alert(&quot;这是打字机特效的JavaScript&quot;);<br>    alert(&quot;我设置要显示的内容为副标题&quot;);<br>    alert(&quot;现在我显示相关内容&quot;);<br>&lt;&#x2F;script&gt;<br>&lt;% &#125; %&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p>上面代码中的<code>is_home()</code>就是hexo提供的<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/helpers.html">辅助函数</a>，上面逻辑，最终就会实现我的网站当前的效果，只有主页使用打字机特效显示一言的效果，其他页面正常使用打字机特效，显示副标题内容。</p>
+<h1 id="ToDo"><a href="#ToDo" class="headerlink" title="ToDo"></a>ToDo</h1><ol>
+<li>找到fluid主题的打字机特效ejs模板文件。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">scarleastdeMacBook-Pro:gaficat_blog scarleast$ sublime themes/hexo-theme-fluid-1.8.3/layout/_partial/plugins/typed.ejs<br></code></pre></div></td></tr></table></figure>
+
+<ol start="2">
+<li>复制我修改好的ejs文件。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ejs">&lt;% if(theme.fun_features.typing.enable &amp;&amp; page.subtitle !&#x3D;&#x3D; false)&#123; %&gt;<br>  &lt;%- js_ex(theme.static_prefix.typed, &quot;&#x2F;typed.min.js&quot;) %&gt;<br><br>  &lt;% if(is_home()) &#123; %&gt;<br>    &lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;<br>        !function(e)&#123;var n,t&#x3D;&#123;&#125;,o&#x3D;&quot;jinrishici-token&quot;;function i()&#123;return document.getElementById(&quot;jinrishici-sentence&quot;)||0!&#x3D;document.getElementsByClassName(&quot;jinrishici-sentence&quot;).length&#125;function c()&#123;t.load(function(e)&#123;var n&#x3D;document.getElementById(&quot;jinrishici-sentence&quot;),t&#x3D;document.getElementsByClassName(&quot;jinrishici-sentence&quot;);if(n&amp;&amp;(n.innerText&#x3D;e.data.content),0!&#x3D;&#x3D;t.length)for(var o&#x3D;0;o&lt;t.length;o++)t[o].innerText&#x3D;e.data.content&#125;)&#125;function r(e,n)&#123;var t&#x3D;new XMLHttpRequest;t.open(&quot;get&quot;,n),t.withCredentials&#x3D;!0,t.send(),t.onreadystatechange&#x3D;function(n)&#123;if(4&#x3D;&#x3D;&#x3D;t.readyState)&#123;var o&#x3D;JSON.parse(t.responseText);&quot;success&quot;&#x3D;&#x3D;&#x3D;o.status?e(o):console.error(&quot;今日诗词API加载失败，错误原因：&quot;+o.errMessage)&#125;&#125;&#125;t.load&#x3D;function(n)&#123;return e.localStorage&amp;&amp;e.localStorage.getItem(o)?function(e,n)&#123;return r(e,&quot;https:&#x2F;&#x2F;v2.jinrishici.com&#x2F;one.json?client&#x3D;browser-sdk&#x2F;1.2&amp;X-User-Token&#x3D;&quot;+encodeURIComponent(n))&#125;(n,e.localStorage.getItem(o)):function(n)&#123;return r(function(t)&#123;e.localStorage.setItem(o,t.token),n(t)&#125;,&quot;https:&#x2F;&#x2F;v2.jinrishici.com&#x2F;one.json?client&#x3D;browser-sdk&#x2F;1.2&quot;)&#125;(n)&#125;,e.jinrishici&#x3D;t,i()?c():(n&#x3D;function()&#123;i()&amp;&amp;c()&#125;,&quot;loading&quot;!&#x3D;document.readyState?n():document.addEventListener?document.addEventListener(&quot;DOMContentLoaded&quot;,n):document.attachEvent(&quot;onreadystatechange&quot;,function()&#123;&quot;complete&quot;&#x3D;&#x3D;document.readyState&amp;&amp;n()&#125;))&#125;(window); <br>    &lt;&#x2F;script&gt;<br><br>    &lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;<br>      if(Math.random() &lt; 0.5)&#123;<br>        jinrishici.load(function(result) &#123;<br>          var typed &#x3D; new Typed(&#39;#subtitle&#39;, &#123;<br>          strings: [<br>            &#39;  &#39;,<br>            &quot;&lt;%- data.subtitle %&gt;&amp;nbsp;&quot; + &quot;&lt;br&gt;&lt;br&gt;&quot; + result.data.content + &quot;&lt;br&gt;&quot; + &quot;&amp;nbsp;&amp;nbsp;&amp;nbsp;—&quot; + &#39;【&#39; + result.data.origin.dynasty + &#39;】&#39; + result.data.origin.author + &#39;《&#39; + result.data.origin.title + &#39;》&#39;,<br>          ],<br>          cursorChar: &quot;&lt;%- theme.fun_features.typing.cursorChar %&gt;&quot;,<br>          typeSpeed: &lt;%- theme.fun_features.typing.typeSpeed %&gt;,<br>          loop: &lt;%- theme.fun_features.typing.loop %&gt;,<br>          &#125;);<br>          typed.stop();<br>          $(document).ready(function () &#123;<br>            $(&quot;.typed-cursor&quot;).addClass(&quot;h2&quot;);<br>            typed.start();<br>          &#125;); <br>        &#125;); <br>      &#125;else&#123;<br>        fetch(&#39;https:&#x2F;&#x2F;v1.hitokoto.cn&#39;)<br>        .then(response &#x3D;&gt; response.json())<br>        .then(data &#x3D;&gt; &#123;<br>          if(data.from_who)&#123;<br>            var typed &#x3D; new Typed(&#39;#subtitle&#39;, &#123;<br>              strings: [<br>                &#39;  &#39;,<br>                &quot;&lt;%- data.subtitle %&gt;&amp;nbsp;&quot; + &quot;&lt;br&gt;&lt;br&gt;&quot; + data.hitokoto + &quot;&lt;br&gt;&quot; + &quot;&amp;nbsp;&amp;nbsp;&amp;nbsp;— &quot; + data.from_who +&#39;《&#39; + data.from + &#39;》&#39;,<br>              ],<br>              cursorChar: &quot;&lt;%- theme.fun_features.typing.cursorChar %&gt;&quot;,<br>              typeSpeed: &lt;%- theme.fun_features.typing.typeSpeed %&gt;,<br>              loop: &lt;%- theme.fun_features.typing.loop %&gt;,<br>            &#125;);<br>            <br>          &#125;else&#123;<br>            var typed &#x3D; new Typed(&#39;#subtitle&#39;, &#123;<br>              strings: [<br>                &#39;  &#39;,<br>                &quot;&lt;%- data.subtitle %&gt;&amp;nbsp;&quot; + &quot;&lt;br&gt;&lt;br&gt;&quot; + data.hitokoto + &quot;&lt;br&gt;&quot; + &quot;&amp;nbsp;&amp;nbsp;&amp;nbsp;— &quot; + &#39;《&#39; + data.from + &#39;》&#39;,<br>              ],<br>              cursorChar: &quot;&lt;%- theme.fun_features.typing.cursorChar %&gt;&quot;,<br>              typeSpeed: &lt;%- theme.fun_features.typing.typeSpeed %&gt;,<br>              loop: &lt;%- theme.fun_features.typing.loop %&gt;,<br>            &#125;);<br>          &#125;<br>          typed.stop();<br>          $(document).ready(function () &#123;<br>            $(&quot;.typed-cursor&quot;).addClass(&quot;h2&quot;);<br>            typed.start();<br>          &#125;);  <br>        &#125;)<br>        .catch(console.error)<br>      &#125;<br>    &lt;&#x2F;script&gt;<br>  &lt;% &#125; else &#123; %&gt;<br>    &lt;script&gt;<br>      var typed &#x3D; new Typed(&#39;#subtitle&#39;, &#123;<br>        strings: [<br>          &#39;  &#39;,<br>          &quot;&lt;%- data.subtitle %&gt;&amp;nbsp;&quot;,<br>        ],<br>        cursorChar: &quot;&lt;%- theme.fun_features.typing.cursorChar %&gt;&quot;,<br>        typeSpeed: &lt;%- theme.fun_features.typing.typeSpeed %&gt;,<br>        loop: &lt;%- theme.fun_features.typing.loop %&gt;,<br>      &#125;);<br>      typed.stop();<br>      $(document).ready(function () &#123;<br>        $(&quot;.typed-cursor&quot;).addClass(&quot;h2&quot;);<br>        typed.start();<br>      &#125;);<br>    &lt;&#x2F;script&gt;<br>  &lt;% &#125; %&gt;<br><br><br>&lt;% &#125; %&gt;<br><br></code></pre></div></td></tr></table></figure>
+
+<h1 id="尾巴"><a href="#尾巴" class="headerlink" title="尾巴"></a>尾巴</h1><p>hexo的好处是，可以直接使用markdown来写文章，无需关注复杂的前端，因为有大神给你写好了各种主题。但是，没有主题是完美的，因为每个人的需求都不一样，你可能需要在网站的底下加上又拍云的logo，来蹭一波免费的额度；你可能看到了某个有意思的功能，需要修改一些代码，才能实现一些好玩的东西。</p>
+<p>很感谢<a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid">fluid</a>主题的开发者们，这个主题简洁、美观。并且我这样一个前端小白，提过很多很简单的Issues，这个主题的开发者也很耐心的作了回复。希望我这篇文章能帮到一些铁子吧，毕竟看到挺多铁子都提了关于整合Hitokoto的Issues。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%95%99%E7%A8%8B/hexo/">hexo</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/hexo/">hexo</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%99%E7%A8%8B/">教程</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本作品采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/5d933848.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">如何用51单片机控制舵机加减速</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/1d5c6ccb.html">
+                        <span class="hidden-mobile">记录chrome禁止cookie导致无法显示iframe的问题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" rel="nofollow noopener"> <span> 本站由<img border="0" src="/img/upyun_logo6.png" srcset="/img/loading.gif"  width="80" height="25"/>提供对象存储服务 </span>  </a> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        陕ICP备18017214号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+    <!-- cnzz Analytics Icon -->
+    <span id="cnzz_stat_icon_1278912843" style="display: none"></span>
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+
+  
+    <script>
+      (function (window, document) {
+        var typing = Fluid.plugins.typing;
+        var title = document.getElementById('subtitle').title;
+        typing(title)
+      })(window, document);
+    </script>
+  
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4966387dd3693d431161872876fb1011";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- cnzz Analytics -->
+    <script defer src="//s4.cnzz.com/z_stat.php?id=1278912843&show=pic"
+            type="text/javascript"></script>
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,653 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;light&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" type="image/png" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="分享各种电子设计DIY、物联网DIY、读书笔记、生活想法、流行钢琴、工作中遇到的问题（docker使用技巧、网络安全、python、网络协议）、博客建站技巧等等内容">
+  <meta name="author" content="scarleast">
+  <meta name="keywords" content="物联网">
+  <title>总是忘打卡？用iBeacon提醒你！ - 加菲猫的创客工坊</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_2145872_unckbjh4m8.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.gaficat.com","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":40,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":"4966387dd3693d431161872876fb1011","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":1278912843,"leancloud":{"app_id":"lY82cvb8vqSOls13F6jndxq3-gzGzoHsz","app_key":"uu7fyOEvPWmCOxtxNL6rlsGV","server_url":"https://ly82cvb8.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="加菲猫的创客工坊" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>加菲猫的创客工坊</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/aboutme/">
+                <i class="iconfont icon-user-fill"></i>
+                关于我
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+                rss
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="总是忘打卡？用iBeacon提醒你！">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-04-27 23:44" pubdate>
+        2020年4月27日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      33
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">总是忘打卡？用iBeacon提醒你！</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年9月16日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>最近公司将打卡系统更换为了企业微信打卡，于是就出现了一个很麻烦的问题，<strong>忘打卡</strong>。企业微信虽然也有自动打卡，但是还是需要手动点开app，很多时候，我忘记的是手动在手机上点一下app这个过程。怎么提醒自己呢？我想过设闹钟，但是弹性工作制，上午8点到10点之间去公司都可以，只要打够9个小时的卡就行了。所以我什么时候到公司，时间是不确定的，闹钟肯定是不靠谱的，那怎么办呢？</p>
+<p>理想情况下当然是<strong>基于地理位置提醒</strong>了，当我到达或离开公司的时候，能够自动提醒我打卡。我也确实做了尝试——IFTTT，但它的定位服务总是有一些问题，并且手机上一直开着定位服务耗电也是一个问题。所以手机app，基于定位提醒也无法实现了。当然了，我也想过其他的解决方案，比如在公司放一台扫描某个信号的设备，扫描如NFC、蓝牙之类的信号，就能判断我是否到达公司了。但NFC——距离太近，手机蓝牙——需要连接蓝牙耳机并不空闲，所以这个想法就一直搁置了。</p>
+<p>后来无意间逛某宝，我看到了<strong>iBeacon信标</strong>，最终一个角落里的树莓派、一个iBeacon信标完美解决<strong>基于地理位置（我是否在公司）</strong>，提醒我打卡的问题。只要我人到达公司或者下班人离开公司，都会通过<a target="_blank" rel="noopener" href="http://sc.ftqq.com/3.version">server酱</a>推送给微信，提醒自己打卡。因为有华米的手表，所以完全不用担心听不到通知的情况。</p>
+<p>按照惯例，先上效果，手机上收到的提醒：</p>
+<img src="https://pic.gaficat.com/default/image-20200426162508739.png" srcset="/img/loading.gif" alt="打卡通知" style="zoom: 40%;" />
+
+
+
+<p>iBeacon信标就是这个白白的东西：</p>
+<img src="https://pic.gaficat.com/default/iBeacon信标.jpg" srcset="/img/loading.gif" alt="iBeacon信标" style="zoom: 25%;" />
+
+<p>树莓派躲在角落瑟瑟发抖：</p>
+<img src="https://pic.gaficat.com/default/躲在角落的树莓派.jpg" srcset="/img/loading.gif" alt="躲在角落的树莓派" style="zoom:25%;" />
+
+<h1 id="关于iBeacon"><a href="#关于iBeacon" class="headerlink" title="关于iBeacon"></a>关于iBeacon</h1><h2 id="何为iBeacon"><a href="#何为iBeacon" class="headerlink" title="何为iBeacon"></a>何为iBeacon</h2><p>Wikipedia这样说：</p>
+<blockquote>
+<p>iBeacon是苹果公司提出的“一种可以让附近手持电子设备检测到的一种新的低功耗、低成本信号传送器”的一套可用于室内定位系统的协议。</p>
+</blockquote>
+<p>当然啦，我在一开始看到这种解释的时候，也是蒙的。用人话来说：<strong>iBeacon是苹果推出的一种通信协议（通信协议有很多，比如HTTP），只不过它是基于低功耗蓝牙（BLE）通信的，应用的场景很多，比如室内定位、微信摇一摇周边。</strong></p>
+<p>我们可以简单把iBeacon理解为两个角色，发送者（信标）和接收方。信标每隔一段时间，向周围发送广播——“我在这！”接收方在需要的时候，监听信标发送的内容，就能知道周围有几个iBeacon信标以及他们广播的内容了。信标只向外发送数据，不接收数据。接收方只接收数据，不向iBeacon节点发送数据。</p>
+<p><img src="https://pic.gaficat.com/default/ibeacon-communication.jpg" srcset="/img/loading.gif" alt="ibeacon-communication"></p>
+<h2 id="iBeacon的优势"><a href="#iBeacon的优势" class="headerlink" title="iBeacon的优势"></a>iBeacon的优势</h2><h3 id="省电"><a href="#省电" class="headerlink" title="省电"></a>省电</h3><p>通常的无线通信协议，需要双方都监听某个信道，来回交换数据。比如我们常用的蓝牙（不是mesh蓝牙），分为主机和从机，我们很明显的感受是，两边都需要开启蓝牙，然后配对，再建立连接。这个过程其实就要求主机、从机都监听某个信道，以完成双向通信的过程。当然了，这种双向通信的需求在某些场景下是必要的，如蓝牙耳机、蓝牙键盘、蓝牙灯泡等。那主机、从机一直监听信道，必然很费电啊，某些场景就是需要省电怎么办呢？这就有了BLE（Bluetooth Low Energy），BLE省电的原理，就是双方协商，我们在某一个时间点一起监听信道收发数据，然后一起休眠一段时间，之后在某个时间点再一起醒过来监听信道收发数据。那都休眠了，当然就省电了。确实，BLE通过休眠，已经非常省电了，那还能不能更加省电呢？当然是可以的，某些场景下不需要双向通信，只需要单向通信，这时候就可以将省电做到极限。比如有这样一种场景，我希望测距，A节点不需要收数据，只需要发数据，B节点只需要监听A节点发射出的信号强度，计算距离就行了，那发数据的A节点不是就能节省大量因为监听信道而消耗的电能了？iBeacon实际上就是这样，iBeacon的信标就是A节点，只定时向外广播，不监听信道接收数据，非常省电。</p>
+<h3 id="通信距离合适"><a href="#通信距离合适" class="headerlink" title="通信距离合适"></a>通信距离合适</h3><p>由于iBeacon基于BLE通信，而BLE通信的距离通常在几米到几十米之间，所以非常适合室内一个房间或者一个区域内的场景。其他的比如NFC，只有几厘米的识别范围，显然不是很合适打卡提醒这种场景。</p>
+<h3 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h3><p>由于iBeacon本质是一种基于BLE通信协议，所以理论上所有大于蓝牙4.0的设备都可以支持iBeacon。</p>
+<h3 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h3><p>iBeacon信标不断向外广播数据，会不会泄露用户的隐私？我们以接收方为手机为例来做说明，下图就是一个典型的利用iBeacon的场景，从左至右，iBeacon信标广播了ID，手机收到广播的ID后，向云端请求这个ID对应的内容，云端再将ID对应的内容反馈给手机。在这个过程中，iBeacon的应用，只是信标向手机单向传输的ID信息而已（这个ID是可以自己定义的）。至于手机和云端通信是不是安全，这个就和iBeacon没有什么关系了。</p>
+<p><img src="https://pic.gaficat.com/default/ibeacon%E5%AE%89%E5%85%A8%E6%80%A7.png" srcset="/img/loading.gif" alt="iBeacon安全性"></p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>想使用iBeacon，还需要了解iBeacon广播的内容。我们试想这样一个场景，一家商场里面，两家店是邻居，其中一家无印良品，另一家是宜家，大家都希望用iBeacon信标广播自己店的信息来吸引顾客。那问题就来了，前面说iBeacon信标只是广播ID，那怎么区分两家店、两家店卖的商品、两家店所处的位置呢？答案就是iBeaon广播的内容。iBeacon信标向外广播的参数有三个：UUID、Major、Minor。这三个参数是可以自己配置，我们可以按照下图的方式来配置。怎么区分两家店呢？用UUID表示：<code>D9B9EC1F-3925-43D0-80A9-1E39D4CEA95C</code>表示无印良品，宜家设为其他的就行了。怎么区分店的地址呢？用Major表示：1表示旧金山，2表示巴黎，3表示伦敦。怎么区分商品呢？用Minor表示，10代表衣物、20代表厨房用品、30代表汽车用品。</p>
+<p><img src="https://pic.gaficat.com/default/iBeacon_uuid.png" srcset="/img/loading.gif" alt="iBeacon_uuid"></p>
+<p>UUID就是类似上图长度的字符串，Major和Minor都是0-65535之间的整数。</p>
+<h1 id="实现基于iBeacon的打卡提醒"><a href="#实现基于iBeacon的打卡提醒" class="headerlink" title="实现基于iBeacon的打卡提醒"></a>实现基于iBeacon的打卡提醒</h1><p>总体上的思路是：从某宝买来一个iBeacon信标，这个信标会自动定时向外广播相应内容，我用树莓派不断扫描周围iBeacon信标发出的广播数据，当第一次检测到iBeacon节点进入时，触发相应的告警，当检测到iBeacon节点离开时，同样触发告警就行了。</p>
+<h2 id="硬件环境"><a href="#硬件环境" class="headerlink" title="硬件环境"></a>硬件环境</h2><ul>
+<li>一个带有蓝牙且可以连接互联网的树莓派，目前4B、3B+、3B、3A和Zero W均符合要求。</li>
+<li>一个iBeacon信标（某宝搜索iBeacon即可买到）。</li>
+<li>一台安装了微信的手机，苹果、安卓都可以。</li>
+</ul>
+<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><p>我将代码整理到了<a target="_blank" rel="noopener" href="https://github.com/scarleast/notify-by-ibeacon">github</a>，感兴趣的小伙伴可以直接拿去用，整体配置的步骤分为三大块：</p>
+<ul>
+<li>设置iBeacon信标</li>
+<li>设置微信上的server酱（server酱是一款推送工具，借助微信，可以推送我们想要的通知）</li>
+<li>设置树莓派</li>
+</ul>
+<h3 id="iBeacon信标"><a href="#iBeacon信标" class="headerlink" title="iBeacon信标"></a>iBeacon信标</h3><ul>
+<li>配置并记录下好iBeacon信标的UUID、major、minor，另外，也记录下iBeacon信标的mac地址，用相应app配置就行了，这里不做详细说明。</li>
+</ul>
+<blockquote>
+<p>通常我们买到的iBeacon信标都是附带配套APP，可以查看iBeacon信标的mac地址，并且配置UUID、major、minor这三个参数的，这三个参数其实可以随意配置的，如果不知道怎么配置，也可以使用默认的，只要记录下来就行了。需要注意的是，部分卖家不提供安卓配套的APP，自行选择合适的店家即可。</p>
+</blockquote>
+<h3 id="server酱"><a href="#server酱" class="headerlink" title="server酱"></a>server酱</h3><ul>
+<li><p>记录server酱的SCKEY</p>
+<blockquote>
+<p>登录server酱的网站<a target="_blank" rel="noopener" href="http://sc.ftqq.com/3.version%EF%BC%8C%E7%99%BB%E5%85%A5%E5%90%8E%E7%BB%91%E5%AE%9A%E5%BE%AE%E4%BF%A1%EF%BC%8C%E8%AE%B0%E5%BD%95%E4%B8%8BSCKEY%E5%B0%B1%E8%A1%8C%E4%BA%86">http://sc.ftqq.com/3.version，登入后绑定微信，记录下SCKEY就行了</a></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="树莓派"><a href="#树莓派" class="headerlink" title="树莓派"></a>树莓派</h3><p>首先需要确保树莓派已经连接上了网络，之后通过ssh连接 树莓派或者打开图形界面下打开终端。</p>
+<ul>
+<li><p>安装所需要的依赖（使用到了python3）</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">sudo apt-get -y install python-dev libbluetooth-dev libcap2-bin git<br>sudo <span class="hljs-built_in">setcap</span> <span class="hljs-string">&#x27;cap_net_raw,cap_net_admin+eip&#x27;</span> $(readlink -f $(<span class="hljs-built_in">which</span> python))<br>sudo pip3 install beacontools[scan] requests<br></code></pre></div></td></tr></table></figure>
+</li>
+<li><p>下载代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/scarleast/notify-by-ibeacon.git<br><span class="hljs-built_in">cd</span> notify-by-ibeacon<br></code></pre></div></td></tr></table></figure>
+</li>
+<li><p>修改配置文件，配置文件位于<code>/notify-by-ibeacon/config.json</code></p>
+<figure class="highlight json"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">&#123;<br>    <span class="hljs-attr">&quot;timeout&quot;</span>: <span class="hljs-number">60</span>,<br>    <span class="hljs-attr">&quot;serverchain_receiver&quot;</span>: &#123;<br>        <span class="hljs-attr">&quot;SCUXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span>: &#123;<br>            <span class="hljs-attr">&quot;bt_addr&quot;</span>: <span class="hljs-string">&quot;XX:XX:XX:XX:XX:XX&quot;</span>,<br>            <span class="hljs-attr">&quot;uuid&quot;</span>: <span class="hljs-string">&quot;XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX&quot;</span>,<br>            <span class="hljs-attr">&quot;major&quot;</span>: <span class="hljs-number">1</span>,<br>            <span class="hljs-attr">&quot;minor&quot;</span>: <span class="hljs-number">1</span><br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>timeout：超时时间。即树莓派扫描不到相应iBeacon信标多少秒后，触发提醒。</li>
+<li>serverchain_recerver：使用server酱接收提醒。该字段的value为一个字典，key为server酱的SCKEY，value为iBeacon信标的相关参数。<ul>
+<li>bt_addr：iBeacon信标的mac地址。</li>
+<li>uuid：希望检测的UUID值。</li>
+<li>major：用于区分相同UUID值下不同的服务，取值范围0~65535。</li>
+<li>minor：用于区分相同UUID值、相同major下不同的服务，取值范围0~65535.</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p>启动程序</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">sudo python3 sudo python3 ble_test.py<br></code></pre></div></td></tr></table></figure>
+</li>
+<li><p>后台运行（可选）</p>
+<blockquote>
+<p>如果希望程序始终在后台运行，可以使用screen工具，<a target="_blank" rel="noopener" href="https://blog.csdn.net/hejunqing14/article/details/50338161">用screen 在后台运行程序</a>.</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="尾巴"><a href="#尾巴" class="headerlink" title="尾巴"></a>尾巴</h1><p>其实代码刚写完的时候，每次出入公司都挺提心吊胆的，怕程序出问题。但使用几天时间后，每天上班到达相应楼层刚走出电梯门，就收到上班打卡的提醒。每天下班，可能正想着等会儿给女票带一束怎么样的花，完全忘了打卡，刚到达车库就收到下班打卡的提醒。内心会有一种莫名的惊喜感的，这可能是创客DIY的一种成就感吧。</p>
+<p>这篇文章中，我把iBeacon应用在了打卡提醒的场景下，其实基于iBeacon这种位置的触发的方式，还可以衍生出非常多的玩法。最典型的就是智能家居的场景了，比如下班离开公司，就自动打开家里的空调、热水器，就再不用定时或者回家路上用APP操作了;比如离开家自动关闭所有灯和不需要使用的开关、电器，回家自动把需要的电器打开。这种你到哪，场景会发生改变的感觉，真的让人感觉挺有惊喜和满足感的。</p>
+<p>最后，一些题外话。之后我计划用iBeacon做一些智能家居相关的联动，我是一个喜欢创造一些小玩意儿的人，想想自己整个学生生涯最开心的时刻，不是考上了大学，不是期末考了第一，而是第一次在实验室用手机蓝牙点亮一盏LED灯的那一刻，第一次在实验室用天猫精灵点亮一盏220V电灯的那一刻。最好的科技，是让你感受不到科技的存在。当你用一些私人定制化的开发，让你摆脱手机APP和重复呼唤某某同学的束缚，所到之处，周围的环境按照你的喜好，恰到好处的做出相应的反应，有了一丝灵气，这才是智能家居该有的样子吧。不然，二十年前，楼道的声控灯，也是智能家居，它不也是人来灯开，人走灯灭嘛？</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1/">电子设计</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1/%E5%85%B6%E4%BB%96/">其他</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1/">电子设计</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本作品采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/ee24dc2e.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">当你老了，又成了谁的累赘</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/dbafe1be.html">
+                        <span class="hidden-mobile">你打算怎么给你儿子取名字呢？</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" rel="nofollow noopener"> <span> 本站由<img border="0" src="/img/upyun_logo6.png" srcset="/img/loading.gif"  width="80" height="25"/>提供对象存储服务 </span>  </a> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        陕ICP备18017214号-1
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+    <!-- cnzz Analytics Icon -->
+    <span id="cnzz_stat_icon_1278912843" style="display: none"></span>
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+
+  
+    <script>
+      (function (window, document) {
+        var typing = Fluid.plugins.typing;
+        var title = document.getElementById('subtitle').title;
+        typing(title)
+      })(window, document);
+    </script>
+  
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4966387dd3693d431161872876fb1011";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- cnzz Analytics -->
+    <script defer src="//s4.cnzz.com/z_stat.php?id=1278912843&show=pic"
+            type="text/javascript"></script>
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
